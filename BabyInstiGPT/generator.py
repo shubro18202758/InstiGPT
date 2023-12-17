@@ -17,5 +17,5 @@ class QAChain:
         template = f"""Answer the query based on the context provided, answer in a very structured manner, and make proper and full sentences with introduction line to the topic while answering:\n
                                 query : {query}\n
                                 context : {string_i}"""
-        result = self.llm.invoke(template)
-        return result.content
+        result = self.llm.stream(template)
+        return result

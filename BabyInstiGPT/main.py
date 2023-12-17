@@ -12,9 +12,10 @@ def main():
     retriever = load_retriever()
     llm = generator_model()
     chain = QAChain(llm, retriever)
-    query = 'Describe different grade points'
+    query = 'If I get a DX grade in a course and in next semester I repeat the course and get BB, will it show in my transcript as DX or BB?'
     answer = chain.qna(query)
-    print(answer)
+    for chunk in answer:
+        print(chunk.content)
     
     
 if __name__ == "__main__":
