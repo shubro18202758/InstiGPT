@@ -7,13 +7,12 @@ import uvicorn
 # NOTE: Do not remove this import. It is used by uvicorn to load the app
 from instigpt.api import app
 
-# Loading test data
-# TODO: Remove this when deploying to production with all data loaded
-from scripts.load_data_in_db import load_data_in_db
-from instigpt.embeddings import get_embeddings
+# Load test data
+# from scripts.load_data_in_db import load_data_in_db
+# from instigpt.embeddings import get_embeddings
 
-embeddings = get_embeddings()
-load_data_in_db(embeddings=embeddings)
+# embeddings = get_embeddings()
+# load_data_in_db(embeddings=embeddings)
 
 
 if __name__ == "__main__":
