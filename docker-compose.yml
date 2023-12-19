@@ -1,0 +1,44 @@
+version: "3.4"
+
+services:
+  backend:
+    image: instigpt-backend
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000
+    networks:
+      - net
+    depends_on:
+      - vectordb
+
+  vectordb:
+    image: chromadb/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ALLOW_RESET=TRUE
+    volumes:
+      - chroma-data:/chroma/chroma/
+    ports:
+      - 8000:8000
+    networks:
+      - net
+
+  frontend:
+    image: instigpt-frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  chroma-data:
+    driver: local
