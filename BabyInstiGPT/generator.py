@@ -27,14 +27,20 @@ class QAChain:
     
     def __qna_change_context(self, query, past_convo, context = ""):
         docs = self.retriever.get_relevant_documents(query)
-        for i in range(0, 10):
+        for i in range(0, 5):
             context += docs[i].page_content
-        template = f"""Your name is BabyInstiGPT, if someone asks your name, tell them this.\n 
+        template = f"""You are a conversational ChatBot named BabyInstiGPT.\n
+                        Your task is to help users with whatever taks or queries they have. Please follow the instructions they provide you in queries.\n
+                        You answer to queries related to Rules of IIT Bombay based on the context provided or the question of the User.\n
                         Now, Answer the query based on the context provided, answer in a very structured manner, and make proper and full sentences with introduction line to the topic while answering.\n
                         Past converstion is also given as reference, if there is no past conversation, ignore it.\n
-                        IMPORTANT - Do not repeat those sentences which have been answered in past conversations. :\n
-                        past conversation : {past_convo}\n
+                        Keep these IMPORTANT points in mind while answering the queries-\n
+                        IMPORTANT - 1> Do not repeat those sentences which have been answered in past conversations.
+                                    2> If user tells you that you are wrong or incorrect, then accept that and try to correct yourself. Be nice while conversing.\n
+                                    3> If user asks for your opinion regarding something, then tell them what you think is the best.\n 
+                                    4> If some factual information is asked and is not provided in the context or question, then tell them that you don't have information on that particular topic.:\n
                         query : {query}\n
+                        past conversation : {past_convo}\n
                         context : {context}"""
         result = self.llm.stream(template)
         
@@ -49,7 +55,7 @@ class QAChain:
         conv += "User : " + query + "\n"
         context = " "
         
-        for _ in range(3):
+        for _ in range(5):
             ans, temp = self.__qna_change_context(query, conv, context)
             context = temp + context
             reply = ""
@@ -57,7 +63,7 @@ class QAChain:
                 print(chunk.content)
                 reply += chunk.content
             conv += "BabyInstiGPT : " + reply + "\n"
-            if(_ == 2):
+            if(_ == 4):
                 break
             query = input("User : \n")
             conv += "User : " + query + "\n"
