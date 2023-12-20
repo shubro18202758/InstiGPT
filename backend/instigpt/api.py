@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
 from instigpt.embeddings import get_embeddings
@@ -8,6 +9,13 @@ from instigpt.retriever import get_retriever
 from instigpt.input_models import ChatInput
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 embeddings = get_embeddings()
 llm = get_generator_model()
@@ -20,12 +28,12 @@ async def status():
     return {"status": "up"}
 
 
-@app.get("/chat")
+@app.post("/chat")
 async def chat(input: ChatInput):
     output = chain.stream(
         {
-            "question": input.question,
-            "chat_history": "\n\n".join(input.chat_history or []) or "None",
+            "question": input.messages[-1].content,
+            "chat_history": "\n\n".join(map(str, input.messages[:-1] or [])) or "None",
         }
     )
 
