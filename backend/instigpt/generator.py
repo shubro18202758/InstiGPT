@@ -17,8 +17,9 @@ def get_generator_model():
         temperature=config.GENERATOR_TEMPERATURE,
     )  # type: ignore
 
+#Redesign the prompt accordingly
 
-# We might want to improve our prompt template using something like this
+PROMPT = ChatPromptTemplate.from_template(
 """You are a conversational ChatBot named InstiGPT.\n
 Your task is to help users with whatever taks or queries they have. Please follow the instructions they provide you in queries.\n
 You answer to queries related to Rules of IIT Bombay based on the context provided or the question of the User.\n
@@ -30,10 +31,6 @@ IMPORTANT -
 2> If user tells you that you are wrong or incorrect, then accept that and try to correct yourself. Be nice while conversing.\n
 3> If user asks for your opinion regarding something, then tell them what you think is the best.\n 
 4> If some factual information is asked and is not provided in the context or question, then tell them that you don't have information on that particular topic.:\n
-"""
-
-PROMPT = ChatPromptTemplate.from_template(
-    """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 ----------------
 CONTEXT: {context}
 ----------------
@@ -64,5 +61,4 @@ def get_chain(
         | llm
         | StrOutputParser()
     )
-
     return chain
