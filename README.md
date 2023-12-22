@@ -9,7 +9,7 @@ The application has 3 parts: backend, frontend and a vector database.
 ### Backend
 
 1. Install the dependencies using `pipenv install`.
-1. Run the app using `pipenv run python main,py`.
+1. Run the app using `pipenv run python main.py`.
 
 ### Frontend
 
@@ -20,6 +20,8 @@ The application has 3 parts: backend, frontend and a vector database.
 
 This app uses `chromadb` as its vector store.
 To run an instance of `chromadb` in docker, run: `docker run -p 8000:8000 --env IS_PERSIST=true --env ALLOW_RESET=true --name chromadb chromadb/chroma`.
+
+Also make sure you set the required environment variables in the `.env` file namely `VECTOR_DB_HOST` to `localhost` and `VECTOR_DB_PORT` to `8000`
 
 > NOTE: You may choose to recreate all the embeddings from scratch or reuse the ones provided in this repository. To reuse the ones provided in this repo, run `docker exec -it chromadb rm -rf /chroma/chroma; docker cp ./embeddings chromadb:/chroma/chroma`
 
