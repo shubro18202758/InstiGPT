@@ -3,6 +3,7 @@ EMBEDDING_MODEL = "thenlper/gte-large"
 
 # Retriver
 DATA_PATH = "data/ugrulebook.json"
+#use "data/resobin_courses.json"
 COLLECTION_NAME = "resonin_courses"
 #use "ugrulebook" or "resonin_courses"
 
