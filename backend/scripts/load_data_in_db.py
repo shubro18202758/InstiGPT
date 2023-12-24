@@ -13,7 +13,7 @@ EMBEDDING_MODEL = "thenlper/gte-large"
 #Use "../data/ugrulebook.json" for ugrulebook or "../data/resobin_courses.json" for resobin data
 DATA_PATH = "../data/resobin_courses.json"
 #Use "ugrulebook" for ugrulebook or "resonin_courses" for resobin data
-COLLECTION_NAME = "resonin_courses"
+COLLECTION_NAME = "resobin_courses"
 
 #set metadata = True for ugrulebook and False for resobin_data
 
@@ -39,7 +39,6 @@ def load_data_in_db(embeddings: Embeddings, client_reset: bool = True, metadata:
     formatted_metadatas = []
     formatted_documents = []
     for doc in docs:
-        # Assuming 'metadata' contains URLs
         formatted_documents.append(json.dumps(doc))
         if metadata:
             metadata_dict = {"url": doc["metadata"]}
@@ -59,4 +58,4 @@ def load_data_in_db(embeddings: Embeddings, client_reset: bool = True, metadata:
 
 if __name__ == "__main__":
     emdbeddings = get_embeddings()
-    load_data_in_db(embeddings=emdbeddings, client_reset=True, metadata=False)
+    load_data_in_db(embeddings=emdbeddings, client_reset=False, metadata=False)
