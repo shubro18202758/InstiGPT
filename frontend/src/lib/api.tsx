@@ -22,8 +22,7 @@ export const ApiProvider: FC<ApiProviderProps> = ({ children }) => (
 
 interface LoginMutationResponse {
   user?: User;
-  error?: { [key: string]: string };
-  message?: string;
+  detail?: string;
 }
 export const useLoginMutation = () =>
   useMutation<LoginMutationResponse, Error, string>(
@@ -40,8 +39,7 @@ export const useLoginMutation = () =>
 
 interface MeQueryResponse {
   user?: User;
-  error?: { [key: string]: string };
-  message?: string;
+  detail?: string;
 }
 export const useMeQuery = (onSuccess?: (data: MeQueryResponse) => void) =>
   useQuery<MeQueryResponse>(
@@ -52,5 +50,8 @@ export const useMeQuery = (onSuccess?: (data: MeQueryResponse) => void) =>
       }).then((res) => res.json()),
     {
       onSuccess,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
     },
   );

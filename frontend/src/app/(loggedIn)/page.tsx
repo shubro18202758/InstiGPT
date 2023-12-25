@@ -3,9 +3,11 @@
 import { useChat } from "ai/react";
 
 export default function Home() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: "http://localhost:5000/chat",
-  });
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
+    useChat({
+      api: "http://localhost:5000/chat",
+      credentials: "include",
+    });
 
   return (
     <div>
@@ -25,7 +27,9 @@ export default function Home() {
             className="text-background"
           />
         </label>
-        <button type="submit">Send</button>
+        <button type="submit" disabled={isLoading}>
+          Send
+        </button>
       </form>
     </div>
   );

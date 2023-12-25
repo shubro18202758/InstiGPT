@@ -1,12 +1,14 @@
 import os
 import datetime
+from typing import Annotated
 
 import requests
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, HTTPException, Depends
 from fastapi.responses import JSONResponse, Response
 
 from instigpt import config
 from instigpt.db import user as db_user, session as db_session
+from . import helpers
 
 router = APIRouter()
 
@@ -35,7 +37,7 @@ def login(code: str, response: Response):
     # Ensure we have the access token
     if "access_token" not in token_res:
         response.status_code = 400
-        return {"message": "unable to retrieve access token", "error": token_res}
+        return {"error": "unable to retrieve access token"}
 
     # Get the user's profile
     profile_res = requests.get(
@@ -58,7 +60,7 @@ def login(code: str, response: Response):
         ]
     ):
         response.status_code = 400
-        return {"message": "all field were not present in the response"}
+        return {"error": "all field were not present in the response"}
 
     user = db_user.get_user_by_id(profile_res["id"])
     if user is None:
@@ -90,8 +92,7 @@ def login(code: str, response: Response):
 def logout(req: Request, res: Response):
     session_id = req.cookies[config.COOKIE_NAME]
     if session_id is None:
-        res.status_code = 403
-        return {"message": "invalid user"}
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
     db_session.delete(session_id)
     res.delete_cookie(config.COOKIE_NAME)
@@ -99,20 +100,5 @@ def logout(req: Request, res: Response):
 
 
 @router.get("/me")
-def me(req: Request):
-    if config.COOKIE_NAME not in req.cookies:
-        return JSONResponse({"message": "invalid session"}, status_code=403)
-
-    session_id = req.cookies[config.COOKIE_NAME]
-    if session_id is None:
-        return JSONResponse({"message": "invalid session"}, status_code=403)
-
-    session = db_session.get_by_id(session_id)
-    if session is None or session.expires_at < datetime.datetime.now():
-        return JSONResponse({"message": "invalid session"}, status_code=403)
-
-    user = db_user.get_user_by_id(session.user_id)
-    if user is None:
-        return JSONResponse({"message": "invalid user"}, status_code=403)
-
+def me(user: Annotated[db_user.User, Depends(helpers.get_user)]):
     return {"user": user}

@@ -38,7 +38,7 @@ export default function Login() {
       <div className="grid h-screen w-screen place-items-center px-10">
         <div className="rounded-xl bg-background-alt p-10 text-center">
           {isLoginError && <ErrorDialog msg={(loginError as Error).message} />}
-          {data?.error && <ErrorDialog msg={data.message} />}
+          {data?.detail && <ErrorDialog msg={data.detail} />}
           <Image
             src="/logo-with-text.svg"
             alt="logo"
