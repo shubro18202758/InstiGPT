@@ -12,6 +12,9 @@ fastapi = {extras = ["all"], version = "*"}
 chromadb = "*"
 python-dotenv = "*"
 uvicorn = "*"
+sqlmodel = "*"
+requests = "*"
+psycopg2 = "*"
 
 [dev-packages]
 black = "*"

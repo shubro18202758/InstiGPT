@@ -1,7 +1,7 @@
 from langchain_core.embeddings import Embeddings
 from langchain.embeddings import HuggingFaceEmbeddings
 
-from . import config
+from instigpt import config
 
 
 def get_embeddings() -> Embeddings:

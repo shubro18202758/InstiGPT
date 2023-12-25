@@ -5,7 +5,7 @@ from chromadb.config import Settings
 from langchain_core.embeddings import Embeddings
 from langchain.vectorstores.chroma import Chroma
 
-from . import config
+from instigpt import config
 
 
 def get_db_client():

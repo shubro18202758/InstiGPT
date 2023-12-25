@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+
+import { ApiProvider } from "@/lib/api";
 import "./globals.css";
-import Image from "next/image";
 
 const font = Montserrat({ subsets: ["latin"] });
 
@@ -41,15 +42,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#9b6eff"></meta>
       </head>
       <body className={font.className}>
-        <nav className="p-4 bg-background-alt grid place-items-center">
-          <Image
-            src="/logo-with-text.svg"
-            alt="logo"
-            width={3.7 * 60}
-            height={60}
-          />
-        </nav>
-        {children}
+        <ApiProvider>{children}</ApiProvider>
       </body>
     </html>
   );
