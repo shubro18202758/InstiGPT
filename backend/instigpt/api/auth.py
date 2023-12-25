@@ -100,6 +100,9 @@ def logout(req: Request, res: Response):
 
 @router.get("/me")
 def me(req: Request):
+    if config.COOKIE_NAME not in req.cookies:
+        return JSONResponse({"message": "invalid session"}, status_code=403)
+
     session_id = req.cookies[config.COOKIE_NAME]
     if session_id is None:
         return JSONResponse({"message": "invalid session"}, status_code=403)
