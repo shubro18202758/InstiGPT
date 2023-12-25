@@ -15,7 +15,7 @@ chain = get_chain(llm=llm, retriever=retriever)
 async def chat(input: ChatInput):
     output = chain.stream(
         {
-            "question": input.messages[-1].content,
+            "question": input.messages[-1].content + " according to sources of IIT Bombay",
             "chat_history": "\n\n".join(map(str, input.messages[:-1] or [])) or "None",
         }
     )
