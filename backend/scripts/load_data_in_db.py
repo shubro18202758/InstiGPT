@@ -8,9 +8,11 @@ from langchain.document_loaders import PyPDFLoader
 import chromadb
 from chromadb.config import Settings
 
-EMBEDDING_MODEL = "thenlper/gte-large"
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-COLLECTION_NAME = "prototype"
+EMBEDDING_MODEL = ""
+
+COLLECTION_NAME = "prototype-gemini"
 
 #set metadata = True for ugrulebook and False for resobin_data in load_json_data
 
@@ -77,13 +79,17 @@ def load_pdf_data(embeddings: Embeddings, document_name: str, data_path: str, cl
     )
 
 if __name__ == "__main__":
-    emdbeddings = get_embeddings()
+    # emdbeddings = get_embeddings()   Using Gemini embeddings currently
+    emdbeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    
+    # Uncomment to load data in db
     # load_pdf_data(embeddings=emdbeddings, document_name="bluebook", data_path="../data/Bluebook Edition Three.pdf", client_reset=False)
     # load_pdf_data(embeddings=emdbeddings, document_name="apping", data_path="../data/Apping Guide Booklet.pdf", client_reset=False)
     # load_pdf_data(embeddings=emdbeddings, document_name="noncoreapping", data_path="../data/Non-Core Apping Guide.pdf", client_reset=False)
     # load_pdf_data(embeddings=emdbeddings, document_name="courseinfo", data_path="../data/Course Info Booklet 2020-21.pdf", client_reset=False)
-    # load_pdf_data(embeddings=emdbeddings, document_name="ugrulebook", data_path="../data/ugrulebook.pdf", client_reset=False)
-    # load_json_data(embeddings=emdbeddings, document_name="resobin", metadata=False, data_path="../data/resobin_courses.json", client_reset=False)
+    # load_json_data(embeddings=emdbeddings, document_name="ugrulebook", data_path="../data/ugrulebook.json", metadata = True, client_reset=False)
+    # load_json_data(embeddings=emdbeddings, document_name="resobin", metadata=False, data_path="../data/resobin_courses_natural_lang.json", client_reset=False)
+    
     client = get_db_client()
     coll = client.get_collection(name = COLLECTION_NAME)
     print(client.list_collections())
