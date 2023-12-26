@@ -1,8 +1,8 @@
-# Embedder
-EMBEDDING_MODEL = "thenlper/gte-large"
+# Embedder: Uncomment if google embedder not used
+# EMBEDDING_MODEL = "jinaai/jina-embeddings-v2-base-en" 
 
 # Retriever
-COLLECTION_NAME = "prototype"
+COLLECTION_NAME = "prototype-gemini"
 
 # Generator
 GENERATOR_MODEL = "gemini-pro"
