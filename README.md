@@ -4,7 +4,7 @@ The answer to all of insti's questions.
 
 ## Developing
 
-The application has 3 parts: backend, frontend and a vector database.
+The application has 4 parts: backend, frontend a vector database and a relational database.
 
 ### Backend
 
@@ -26,6 +26,11 @@ Also make sure you set the required environment variables in the `.env` file nam
 To generate embeddings, run `pipenv run python load_data_in_db.py` in scripts folder. Do the commented changes accordingly to use resobin data or ugrulebook data in `load_data_in_db.py` and `config.py`.
 
 > NOTE: You may choose to recreate all the embeddings from scratch or reuse the ones provided in this repository. The ones provided in repo are of ugrulebook. To reuse the ones provided in this repo, run `docker exec -it chromadb rm -rf /chroma/chroma; docker cp ./embeddings chromadb:/chroma/chroma`
+
+### Relational DB
+
+This app uses `postgres` as its relational database.
+To run an instance of `postgres` in docker, run: `docker run -p 5432:5432 --env POSTGRES_PASSWORD=<password> --name postgres postgres`.
 
 ## Running in Production
 
