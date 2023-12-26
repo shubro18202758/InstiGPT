@@ -9,15 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.1.1",
     "ai": "^2.2.29",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-query": "^3.39.3",
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.1.1"
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -27,6 +28,7 @@
     "postcss": "^8",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

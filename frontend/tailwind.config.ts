@@ -11,8 +11,9 @@ const config: Config = {
       colors: {
         background: "rgb(22, 25, 37)",
         "background-alt": "rgb(38, 42, 58)",
-        accent: "rgb(254, 81, 255)",
+        primary: "rgb(35, 57, 91)",
         secondary: "rgb(111, 123, 255)",
+        accent: "rgb(254, 81, 255)",
         foreground: "rgb(203, 247, 237)",
       },
       backgroundImage: {
@@ -21,6 +22,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar")({ nocompatible: true }),
+    require("@tailwindcss/typography"),
+  ],
 };
 export default config;
