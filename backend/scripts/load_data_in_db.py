@@ -4,6 +4,7 @@ import os
 from langchain_core.embeddings import Embeddings
 from langchain.vectorstores.chroma import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 import chromadb
 from chromadb.config import Settings
@@ -63,7 +64,20 @@ def load_pdf_data(embeddings: Embeddings, document_name: str, data_path: str, cl
         client.reset()  # resets the database 
         
     loader = PyPDFLoader(data_path)
-    docs = loader.load_and_split()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size = 2000,
+        chunk_overlap  = 1000,
+        length_function = len,
+        is_separator_regex = True,
+    )
+    docs = loader.load()
+    documents = []
+    for i in range(len(docs)):
+        if(i == len(docs) - 3):
+            break
+        pages = docs[i].page_content + docs[i+1].page_content + docs[i+2].page_content + docs[i+3].page_content
+        documents.append(pages)
+    docs = text_splitter.create_documents(documents)
     ids = []
     counter = 1
     for doc in docs:
@@ -87,7 +101,7 @@ if __name__ == "__main__":
     # load_pdf_data(embeddings=emdbeddings, document_name="apping", data_path="../data/Apping Guide Booklet.pdf", client_reset=False)
     # load_pdf_data(embeddings=emdbeddings, document_name="noncoreapping", data_path="../data/Non-Core Apping Guide.pdf", client_reset=False)
     # load_pdf_data(embeddings=emdbeddings, document_name="courseinfo", data_path="../data/Course Info Booklet 2020-21.pdf", client_reset=False)
-    # load_json_data(embeddings=emdbeddings, document_name="ugrulebook", data_path="../data/ugrulebook.json", metadata = True, client_reset=False)
+    # load_pdf_data(embeddings=emdbeddings, document_name="ugrulebook", data_path="../data/ugrulebook.pdf", client_reset=False)
     # load_json_data(embeddings=emdbeddings, document_name="resobin", metadata=False, data_path="../data/resobin_courses_natural_lang.json", client_reset=False)
     
     client = get_db_client()
