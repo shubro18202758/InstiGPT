@@ -433,5 +433,20 @@ Please note that the availability and course content may vary from time to time.
 ### What are some profiles offered by Adobe Inc. in placements?
  I apologize, but the context provided does not contain any information regarding the profiles offered by Adobe Inc. in placements at IIT Bombay. Therefore, I cannot answer your question.
 
+### What are some profiles offered by Amazon in placements?
+ I apologize, but I do not have any information regarding the profiles offered by Amazon in placements at IIT Bombay. My knowledge is limited to the data and context provided to me, and I do not have access to real-time information or specific company placement details.
 
+
+### What are some profiles offered by Apple in placements?
+ According to the sources of IIT Bombay, Apple offers the following profiles in placements:
+
+1. Software Development Engineer
+
+2. Data Scientist
+
+3. Sales and Trading
+
+4. IT Networks
+
+5. DevOps
 
