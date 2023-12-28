@@ -3,12 +3,19 @@ from typing import TypedDict
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough, RunnableSerializable
+from langchain_core.runnables import (
+    RunnablePassthrough,
+    RunnableSerializable,
+    RunnableConfig,
+)
 from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.vectorstores import VectorStoreRetriever
+from langchain.callbacks.tracers import ConsoleCallbackHandler
 
 from instigpt import config
+
+debug_config: RunnableConfig = {"callbacks": [ConsoleCallbackHandler()]}
 
 
 def get_generator_model():

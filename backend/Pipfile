@@ -14,7 +14,9 @@ python-dotenv = "*"
 uvicorn = "*"
 sqlmodel = "*"
 requests = "*"
-psycopg2 = "*"
+psycopg2-binary = "*"
+pypdf = "*"
+rich = "*"
 
 [dev-packages]
 black = "*"

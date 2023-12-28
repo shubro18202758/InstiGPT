@@ -1,5 +1,6 @@
-# Embedder: Uncomment if google embedder not used
-# EMBEDDING_MODEL = "jinaai/jina-embeddings-v2-base-en" 
+# Embedder
+# EMBEDDING_MODEL = "jinaai/jina-embeddings-v2-base-en"
+EMBEDDING_MODEL = "models/embedding-001"
 
 # Retriever
 COLLECTION_NAME = "prototype-gemini"

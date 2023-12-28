@@ -2,13 +2,14 @@ import os
 
 import chromadb
 from chromadb.config import Settings
+from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
 from langchain.vectorstores.chroma import Chroma
 
 from instigpt import config
 
 
-def get_db_client():
+def get_db_client() -> ClientAPI:
     return chromadb.HttpClient(
         host=os.environ["VECTOR_DB_HOST"],
         port=os.environ["VECTOR_DB_PORT"],
