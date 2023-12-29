@@ -1,0 +1,166 @@
+Minor name,Minor description
+Aerospace,"Written by Sai Anirudh M, B.Tech 3rd year (July 2021)The Aerospace minor is rather unique and different from most of the popular, more sought after minor programmes. Since there doesnâ€™t seem to be a review of the minor in the recent yearsâ€™ Course Information Booklets, I shall take the liberty to be a bit elaborate on the programme itself. But I would like to preface this by saying that this minor is highly flexible and relatively unstructured, so it is highly unlikely that your experience with the minor will be the same as mine. Even so, I will try to cover the possible scenarios and what you should know and expect from this minor. Also part of the preface: do this minor only if you are interested in aerospace, and want to learn more about subsystems of aviation, without expecting it to â€œqualifyâ€ you for anything more than a minor degree (in my opinion, this should hold true for any minor).The first course of the minor, which is the only compulsory course and a prerequisite for all other courses, is called AE153: Introduction to Flight. Whether or not you decide to complete the minor later, I think this is a very interesting and informative course that anyone with even an inkling of curiosity or fascination for aviation, should do. You are taught the basic principles of flight, using simple equations and plenty of illustrations. There is generally plenty of audio-visual content, and lectures at times seem more like scientific documentaries. While I did this course offline, there were three course projects as well that were quite fun and hands-on (one of them involved a glider competition). However, if there is a downside to this course at all, itâ€™s the grading: probably one of the harshest I have seen, though you might like to confirm this for yourself from ASC.As for the remaining courses of the minor, there is a huge list to choose from. Here is the list from a previous year (you can expect it to be nearly the same):-Nearly every course that is offered as part of the minor runs concurrently as a core course for Aerospace UGs. However, this also means that none of them actually runs in slot 5, like most minor courses do. Very often, most of the minor courses offered in a semester clash with one of our own core courses, and you are only left with one (two if you are lucky) course to choose from. I hope you now see why I said your experience with the minor may not be similar to mine.Given the choice, there are roughly two paths one could take to complete a minor in Aerospace. The first is the â€œfull flavourâ€ path. If you havenâ€™t noticed already, there are roughly four fields under Aerospace Engineering: Aerodynamics, Structures, Propulsion and Dynamics/Control. In this path, one would take up the introductory courses to each of these fields (including 223, 225, 227, and whatever else you can get your hands on). A lot of the higher courses have these courses as prerequisites anyway. Naturally the second path would be to identify one of the fields as your interest and start doing only those courses, starting from the first prerequisite. Stating the obvious, a lot of EE students might not find â€œmeritâ€ in studying one of Aerodynamics, Structures and Propulsion, but if one of them is particularly an area of interest for you, then by all means make use of the opportunity to study it.This leaves Dynamics and Control, which is potentially the most relevant part of the minor to an EE student. These courses include Spaceflight Mechanics, Flight Mechanics, Control Theory, Modelling and Simulation, and Navigation and Guidance. The great part is that none of these courses has any hard prerequisite other than AE153 itself, so you can do them in any order you like. Let me talk about the courses I have completed myself.Flight Mechanics: This course is a continuation of AE153 and deals with a lot more equations governing flight. You will learn about stability and trim conditions, physical control of the aircraft, dynamic stability and control, manoeuvres, etc. Itâ€™s rather Physics (Classical Mechanics?) intensive, but it really drives the understanding of flight and control principles into mind.Modelling and Simulation: This course is useful in general for most branches of engineering, and teaches principles behind modelling systems (Hydraulic, Mechanical, Thermal, Electrical) and analysing them. Equations of motion and coordinate systems are also part of the curriculum, followed by an introduction to Multirotor systems. Towards the end there was also a brief introduction to AI and ML by a guest lecturer (but believe me when I say brief).Control Theory: I did not do this course from AE, but it is equivalent to EE302 (Control Systems), so thereâ€™s really no need to do AE308 separately. If it is ever enforced as a prerequisite (which I donâ€™t think it has been so far), you should be able to get around it if youâ€™ve done EE302 by then.Apart from this, I had the chance to do the course Aircraft Design, which is a topic independent of the four fields above (or rather, a combination of all of them). It is a unique course that teaches design principles and ideas, and is highly based on practical experience and history. The content is suited for the aerospace industry and can be somewhat dry to someone without context. Nonetheless, it is quite informative, refreshingly different from other engineering courses and should be interesting to an aircraft enthusiast.
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Systems and Controls,"Written by Akhilesh Hoskeri, B.Tech 3rd year (July 2021)The minor is structured as 3 compulsory courses and 2 electives. 
+ The departmentâ€™s website sc.iitb.ac.in has a list of courses they offer. 
+ Each compulsory course is mentioned as a prerequisite for the next and the three together as prerequisites 
+ for most other electives courses. While itâ€™s good to cover the prerequisites so that 
+ learning in a course does not feel too steep, in some cases the professors just expect you 
+ to know the content (possibly through a similar course in another department). The first course is completely mathematical and feels like a recap of the first year maths courses for the most part of it. 
+ The second course deals with Fourier and Laplace transforms and other ways to represent systems using diagrams or graphs. 
+ The third course delves into state space representation which is used often in modern control theory 
+ and also introduces Lyapunov, LaSalles and other theorems to describe the stability of systems. 
+ Most of the concepts in the first two courses are covered in some or the other core course in the Elec department. 
+ But the topics in the other SysCon courses arenâ€™t covered in any core course. 
+ Some of the electives in SysCon have their counterparts among the Elec department as well but 
+ SysCon has a larger variety of electives in control theory and application particularly because it doesnâ€™t 
+ have to restrict itself to electrical systems. In general systems and controls engineering has a lot of math 
+ involved which is clearly reflected in the courses as well. Systems and controls engineering is highly multi-disciplinary because its techniques can be applied in various fields 
+ and is relevant to several departments like Aerospace, Electrical, Mechanical and Chemical Engineering. 
+ It is also fundamental for robotics and autonomous vehicles and would definitely benefit anyone interested in exploring 
+ these trending technologies. SysCon has a number of courses along those lines which Elec does not.
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Computer Science Minor (Review 1),"Written by Shubham Kar, B.Tech 3rd year (July 2021)CS minor is a great minor to take alongside the EE program, especially if you are interested in 
+ learning a little bit of out-worldly knowledge of the CS program without actually foregoing your main 
+ interest in EE( which I hope is true:) ). It helps even more if you are curious about the junction at 
+ which EE and the CS disciplines interact but are more interested in the hardware aspect of the device. 
+ It even helps if you are more interested in CS than EE but canâ€™t afford a branch change. 
+ The minor helps bridge the gap in critical and analytical thinking needed for programming and understanding concepts 
+ like software stacks which many EE students find difficult to grasp. The following article helps you in choosing 
+ the appropriate path for completing your CS minor and also helps identify the synergy some of these minor courses may 
+ have with other electives offered by both the departments. Courses offered in the CS minor need to cover a vast material and therefore, 
+ most of them are introductory courses to the corresponding areas of study. 
+ They are namely Logic for CS (or Automata theory), Data Structures and Algorithms, 
+ Design and Analysis of Algorithms, Operating Systems, Computer Networks and Introduction to Machine Learning. 
+ I would suggest starting out with either Data Structures and Algorithms or Intro to Machine Learning. 
+ This is because in case you donâ€™t want to pursue the CS minor in the future and just want a taste of it, 
+ these preliminary courses can really help you get a better view of the minor in general. 
+ Also, the other courses (barring Automata theory) typically have the prerequisite of Data Structures and Algorithms. 
+ So, the sooner you complete the DSA minor course, the more freedom you get in choosing your minor courses. Next, I would suggest doing the Design and Analysis of Algorithms or the Operating Systems course. 
+ These courses are really helpful in gaining a new perspective about the working of a simple computer program 
+ which will be difficult to get in a traditional EE course. This would further improve your critical and analytical thinking skills. Lastly, you can try out the Networks or the Automata Theory course. I suggest you do these courses at the last primarily 
+ because these may not appeal to every studentâ€™s interests. However, feel free to swap these out for the previous two courses suggested. For students whose interests lie in digital electronics and the like, 
+ Operating Systems would really help in getting a more holistic view of the job a 
+ processor does on the whole and I would suggest doing that minor after doing either a microelectronics 
+ or a computer architecture elective for the gaining utmost insight. Machine learning is a lucrative course 
+ for students whose interests are more into AI and this serves as a prerequisite 
+ for other great ML courses offered by CS and EE departments alike as electives. 
+ Networks is a great course if you are interested a great deal in communication devices as it acts 
+ as a superb supplement for other communication courses offered by the EE department. 
+ The Algorithms courses are critical prerequisite courses and may also help you in increasing your analytical thinking ability. Lastly, keep in mind that all of these courses act as introductory courses of sorts and are meant 
+ to encourage learning the same on your own if interested as there is simply no substitute for self-learning. 
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Computer Science Minor (Review 2),"Written by Lalit Saini M, B.Tech 3rd year (July 2021)My decision to pursue the CSE minor was driven entirely by a strong desire to understand the core CS concepts. 
+ Since the minor courses will not affect the major CPI, it was an excellent opportunity to enjoy the content without stressing about grades. CSE department offers some good courses for the minor. The courses are not fixed, though. To complete the minor degree, 
+ one has to complete 30 credits, out of which four courses should be of M tag and the last one can of M tag or any other CS department elective. 
+ I took four minor courses and one CSE elective. In my third semester, I took CS228-Logic for CS. It is a good course. 
+ The course doesnâ€™t have any coding. The course starts with formally defining logic, 
+ talking about soundness and completeness of propositional logic. You will get to know about first-order 
+ logic for languages and monadic second-order logic. It ends with temporal logic and finite state automata theory. 
+ This course helped me in Digital System, which is a core course in elec. Both the courses share some common topics. In the fourth semester, I took CS213-Data Structures and algorithms. The course focused on complexity calculations, 
+ different algorithms, and useful data structures. The major takeaway from this course should be the complexity analysis of an algorithm. 
+ This will improve your coding style a lot. This course helps in the internship/placement process. Apart from this, I took one elective, CS663-Fundamentals of digital image processing. 
+ The course provided multiple classic image processing algorithms. Digital image processing has a wide application in the EE domain. 
+ It is nothing but an application of digital signal processing. In the fifth semester, 
+ I took CS224-Computer Networks. The course provided fundamentals of the OSI model of the internet. 
+ The course will help you understand the movement of a data packet from your pc to your favourite website server. In the sixth semester, I took CS347-Operating Systems. If you want to be a software developer, 
+ this is a must-do course, in my opinion. The course will give you insights into process virtualization, 
+ memory virtualization, concurrency, and many OS essentials. CSE minor attracts a lot of students. One can expect the cut-off to be above 9. 
+ To get top grades, one has to put in a decent amount of effort. Every semester 2-4 courses are offered. 
+ It helps to choose courses according to interest. Make sure to keep your CPI high so that 
+ you can choose courses according to interest, not by the compulsion to complete the minor. 
+ Without an inclination towards the content, a course can become fairly complex to follow. 
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Mathematics,"Reviewed By:
+ Adway GirishYouâ€™re probably going through a bunch of reviews now, trying to find something youâ€™d like to do as your minor. Having been in the same position two years and one math minor before, I will try and cover everything that helped me make my decision and that I wish someone had told me then, starting with why I did (or one might want to consider â€“ or avoid) a math minor. If youâ€™re still interested after that, you will find me covering the logistics, and looking at the courses that you will have to do and how â€œrelevantâ€ they are to electrical engineering.My main reason for choosing math was simply that I liked math and found the courses offered interesting. If you did not appreciate the rigour in your first-year math courses, particularly calculus, look away, because this minor is all about rigour. If youâ€™re looking for a minor to help you with job placements, this is not it. If youâ€™re looking for relaxed courses with minimum effort, this is definitely not it. But donâ€™t be put off just yet â€“ there are benefits to doing a math minor that I have come to appreciate. The lectures happen in the math department (in an offline sem anyway) in well-ventilated rooms with loads of fresh air. There are usually no more than 15 students in any given lecture, a refreshing contrast to most other courses. Alright enough with the romanticism, there are also concrete advantages to a math minor. Since each course is of 8 credits, you only need 4 courses to complete the minor (almost all other minors require 5, each of 6 credits), which means that you will be done with your minor before your final year(s), leaving you free to pick other courses that you want. The biggest edge doing a math minor will give you is familiarity with rigour and structured, logical thinking. This will come in handy particularly if you find yourself doing theory-heavy research work, especially as you start reading literature and come across all kinds of technical terms.Every week, you will have 2 lectures of 1.5 hours each (usually slot 5, which is the standard minor slot, so you should not have any clashes) and a tutorial of another 1.5 hours (usually in slot XD â€“ Wednesday 7 PM; accounting for the additional 2 credits). You will also have to put in considerable effort each week to keep up â€“ since everything is cumulative and builds on the past weekâ€™s content, you cannot afford to fall behind. Paying attention in lectures is usually enough to understand whatâ€™s what; you will also have to spend some time on your own to make sure you know how to use it. Some revision over the weekend or so wonâ€™t hurt. Evaluation is straightforward â€“ two quizzes, midsem, endsem â€“ almost always with open notes. But you do have to be fully comfortable with the theorems and concepts involved; this is where the weekly effort comes in â€“ with the added benefit that you wonâ€™t have to do too much work right before the exam.The math website (as of July 2021) lists 5 courses of 8 credits each, of which you must do 4. Itâ€™s slightly more complicated than that. Real Analysis (MA 403, RA henceforth) and Basic Algebra (MA 419, BA) only run in autumn (odd) semesters (both every year), while Complex Analysis (MA 412, CA) and General Topology (MA 406, GT) only run in spring semesters, that too in alternate years. The other listed course is Fourier Analysis and Applications (MA 522), but MA 522 has not run since 2014; Introduction to Fourier Analysis (MA 5106, FA) is what I did â€“ it had never run as a minor course before 2021, so I do not know if this will repeat â€“ you might not have this option at all. The only prerequisite for any of the courses in the minor is RA, so as long as you start with that, you will be covered. Missing one of CA or GT (or FA) could make it difficult to complete the minor. I will now describe each course, but remember that how enjoyable you find the course is very dependent on the instructor â€“ you could find yourself lost in a stream of theorems and proofs that you couldnâ€™t care less about if you arenâ€™t given the right build-up (most instructors are good at doing what they do so this will be rare).You should start with RA â€“ mainly because it is a prerequisite for CA, GT and FA (possibly not strictly, but this will help you appreciate the latter courses better), but also because this has considerable overlap with and builds up from the first-year calculus course, which makes this the easiest course that you will do in your minor. This is also the most â€œusefulâ€ of the 5 courses from an engineering perspective, so if you wish to discontinue the math minor after this, RA is still a valuable asset to have.CA is an interesting course that will throw all kinds of surprising results at you, most of which you will (or will have) seen in MA 205 â€“ things that are brushed under the carpet there will make an appearance in CA. This course is still fairly â€œrelevantâ€ from a general engineering perspective (but everything that you will realistically need will be covered in MA 205) at least compared to what comes next.BA â€“ extremely abstract, confusing, almost impossible to keep up with â€“ this is the course I struggled with the most (online sem probably played some part). When things do make sense (they eventually do), it is beautiful â€“ getting there is a real challenge. There are areas in electrical engineering where this course will be directly useful (particularly where it merges with physics, looking at electrons up close or something â€“ clearly not the best person to be talking about this; and in control systems) but group theory is such a foundational mathematical concept (like calculus) that it could show up anywhere; this course will make sure you can follow whatâ€™s going on.GT is another abstract course, that I am in many ways thankful to have not had to do (this is not to say I would not have enjoyed it, FA simply proved to be a more appreciable alternative for me). You could find this course useful in some specializations (again mostly with physics involved).FA was the most satisfying of my minor courses. It deals with all of the nitty-gritty associated with the Fourier transform that is conveniently ignored in engineering. Doing this wonâ€™t really help you get better at applying the Fourier transform â€“ which you will learn enough of in core EE courses â€“ but it will let you justify making whatever assumptions you have to in said applications and give you insights that simply knowing formulae wonâ€™t. FA is more advanced than the other courses â€“ it extensively makes use of concepts from measure theory and functional analysis, but the instructor will cover everything that is necessary; you will be able to follow even if you have not done courses in those topics (I had not). This course is only of 6 credits, but 8+8+8+6 = 30 (who said a math minor isnâ€™t useful?), so you will still be able to complete your minor with this (if offered as a minor).All the â€œusesâ€ above are from my limited knowledge only â€“ I have, in my own experience, seen many things turn out to be useful in ways I had never imagined. If you really want to do a math minor, donâ€™t let the perceived lack of relevance to electrical engineering stop you, particularly if you are interested in theoretical research. Math is the language of science â€“ pure and applied â€“ so being familiar with different aspects of it will always come in handy. Having a different perspective (as opposed to everyone doing a CS minor, say) also helps. Feel free to contact me if you have any questions and Iâ€™ll be glad to help.
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Management,"Review byKrishna Soni (190070032)IntroductionNote: I have taken all the courses in an online mode but I wish I could take them offline
+ because MG lectures are quite interactive compared to others and offer a lot of hands on.Management comprises of diverse set of fields where every field aims to take a step in the
+ direction such that it will help the individual in controlling business organisations so that
+ they can perform at their efficient levels and constantly develop in their field.The Management minor plays a very important role for a person who aims at a career in
+ general management industry or government. It gives a basic taste of management to a
+ person who wants to opt for an MBA & is an excellent place to get an introductory flavour
+ of how businesses function (not just non-core companies but all). It builds a strong
+ foundation of crucial management subjects like Operations, Finance, Marketing, HR, Project
+ MG, Strategy MG, etc & helps in comprehending management milieu and practices in the
+ industry and the growing importance of management education in some form for all
+ professionals, especially engineers like us canâ€™t be ignored.Students who are very interested can explore further by taking up case studies, research
+ projects under SOM profs, and appropriate internships.MotivationPersonally, I have been very intrigued about how people manage the complexities of running
+ a huge company. Also, I knew I wanted to develop a holistic idea of things both at the business
+ and technical side. And SJMSOM was a great place to start this journey as it is one of the top
+ 10 management schools of the country. So, I started off with the management minor with an
+ exploratory attitude to gain some non-technical perspective and add a different dimension to
+ my academic profile. These courses also gave a breath of fresh air amidst all the tech courses
+ and really helped me survive through the 2 years of the boring online mode.Also, this minor is a great choice for most of the people who are not very sure about their
+ future plans and canâ€™t decide on a minor. Even if you donâ€™t end up continuing this minor, you
+ will surely gain some great and essential non-technical insights from MG403, MG401. And for
+ people who are sure about going for a non-core jobs, this is a great opportunity about getting
+ to learn some nuances of management while you pursue your engineering degree. Also this
+ might help you decide if you wish to pursue an MBA later.CoursesThere are a total of 6 available courses out of which we need to complete 5. (Although
+ MG407 has not been running for the last 2 years-2020, 2021. So that leaves us with 5
+ courses). All of them run in the Wednesday-Friday 9:30 am slot (Slot 5). The courses MG401,
+ 403, 407 run in the odd sem. And MG402, 405, 406 run in odd sem. So, you can do only one
+ minor course per sem (no workaround) and so better start early as flexibility is poor of what
+ courses you can choose.Professors and Class AtmosphereOne common thing is Most of the professors are really enthusiastic about their courses.
+ Hence the courses are well planned and sometimes, even the entire course plan is handed
+ during the first lecture. Another feature of this minor is its quite interactive in nature and so
+ you wonâ€™t get bored unlike most other courses as the communication is 2-way. Also, an
+ interesting component of courses is real life case studiesâ€™ discussions so you can actually see
+ what are the applications of what you are learning.The other side of this is a considerable proportion of the evaluation is based on class
+ participation in form of surprise quizzes, attendance, case study discussions, and so if you
+ wanna score a high grade (9+), you need to be both mentally and physically attentive.PrerequisitesThe unique thing about this minor is its equally suitable for all branches. There are no
+ prerequisites except for MG 407 (Strategic MG) which requires the completion of at least
+ one of MG 401 or MG 403. Rest you can do the courses in any order. All the courses start
+ from basics, all you need is enthu!CPI Cutoffs and TaggingThe registration limit for the courses is 40 so the CPI cutoffs are bit a high compared to
+ other minors. MG401, 403 usually have 8.5+ and other courses have 8+.A drawback of this minor is the courses canâ€™t be later re-tagged as a department or an
+ institute elective. In case, somebody is unable to finish the minor, he/she might not be able
+ to capitalize upon any good grades achieved in any of the courses.
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"
+Physics,"Written by Siddhant Tripathy, B.Tech 3rd year (July 2021)I am personally interested in pursuing research in physics as a career, 
+ and being in Electrical Engineering I have had to find other avenues of attaining prerequisites 
+ that I would require to apply for PhD programs and so on. While the best way to do this is 
+ through projects and taking electives in the physics department, a minor definitely complements oneâ€™s resume. 
+ The Physics minor is rather easy to complete as the Physics department offers several basic courses one can choose from. 
+ One thing to note is that the EE core courses often clash with crucial physics elective slots, 
+ hence an EE student interested in physics as a career will have to do a lot of self study anyway. I personally have taken up Celestial Mechanics, Introduction to QM, and Thermal and Statistical Physics 
+ as part of my minor so far. All three are not very advanced, but Celestial Mechanics is perhaps the most 
+ important basic course, and must be taken by everyone interested in physics, irrespective of any particular field. 
+ The other two were very basic and did not add much value to my knowledge, but they definitely 
+ help in attaining a good minor CPI. In addition I have taken up Nonlinear dynamics, Quantum Information and Computing, 
+ and General Relativity as electives. NLD provides good mathematical tools that are useful in most dynamical systems 
+ (you may also find some applications in core EE control system courses). 
+ QIC will not complement your EE stream but provides a good bridge between theoretical 
+ quantum mechanics and computing. GR on the other hand is more advanced, and requires more time commitment. 
+ It is extremely mathematical and the tensor algebra introduced is again applicable in most areas of physics. In summary, if you are looking for an easy minor to complete, physics is a good choice. 
+ If you are looking to do this minor to assist career ambitions in physics, while the minor degree and 
+ associated courses may not seem very helpful, it does look good on the resume, and since you will be taking up 
+ multiple physics electives anyway, might as well tag a few (five) of them as minors. 
+  
+  EE DAMP
+  Â â€¢Â 
+  
+  2023"

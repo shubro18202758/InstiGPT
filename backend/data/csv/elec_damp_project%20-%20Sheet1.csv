@@ -1,0 +1,138 @@
+Basic information,Abstract,Any courses you completed relevant to the project,Describe your experience on the project,Describe your experience with the guide,Any advice for anyone considering a project under the same guide? Any other professors working in similar fields?
+"Project Title: Generalizable Data Subset Selection
+ Name: Tushar Nandy
+ Project: BTP
+ Semester(s): 7, 8
+ Guide: Prof. Abir De","Existing subset selection methods for efficient learning predominantly employ discrete combinatorial and model-specific approaches, which lack generalizabilityâ€” for each new model, the algorithm has to be executed from the beginning. Therefore, for an unseen architecture, one cannot use the subset chosen for a different model. In this work, we propose SubSelNet, a non-adaptive subset selection framework, which tackles these problems. Here, we first introduce an attention-based neural gadget that leverages the graph structure of architectures and acts as a surrogate to trained deep neural networks for quick model prediction. Then, we use these predictions to build subset samplers. This naturally provides us two variants of SubSelNet. The first variant is transductive (called Transductive-SubSelNet), which computes the subset separately for each model by solving a small optimization problem. Such an optimization is still super fast, thanks to the replacement of explicit model training by the model approximator. The second variant is inductive (called Inductive-SubSelNet), which computes the subset using a trained subset selector, without any optimization. Our experiments show that our model outperforms several methods across several real datasets.",None,"Motivation: 
+ I initially took a different project under Prof. Abir De, to begin with, but then he onboarded me onto this project. The idea we were working on was quite novel and I saw myself learning a lot through the project.","Guideâ€™s Involvement:
+ 100% Ping him anytime and heâ€™ll respond at the earliest.",
+"Project Title: Logarithmic SAR ADC
+ Name: Suraj Sarvesha Samaga
+ Project: BTP
+ Semester(s): 7, 8
+ Guide: Prof. Rajesh Zele",Non-linear ADC Design for high dynamic-range applications. The SAR algorithm is modified for logarithmic compatibility and implemented in 65nm CMOS technology.,"EE 204, EE 618, EE 719","I wanted to further my interest in Analog Electronics through a concrete project to get some experience under my belt. Prof. Zele is one of the best professors I have learnt under, and I thought that doing a BTP with him would be a tremendous learning experience. I worked in a team of three, and the type of work ranged all the way from concept ideation to circuit implementation and testing on software. The workload was high, especially during the final stages. A Ph.D. student is taking the project forward and will look to publish it soon.","My guide was very involved and conducted regular meetings during the ideation phase. After that, the meetings were more on an as-need basis. Prof. Zele was extremely busy, but always took out time for project doubts/discussions and would always encourage open dialogue. The final output was expected to be of a certain quality. The evaluation was fair.",Effectively manage your schedule so as to allocate enough time for BTP. Try not to treat it like a course project and leave too much for the last minute.
+"Project Title: Detection of Melodic Motifs in Hindustani Vocal Alap Recordings
+ Name: Shreyas Nadkarni
+ Project: BTP
+ Semester(s): Spring 2022-23 (Sem 8 for me) (this was my BTP-II)
+ Guide: Prof. Preeti Rao","Melodic motifs form an important defining characteristic of a raga in Hindustani classical
+ music. Using computational techniques, it is possible to analyse the occurrence and
+ nature of these motifs or phrases derived from the pakads (series of catch phrases) of
+ the raga in a musical piece. In this project, the main problem is the extraction of
+ occurrences of characteristic melodic motifs including note sequences and glides from
+ alaps. 3 ragas have been chosen for the analysis with one characteristic motif in each.
+ The different techniques of encoding the melody such as the complex auto-encoder (CAE)
+ architecture and the pitch contour have been discussed. CAE-based experiments involving
+ self-similarity matrix computation for repeated pattern discovery in a song have been
+ conducted. For extraction of the occurrences of a given motif, a dynamic time warping
+ (DTW) based subsequence search has been employed. A larger goal is to observe the
+ audiovisual correspondence within musically defined units. This report aims to provide
+ details of these techniques, details of the data used as well as the insights obtained through
+ the analysis.","EE 679: Speech Processing, HS4114: Music Analysis through Computing, and other basic courses like DS 203, CS 419, EE 338","Motivation: Prof is also my DDP guide, so I would get a longer time horizon for the research. Reason for choosing this field is that I am highly interested in data science as well as in musicology, and this project is an overlap between my academic and extracurricular interests
+ Type of work: Data handling, scripting using Pandas, NumPy, Librosa, etc for audio and time series data. A LOT of Python coding was involved.
+ Workload: Heavy, we used to have weekly meetings and maâ€™am expects us to do the work that has been assigned
+ Publication: Yes, we published a paper in ISMIR 2023 (International Society for Music Information Retrieval) which combined my work with the work done by a PhD student
+ Extension work: Yes I will be working on the same project for my DDP (under CMINDS)","The Prof was highly involved and she took a lot of efforts to ensure that what we (the PhD student and I) were doing were relevant and apt.
+ We had one meeting a week during the semester (alongwith other updates on MS Teams), but towards the paper deadline this frequency gradually increased to one (or two) meetings a day. It was hectic before the paper deadline.
+ She was very approachable
+ Evaluation: report + presentation","If you work under maâ€™am, your Python skills will reach a different level. You will become an expert at handling large amounts of data, parsing files, processing, storing, etc. You will get to implement ML and DL techniques as well, but the primary effort is managing the data and making it ready for further processing (sounds easy, but with the kind of intricate tasks involved, it becomes difficult sometimes). For people wishing to go into data science industry, this can be very rewarding. On the other hand, the effort expected from you will be significant, so it will not be a chill ride. You will be expected to attend meetings and give regular updates. In short, it will be a high-effort-high-reward kind of project. You will gain a lot of skills, and some research outputs in the form of a paper if it goes well."
+"Project Title: Audio Source Separation, Melody Extraction
+ Name: Sharvaree Sinkar
+ Project: SRE
+ Semester(s): 7,8
+ Guide: Prof. Preeti Rao",Did two projects under Preeti Maâ€™am,EE679: Speech Processing,"The project included application of Signal Processing and ML/AI techniques on real life applications, which was something interesting.
+ The project work was both theory and coding heavy.
+ There was a meet scheduled once a week.","Preeti Maâ€™am gave time to time feedbacks which were thorough enough. We met once a week. Sometimes, once in two weeks. In terms of implementation, she is very particular of what code you wrote, she delves into depth and sees if we have understood the concept thoroughly.",Be alert to reply to Maâ€™amâ€™s msgs on Teams or mail. She needs time to time updates
+"Project Title: Revenue Optimization in Network-Based Auctions
+ Name: Parvik Dave
+ Project: BTP
+ Semester(s): 7,8
+ Guide: Prof. Swaprava Nath","The auction of a single indivisible object is one of the most studied problems in mechanism design. Myerson gave a fundamental result that defined incentive-compatible auctions and revenue optimality. However, when information is spread via agents in a network, the result does not hold. This is because the agents need to be incentivized to spread the information. Recently, a few mechanisms have been proposed that incentivize buyers to forward auction information in their networks. This work involves investigating the properties of a new class of mechanisms based on a Myerson-like characterization of incentive-compatible auctions on a network. In particular, a special subclass called referral auctions is considered, inspired by the multi-level marketing mechanisms, and obtain the structure of the revenue optimal referral auction for i.i.d. bidders.","CS6001, CS6002","Iâ€™d explored game theory as part of SoS during freshie year, and then didnâ€™t really do much about it. But I wanted to do something related to this, and so this came naturally when I was looking for a project for my BTP. I approached Prof. Swaprava Nath to work on something in this field. Since Iâ€™d already covered significant ground beforehand through my SoS project, we got started almost immediately as part of BTP-I. We were working on finding a characterization for all truthful auction mechanisms in the case of diffusion auctions. The work during BTP-I was mostly theoretical, except for some simulations that were performed to test out our designed mechanisms. We went on to submit a paper at a conference for this, the results of which are still awaited. As part of BTP-II, I continued the work on finding the optimal mechanism and extending our work. This involved LP to solve optimal mechanisms for smaller networks, and then building the intuition to create a rigorous proof for the structure of optimal mechanisms. On a tangent, I also started working on multi-object network based auctions, which is a direct extension of single-object network based auctions, during summers. The work was enjoyable, and didnâ€™t get too intensive, about 8-10 hours of work apart from weekly meetings.","Prof. Swaprava Nath likes to be involved in all his projects, which is why he personally worked along with me on what I was working. We divided the work and we would have weekly meetings where weâ€™d discuss my progress and for some questions that needed discussion. Sir is very approachable. He replies fairly quickly in case of any doubts, but I believe some digging by oneself is recommended. He is also very perceptive to what you have to say and will factor in your feedback/opinion on any matter. The evaluation was through the presentation at the end of the semester. I was required to prepare a detailed report summarizing my work, my findings, literature review, etc. and also prepare a presentation that explains my work to the external examiner.","One piece of advice would be to be pro-active. Push for meetings when you want to discuss something, and proactively update the prof on your work."
+"Project Title: Automatic MTO Generation from Engineering Drawings
+ Name: Nutan Choudhary
+ Project: SRE
+ Semester(s): 7
+ Guide: Prof. Siddharthdutta Gupta","This industry project involved direct collaboration with a company, where we were provided engineering drawings of instruments represented by specific symbols and their corresponding costs. Our main objective was to develop an algorithm capable of accurately detecting the components in these images, matching them with the cost database, and creating a comprehensive bill of materials. However, the task proved to be more challenging than expected due to the complexity of the images. The instrument images were quite intricate, containing numerous tiny parts combined into a single PDF image. Achieving precise component detection with high accuracy became the primary challenge. Many of the components had minute differences, making it even more demanding. To improve the accuracy, we continuously optimized the algorithm using various image processing techniques.
+ The methodology involved a multi-step process, starting with text detection and recognition using Optical Character Recognition (OCR) algorithms. Line identification was performed using the Hough Transform, and instruments and symbols were detected by tracing object edges and performing template matching. Label association was established by matching objects with templates extracted from legend sheets.","Image processing, Intro to ML","I previously worked on an OCR project in the healthcare domain, where we focused on detecting simple handwritten text from images and converting it into digital text. The handwriting belonged to doctors or medical staff. When I started this new project, which involved symbols and digital text, I initially thought it would be relatively straightforward. However, I quickly realized that it was more coding-intensive and required continuous optimization of the algorithms and trying new techniques. Unlike other projects where you can find existing code on platforms like GitHub, in this case, the symbols were delicate and unique, making it necessary to train our model from scratch. The main challenge was achieving high accuracy in symbol detection.","In this project, our team consisted of 3-4 members, including PhDs, Mtech, and Btech. We had the opportunity to work directly with the company, and while they did not insist, we decided to maintain biweekly reporting to keep them informed about our progress. I had only three meetings with my guide throughout the semester because we were directly communicating with the company. However, the professor was always available and easily accessible in his office, allowing us to meet him whenever necessary.","He is one of the very chill professors and provides students with the liberty to work at their preferred speed, without any pressure to meet specific goals or achievements."
+"Project Title: Estimation under Label Differential Privacy
+ Name: Millen Kanabar
+ Project: DDP
+ Semester(s): 9, 10
+ Guide: Nikhil Karamchandani, Bikash Kumar Dey","The aggregate and distribution estimation problems arise naturally in numerous
+ real-world scenarios. While optimal estimators under differential privacy are known for
+ distribution estimation, finding achievable schemes with matching lower bounds for
+ partially private aggregate and mean estimation remains open. In this report, we propose
+ modifications to existing schemes for group-wise aggregate estimation, providing
+ privacy and performance guarantees when parameters are fixed. We also prove a lower
+ bound and a low-privacy-optimal scheme for the more general joint distribution
+ estimation problem for bivariate data, where differential privacy is required with respect
+ to only one of the variates. We show that at under a high privacy requirement, relaxation
+ to partial privacy does not improve the expected risk, whereas only a constant factor
+ improvement can be achieved under low privacy. Finally, in the same setting, we discuss
+ necessary and sufficient privacy conditions when the input distributions are restricted to
+ sets where the two variates are sufficiently uncorrelated, describe candidate schemes for
+ such conditions and provide directions for a possible lower bound.","EE 325, 708","I wanted to work on information theory and privacy; after an SRE project that didnâ€™t go anywhere, I was suggested a paper that I found interesting. I decided to go deeper and found a few improvements and extensions of the problem; that formed the bulk of the project.","We had weekly meetings to discuss progress, the guides were very hands off otherwise. We discussed my progress and next steps in every meeting, and I followed up on email if I needed to inform them about the work before the meetings. The guides didnâ€™t delve too deep into the technical details of the work, so most doubts I had were discussed in meetings after I gave them a bunch of background.","Youâ€™ll have a great time if you are very motivated to do something theoretical. The guides will also try to motivate you to try some simulations if you want results validated. Itâ€™s probably a good idea to have company as well (I had friends at my lab that I could discuss technical stuff with, which ended up helping a lot)."
+"Project Title: SOI device optimisation and analysis for operation in Band-to-band tunneling regime
+ Name: Jay Sonawane
+ Project: SRE
+ Semester(s): 7,8 continuing as DDP
+ Guide: Prof. Udayan Ganguly","Spiking Neural Networks are 3rd generation neural networks generally used to realize hardware for neuromorphic computing. There are about 10^11 neurons in the human brain. To simulate and realize hardware that mimics such an extensive network of neurons, ultra-low power, and area solutions are necessary. LIF (leaky integrate and fire) Neuron implementation can be based on many device phenomena: impact ionization, single transistor latch phenomenon in SOI, etc. The technologies used to realize these phenomena include SB MOSFET, SOI, 2D materials (nascent), etc. Recently, Band-to-band tunneling (BTBT) based ultra-low power and area realization in the hardware of a neuron akin to biological neurons (spiking freq in kHz) was shown by Prof. Udayan Ganguly and group. The BTBT neuron is promising in terms of power (since MOSFET operates in the OFF state), area (No external capacitor required), and technology (SOI) is easy to integrate into hardware.","EE207, EE620, EE724, EE746, EE672",Motivation for project topic: I am passionate about Nanoelectronics. My interest is to design and model novel MOSFETS (or devices) in general.,"Guide Involvement: 100%. Prof. Udayan reciprocates with your enthusiasm. 
+ You work closely with your mentor, who is a group member senior to you (Ph.D. student). My mentor is Shubham Patil (Ph.D. student). He is a fantastic mentor.","Prof. Udayan Ganguly is an outstanding professor to work with. You donâ€™t work with the professor; you work with the group. All the members of the group are very responsive and helpful. 
+ The research areas in which the MeLoDe group is involved are:"
+"Project Title: Plant disease classification
+ Name: Ishan Phansalkar
+ Project: BTP
+ Semester(s): 8
+ Guide: Maryam Shojaei",Classification on plant diseases based on multimodal data (images + weather and soil parameters),-,"I chose Prof Maryam because sheâ€™s also my CMInDS IDDDP guide. Work was pretty light, mainly literature review and some implementation. I didnâ€™t think about publications because Iâ€™m not inclined towards academia but thereâ€™s a possibility since the field is still rather developing.","Once a week meeting. I recieved little guidance, it was mainly me looking at papers and providing suggestions. The prof has limited ML knowledge.",
+"Project Title: Learning to Select a Subset of Training Examples to Generalize Efficient Model Training
+ Name: Eeshaan Jain
+ Project: BTP
+ Semester(s): 8
+ Guide: Abir De","Existing subset selection methods for efficient learning predominantly employ
+ discrete combinatorial and model-specific approaches which lack generalizability.
+ For an unseen architecture, one cannot use the subset chosen for a different model.
+ To tackle this problem, we propose SUBSELNET, a trainable subset selection
+ framework, that generalizes across architectures. Here, we first introduce an
+ attention-based neural gadget that leverages the graph structure of architectures and
+ acts as a surrogate to trained deep neural networks for quick model prediction. Then,
+ we use these predictions to build subset samplers. This naturally provides us two
+ variants of SUBSELNET. The first variant is transductive (called as Transductive10 SUBSELNET) which computes the subset separately for each model by solving
+ a small optimization problem. Such an optimization is still super fast, thanks to
+ the replacement of explicit model training by the model approximator. The second
+ variant is inductive (called as Inductive-SUBSELNET) which computes the subset
+ using a trained subset selector, without any optimization. Our experiments show
+ that our model outperforms several methods across several real datasets.",Introduction to ML Course + CS769 + CS768,"What was your motivation for choosing this project and/or this guide?
+ Over the summer of my 2nd year and 5th semester, I took and read a lot of stuff on graphs, ML, and optimization - which led me to be enthusiastic about an intersection of these. Only a few professors in the institute work in these, and Prof. Abir De is one of those. The project topic came from a drawback we saw in many of the methods being published, and we worked to improve it.","How involved was the guide?
+ The guide was involved in the project and guided me through regular meetings.","Any advice for anyone considering a project under the same guide?
+ I want to point out that since the project might target a project a publication, the workload might be intense at times (such as working extremely long hours continuously for weeks) but rewarding."
+"Project Title: Modernizing land records
+ Name: E Abhishek
+ Project: BTP
+ Semester(s): 2
+ Guide: Prof Milind Sohoni,(Co-Prof Harish Pillai)","Most land records departments in India use British-era maps and ground control points(GCPs) to demarcate ownership boundaries. These paper or cloth maps lack geospatial information(latitude and longitude of each point), thus leading to conflicts among neighbours during survey processes. There are more than 1 lakh land dispute cases in Maharashtra alone!",CS213,"Solving fundamental engineering problems was Prof Sohoniâ€™s pitch during CS213 M classes. I liked the idea, so I approached him for a project. The project involved brainstorming sessions, data cleaning, extensive coding, field visits and many meetings with external players like the government, Google research and consultants. There is a possibility of publication, but that is not the primary objective; it will be a by-product. The tasks consume a lot of time, around 10-12 hrs per week. Since I liked the project, I spent 15-20 hrs per week and worked on it during summer and winter break.",He is one of the few profs who pays students for their project work.,
+"Project Title: Voice Activity Detection using LSMs
+ Name: Dev Pratap Singh
+ Project: SRE
+ Semester(s): 7
+ Guide: Udayan Ganguly","VAD has been performed using RNNs and CNNs. LSMs are power optimised and consume less resources, so had to try the implementation on them.",EE746 - Neuromorphic Engineering,The project was equally theoretical as well as coding related. Had to study research papers and build a model on MATLAB. I extended the project as an RnD project and worked on a modification of the spike generation. Workload was chill and weekly sync-ups were there.,Udayan Ganguly is very interactive and encourages you to come up with original ideas on how to tackle a problems. He gave time to every student individually and weekly meetings were conducted. He was very approachable and is open to bilateral talks with students.,
+"Project Title: 1) LLC resonant DC DC Converter design & Small signal modelling 2 ) exploring resonant topologies to be used in a integrated EV charger and its analysis
+ Name: B Madhav Rabin
+ Project: BTP
+ Semester(s): 7,8
+ Guide: PROF Sandeep Anand(Guide), Prabhakar, Dhruv Kachiya, Jitesh kumar, Nachiketa Deshmukh(co guides)",I formulated a design procedure for LLC converter based on some readings.It was a entirely hand calculated procedure.I verified design by simulation in LTSPICE . Also did small signal modeling in time domain & compared the freq to output transfer function plot with some existing small signal models & identified the best fit,EE653.EE654 Is also good.I hv thr lecture recordings .You can contact me by mail if reqd.I can also share the resources I utilized for BTPA(online & offline resources),"It was involving simulations later on, which might be bit frustrating, however the conceptual part is very involved as well as interesting",Excellent in all aspects,"He is very open & free to approach. I think Prof Vivek Agarwal, Prof Shiladri Chakraborty are also in similar fields"
+"Project Title: Rank Estimation of Low Rank Matrices using Compressive Sensing
+ Name: Adit Akarsh
+ Project: BTP
+ Semester(s): Autumn 2022-23
+ Guide: Ajit Rajwade, Nikhil Karamchandani","A large amount of real-world data is high-dimensional, for example, images and videos. However, the data in different dimensions is highly correlated, and using techniques like principal component analysis (PCA), the data can be compressed to a lower dimension without significant loss in information.
+ However, these methods require either manual tuning of hyperparameters or the rank to be known. Thus, we worked on rank estimation methods for large, low-rank matrices using compressive measurements (that reduce the size of the matrix we work with).","CS 754: Advanced Image Processing, CS 663: Digital Image Processing","I liked the contents of both the image processing courses I completed, so I wanted to work on something in this domain. The work built up almost entirely on the Compressive Sensing and Low Rank Matrices segments of CS 754, and was a mixture of theoretical and programming components for conducting experiments.","The guideâ€™s level of involvement seemed to drop about a month into the semester (when he started teaching a course). He thought about and discussed the project only during our meetings. 
+ We had meetings one 1-hour meeting every week throughout the semester.
+ The guide was approachable for questions on Teams/email but he mostly addressed them only during meetings.
+ The evaluation included a report, a presentation with him and 2 EE professors (co-guide and examiner) as the evaluators.","If working with a non-EE professor, talk to an EE guide beforehand and try to meet him occasionally in the semester. I am not aware of any other professor working on compressive sensing/image processing without ML in the institute."
+"Project Title: Review of Clock and Data Recovery circuits for PAM-4 signalling
+ Name: Aayush Shrivastava
+ Project: SRE
+ Semester(s): 2022-23/Autumn
+ Guide: Shalabh Gupta",Clock and data recovery CMOS circuits for high speed communication protocols like PAM-4 signalling. In higher speed communication it is not possible for sending clock signal along with data so the clock information is extracted from the data and then that clock is used to get the correct data.,EE800,"I chose the above guide because I wanted to do a project in analog design and zele refused to take any more projects.
+ I had to review papers for clock and data recovery architectures for PAM-4 signalling. There were 3-4 papers that I reviewed and presented them to the professor.
+ It was just a review of papers so no publication or so. Not working anymore with the professor",The work wasnâ€™t much interesting to me barely had any interaction with professor only to the PhD student few times. Sometimes the PhD student cleared doubt but wasnâ€™t very proactive so I lost the interest in the project and just completed for the grade sake. Evaluation wise professor wasnâ€™t happy with the work and presentation he gave a 8. But generally shalab sir gives 9/10 in RnD projects or seminars thatâ€™s what his mtech students told me.,"If you interested in communication side of analog Design then he is a good and only prof working on designing serdes and related circuits but in general there are better professors. Laxmeesha sommappa, Rajesh Zele are best for projects in analog design. Maryamâ€™s research is good but she can be a bad guide in terms of logistics as she expects a lot from you."

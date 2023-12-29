@@ -1,0 +1,86 @@
+Intern Type,Company Name,Basic information,Getting into the internship,During the Internship,After the Internship
+Analytics Interns,Adobe,,"I had targeted a software role for my internship and had applied for most of the software
+ roles that had come during the internship season. For the tests, I mainly practiced
+ questions from leetcode and codeforces.","My internship at Adobe is along the lines of Machine Learning, in particular generative
+ AI and LLMs (Large Language Models). It is quite an interesting project, and we were
+ given the project in a group of 3 interns, and 2 mentors were allotted to us. The aim of
+ the project is to get a patentable product or at least a paper out of it, which will be
+ helpful from a masterâ€™s point of view as well as from the point of view of the company.
+ The mentors allotted to us were quite helpful, and I enjoyed working on this project. We
+ have daily meets with our mentors where we discuss our progress.","From a technical point of view, Adobe is one of the best companies to work for if you are
+ interested in machine learning and AI. The work being done there is state of the art, and
+ there are quite a lot of awesome people with amazing knowledge in the field, and I
+ would definitely encourage people to intern here."
+Analytics Interns,World Wide Technology,,"I had a second-year internship in the field of DS & AI and thoroughly enjoyed it. Thus,
+ during the third-year internship season too, I targeted the same field. However, since
+ most of the companies didnâ€™t open for dual-degree students, I also appeared for
+ software company tests as a backup and practiced coding in CPP.","Six months later, I came to Gurgaon, and that was the beginning of an amazing two
+ months. The company culture and work are both very attractive. The office itself is very
+ beautiful and comfortable. Also, the people there were very welcoming and
+ accommodating. In addition to doing my own project, I was encouraged to talk to as
+ many employees as possible, learn about their projects, and get to know them
+ personally. Not only people from the Gurgaon office but also employees from outside of
+ India. It was really nice to see the diverse set of projects that go on in the data science
+ branch and also the enthusiasm with people talking about their projects and working on
+ them. Work never felt pressured, and we mostly had lunch together followed by several
+ matches of foosball (everyone at the company was sooo good at foosball, and as the
+ days passed, I grew to understand why they liked it so much). We also had several
+ company outings, including a company dinner, a football match, and a trip to Kashmir.
+ All of these served very well for bonding. Everyone here was always ready to help, and
+ the office was always in good spirits, reflecting the good culture.","All in all, itâ€™s been an excellent and amazing two months here at WWT, and I would
+ definitely recommend this company to anyone interested in ML/AI â€“ They have a great
+ culture, great spirit, and a great work environment. For people targeting roles in ML/AI,
+ no matter which company youâ€™re interviewing for, Iâ€™d say make sure your ML basics are
+ strong, and you are thorough with all the points on your resume. When you appear for
+ an interview, make sure you are frank and open; if thereâ€™s something you donâ€™t know,
+ tell them you donâ€™t know. Companies love to see students who show an interest in the
+ companyâ€™s work culture or the kind of work they do, so make sure you convey that in
+ your interview, and may the odds ever be in your favor (yes, a hunger game reference)."
+Core Interns,Texas Instruments,,"At the start of the internship season, I was mainly targeting ML/ Analytics roles, majorly due to the fact that I had done a 2nd-year analytics internship in Siemens, and I felt my resume was more suitable for such roles. I hadnâ€™t initially thought much about core companies because I believed that they only have roles pertaining to analog & digital domains, and I wasnâ€™t very keen on them. During my 2nd year in college, I enjoyed courses such as EE 229 & EE 325 and did well in them, so I wanted to explore the field of signal processing but didnâ€™t know much about the internship opportunities there.","Throughout my internship, I worked with a team that developed wireless transceiver chips for 5G/6G applications. While the work there didnâ€™t involve much theory from the courses except for a few basic concepts, it did require a lot of the mathematical intuition that was gained through them. I really enjoyed the work there and found it to be a great learning experience. The work environment there was pretty relaxed, with flexible timings; almost everyone there was very supportive and helped me throughout the internship.","I recommend this internship to anyone who wants to explore the field of signal processing and do it through a corporate internship. It might not be very fulfilling for someone looking for purely theoretical work, but those interested in the application side of this would enjoy this."
+Core Interns,Qualcomm,,Particularly targetted hardware/signal role for the internship.,"More of a software developer, more than a signal engineer. Had to work on development of a new modem firmware.",
+Core Interns,Bajaj Auto,,"I targeted in Core, either Analog, Digital, or Power electronics domain. The main point was that I wanted to go into core or management-marketing and hence applied for core and focused on all these three, as I wanted to try exploring in any. In non-core companies, I applied for product management and operations management roles. Power electronics was interesting to me as I was already doing a project in that domain.","My project topic is Automatic fault diagnosis and prognosis in Chetak EV. It is overall electrical, involves communication networks and Electric Vehicles.","Yes, I would tell you not to look at the stipends if you are planning to go for core, as they should not be compared with software internships ;)"
+Core Interns,Jaguar Land Rover,,"I focused mainly on the core and software profiles. Though I was open to all fields in electrical, I preferred digital or embedded domain. To prepare for the tests, I mainly relied on the course content (slides and my notes). I learnt a few additional concepts online that were frequently asked in tests and interviews, like static timing analysis.","My profile is electric powertrain and I'm working with the charging software team (this blog post is written during the fourth week of my internship). I've got the opportunity to contribute to meaningful projects and gain hands-on experience in the field. The team is knowledgeable and encouraging, and we were allowed to choose the project aligning with our interests. There is a strong culture of knowledge-sharing and mentorship, where more experienced colleagues are always willing to guide and help interns with their blockers. Everyone, from team members, mentors, managers to department heads, is very approachable and open to conversation. There is a healthy work-life balance and the perks to working for a high-end automobile manufacturer add an extra special touch too. There were arrangements for photo sessions with the JLR cars on the first day, and we were offered test drives of the cars for licensed drivers upon request.","I'd highly recommend JLR to those of you who are interested in power electronics and/or controls and who are looking to work on embedded systems in the automotive industry. Although a few core companies open for multiple domains, a profile is almost always exclusively for a single domain (like analog, digital etc). But if you're like me, interested in interdisciplinary work covering two or more domains, then JLR would be a great company for you to target."
+Core Interns,Texas Instruments,,Digital Design,Physical Design. Cannot divulge more details.,
+Core Interns,Texas Instruments,,"I primarily targeted core fields in electrical engineering in which my
+ focus was digital electronics and architectural roles.",I worked in Design verification team in texas instruments.,
+Core Interns,Google Hardware,,"I wanted to get an internship in a core profile for electrical
+ engineering, and in digital design/ computer architecture fields to be
+ more precise.","My project is mainly based on RTL design in which one has to use
+ verilog/system verilog to implement logic based off of a design one
+ ideates, as per requirements mentioned.",
+Core Interns,Texas Instruments,,"I revised the material covered in our electrical core courses for the tests and interview. Most
+ questions could be solved using the basic knowledge of MOSFETs, OPAMPs, etc. The
+ questions in the tests involved a lot of calculation of the parameters of the circuit like gain, input
+ and output resistance, etc. I would say if you are clear with these concepts, the tests shouldnâ€™t
+ be too difficult.","My internship profile is Analog Design Engineer at Texas Instruments. I am working on
+ improvements to two of the components of the IC (integrated circuit) that my team (IdealDiodes) is currently working on. The improvements should be incorporated into the next stage of
+ their design process.","I would definitely recommend interning for Analog at TI. TI is primarily a analog
+ engineering company and one of the best in the world at that (so itâ€™s definitely a good
+ resume point ;) ). This leads to you contributing to quite important products giving you
+ relevant industry experience and a whole lot of learning. The office culture is inclusive
+ and productive, the food is great (but not free), there are nice amenities like sports
+ courts, cultural clubs and a gym. The mentors are responsive and helpful. Some mightfind the stipend less appealing but the learning, flexibility, perks and fulfilling work
+ definitely makes up for it for anyone looking to work in analog."
+Core Interns,Texas Instruments - Embedded Software,,"At the beginning of the internship season, I was uncertain about the specific profile I wanted to pursue. However, based on my previous experience with Digital Design projects during my 4th semester and summer vacations, I felt inclined towards securing a Digital Design role. Additionally, I had also started practicing DSA questions, considering the possibility of applying for Software profiles.","Throughout my internship, I was part of the Applications Team, which served as a liaison between clients and developers. Our team was responsible for the recently launched Sitara series MPUs. My work primarily involved exploration and analysis. In the first half of my internship, I focused on analyzing the boot flow of a competitor's processor and creating a porting guide from the competitor's processor to the TI processor. The second half of the internship revolved around porting and packaging a Smart Camera demo application from one processor to another. Overall, I thoroughly enjoyed my work. Although I wasn't directly involved in software development, I had the opportunity to explore highly capable processors and gain insights into their applications in various scenarios. I would highly recommend this internship to individuals who, like me, are interested in exploring this profile. However, those seeking software development work might be disappointed if they are assigned to a team similar to mine, which doesn't directly participate in feature development.","Despite initially pursuing a software-oriented role during my internship at Texas Instruments, I have decided not to continue working in this domain. Instead, I plan to delve deeper into the field of Computer Architecture through my research work. Additionally, I intend to undertake a Digital Design/Hardware-oriented B.Tech. Project in the 7th semester. My internship experience was invaluable to me as it provided clarity regarding the possible next steps in my career."
+Non-PT Cell Interns,Mercedes-Benz,,"My main area of focus was software development, but for the past semester, I started targeting Machine Learning, and I got this role as a Machine Learning Researcher.","Machine Learning Research, developing and implementing ML models.","Internship is worth it, especially considering the growth level. Due to ML being a relatively new field of exploration in the
+ department I have my internship in, learning is high and fast paced, even in a corporate environment, making it a perfect place for both development and networking."
+Non-PT Cell Interns,Enphase Energy,,"I was sure from the day I started apping that I wanted an intern in
+ the core profile. I had targeted VLSI and Embedded profile primarily
+ while applying.","My profile for the internship was Embedded C. My topic for the
+ internship was - Signal processing on the Board for secondary control
+ and protection applications.",
+Software Interns,Uber,,"During my second-year summers, I was staying on Campus for an internship at an ML startup in Powai and also I was a part of a tech team. Most of the time I was either busy with the tech team or internship work or having fun with my friends. So naturally, I didnâ€™t give any thought to which company or field I should be targeting for the upcoming internship season for most of the summers.
+ Halfway through June, I started attending some info sessions, talked to some seniors, and did my own research about various companies and profiles. Iâ€™ll list down the important facts. A LOT of companies donâ€™t open their IAFs for Dual Degree students. A lot of ML/Data Science roles are baits, and a lot of interns in these companies were unsatisfied with their work. I decided that I would target good companies (read Day One companies) or do some meaningful internship
+ with an ML profile.
+ So my plan for the internship season was simple. Apply to all Day One companies that open for me. Then apply to the companies which do good work in ML. And if these two donâ€™t work, I would go for univ apping.","I am working in the platform team at Uber. My team works on maintaining one of the internal tools that Uber uses for testing. Not getting into the details, I really felt that my project was important and I was doing impactful work. This wasnâ€™t something I went in expecting from the internship.","I would definitely recommend this internship to anyone interested in software. The
+ reasons are already listed above but to summarize: great pay, great company, great
+ people."
+Software Interns,Amazon (Software),,,,
+Software Interns,Sony Japan,,"My interest is in software, specifically, operating systems, embedded systems, etc. Basically, low-level stuff. So I applied for software profiles.","My work was in Linux kernel development. Sony has a proprietary technology in the Linux kernel (the kernel itself is open source), and my job was to enhance it by integrating with an existing kernel subsystem. I did not have prior kernel development experience. So it was slightly difficult initially, but my general programming experience guided me through the project. My mentor was of immense help as well.",
+Univ Interns,University of Utah,,"I was mainly looking for research internships related to digital design and computer
+ architecture. There was also some VLSI design profiles I was looking into but my main
+ focus was on computer architecture","The internship mainly dealt with computer architecture and a little bit of cryptography.
+ The main goal of the project was to accelerate fully homomorphic encryption using a
+ near data processing hardware system (UPMEM).","I would definitely recommend this internship to anyone interested in software. The
+ reasons are already listed above but to summarize: great pay, great company, great
+ people."
