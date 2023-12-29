@@ -71,6 +71,8 @@ def load_html_from_urls_list(
             except TooManyRedirects:
                 print("Too many redirects, waiting 10 seconds")
                 time.sleep(5)
+                
+        html_parsed = [doc.page_content for doc in html_parsed]        
         ids = [f"{document_name}-{batch_num}-{i}" for i in range(len(html_parsed))]
             
         if len(ids) == 0:
