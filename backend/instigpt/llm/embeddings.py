@@ -3,7 +3,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 # from langchain.embeddings import HuggingFaceEmbeddings
 
-# from instigpt import config
+from instigpt import config
 
 
 def get_embeddings() -> Embeddings:
