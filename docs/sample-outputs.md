@@ -66,9 +66,9 @@ Even if a student has failed in a course more than once, the course will figure 
 
 The CPI will reflect the failed status in case of FR grade(s), till the course(s) is/are cleared. When the course(s) is/are cleared by obtaining a pass grade on subsequent registration(s), the CPI will only reflect the new grade and not the fail grades earned earlier.
 
-## How is CPI and SPI different?
+## What is the difference between CPI and SPI?
 
-I do not have information on CPI and SPI. Hence, I cannot answer your question.
+Cumulative Performance Index (CPI) considers all the courses registered by the student, towards the minimum requirement of the degree s/he has enrolled for, since s/he entered the Institute. On the other hand, Semester Performance Index (SPI) is the performance of a student in a semester indicated by a number called Semester Performance Index, SPI. The SPI is the weighted average of the grade points obtained in all the courses registered by the student during the semester.
 
 ## What is the difference between FR and FF grade?
 
@@ -165,7 +165,7 @@ To start apping for corporate internships, you can follow these steps:
 
 ## What is databasing?
 
-I am sorry, but I cannot answer your question as the context provided does not contain any information about databasing.
+Databasing is a method of compiling all the contacts you wish to acquire. In the corporate sector, databasing should comprise specific profiles and companies you want to gain experience from. You can look for well-established companies, start-ups, market leaders, etc., on the internet. Analyze your interests and try to conclude. You may also consider talking to various seniors who have similar interests and have done internships in the past.
 
 ## What are some departments which offer minors?
 
@@ -491,7 +491,8 @@ According to the sources of IIT Bombay, Apple offers the following profiles in p
 5. DevOps
 
 ### What are some Student Office Bearers?
- Some Student Office Bearers at IIT Bombay are:
+
+Some Student Office Bearers at IIT Bombay are:
 
 - General Secretary, Academic Affairs (PG)
 - General Secretary, Academic Affairs (UG)
@@ -500,9 +501,9 @@ According to the sources of IIT Bombay, Apple offers the following profiles in p
 - General Secretary, Sports Affairs
 - General Secretary, Technical Affairs
 
-
 ### How many posts are there in InstitutenAcademic Affairs council?
- There are a total of 32 posts in the Institute Academic Affairs Council (UG) at IIT Bombay, as per the information available. These posts include:
+
+There are a total of 32 posts in the Institute Academic Affairs Council (UG) at IIT Bombay, as per the information available. These posts include:
 
 - General Secretary, Academic Affairs (UG) - 1 post
 - Institute Secretary, Academic Affairs (ISAA) - 3 posts
@@ -515,91 +516,106 @@ According to the sources of IIT Bombay, Apple offers the following profiles in p
 
 Please note that the number of posts for Department Research Coordinators will vary depending on the number of departments in IIT Bombay.
 
-
 ### What are some rules to serve as Gymkhana office bearer?
- Sure, here are some rules to serve as a Gymkhana office bearer according to the sources of IIT Bombay:
 
-* A student can hold only one of the listed posts in a given year.
-* A student who has been punished for any disciplinary action may be prohibited from serving as a Gymkhana office bearer by the President Gymkhana on the recommendation of the respective committee.
-* A student who has an active backlog/dropped core course in a given year will be unable to serve as a Gymkhana office bearer in the year immediately following.
-* A student who has served as a Gymkhana office bearer for two consecutive years shall not be eligible to contest for any Gymkhana office bearer post in the subsequent year.
-* A student who has been impeached from a Gymkhana office bearer post shall not be eligible to contest for any Gymkhana office bearer post for the next two years.
-* A student who has resigned from a Gymkhana office bearer post shall not be eligible to contest for any Gymkhana office bearer post for the next one year.
+Sure, here are some rules to serve as a Gymkhana office bearer according to the sources of IIT Bombay:
+
+- A student can hold only one of the listed posts in a given year.
+- A student who has been punished for any disciplinary action may be prohibited from serving as a Gymkhana office bearer by the President Gymkhana on the recommendation of the respective committee.
+- A student who has an active backlog/dropped core course in a given year will be unable to serve as a Gymkhana office bearer in the year immediately following.
+- A student who has served as a Gymkhana office bearer for two consecutive years shall not be eligible to contest for any Gymkhana office bearer post in the subsequent year.
+- A student who has been impeached from a Gymkhana office bearer post shall not be eligible to contest for any Gymkhana office bearer post for the next two years.
+- A student who has resigned from a Gymkhana office bearer post shall not be eligible to contest for any Gymkhana office bearer post for the next one year.
 
 These are some of the rules to serve as a Gymkhana office bearer according to the sources of IIT Bombay. For more information, please refer to the IIT Bombay Students' Gymkhana Constitution.
 
-
 ### What is DGSC?
- The Department General Secretaries' Committee (DGSC) is a committee at IIT Bombay that consists of the General Secretary, Academic Affairs (UG), General Secretary, Academic Affairs (PG), Institute Secretaries, Academic Affairs, Institute Representatives Academic Affairs (IRAA), PhD and Masters, and All Department General Secretaries. The functions of the DGSC include discussion and recommendations on all matters to do with Department affairs. These include, but are not limited to the academic programme, the curriculum, the academic office and administration, internships, undergraduate research and postgraduate research.
 
+The Department General Secretaries' Committee (DGSC) is a committee at IIT Bombay that consists of the General Secretary, Academic Affairs (UG), General Secretary, Academic Affairs (PG), Institute Secretaries, Academic Affairs, Institute Representatives Academic Affairs (IRAA), PhD and Masters, and All Department General Secretaries. The functions of the DGSC include discussion and recommendations on all matters to do with Department affairs. These include, but are not limited to the academic programme, the curriculum, the academic office and administration, internships, undergraduate research and postgraduate research.
 
 ### Who is GSHA?
- The General Secretary of Hostel Affairs (GSHA) is the head of the Institute Hostel Council (IHC) at IIT Bombay. The GSHA is responsible for overseeing all hostel-related matters within the institute, including the allocation of rooms, the maintenance of hostel facilities, and the organization of hostel events. The GSHA is also a member of the Hostel Coordinating Unit (HCU) and the Students Welfare Society (SWS).
+
+The General Secretary of Hostel Affairs (GSHA) is the head of the Institute Hostel Council (IHC) at IIT Bombay. The GSHA is responsible for overseeing all hostel-related matters within the institute, including the allocation of rooms, the maintenance of hostel facilities, and the organization of hostel events. The GSHA is also a member of the Hostel Coordinating Unit (HCU) and the Students Welfare Society (SWS).
 
 ### What is the selection procedure of Hostel council?
- The selection procedure of the Hostel Council at IIT Bombay is as follows:
+
+The selection procedure of the Hostel Council at IIT Bombay is as follows:
 
 1. **General Secretary, Hostel Maintenance Councilor, Hostel Mess Councilor, Hostel Cultural Councilor, Hostel Sports Councilor, Hostel Tech Councilor, Hostel System Administrator, and Hostel Secretaries:**
+
    - These positions are elected through General Elections conducted in the hostel.
    - The electorate comprises all the hostel residents who are bona fide students of the institute.
 
 2. **Warden Nominee:**
+
    - The Warden of the hostel appoints the Warden Nominee in consultation with the new Hostel General Secretary.
 
 3. **Election Committee:**
+
    - An election committee is appointed by the Warden in consultation with the General Secretary and Warden Nominee to conduct Hostel Elections.
 
 4. **Uncontested Posts:**
+
    - In case of an uncontested post, the Warden, in consultation with the Hostel General Secretary, shall nominate a student to the post.
 
 5. **Exceptions and Disputes:**
+
    - In case of any exceptions to the above rules or disputes, the decision of the Warden will be final and binding.
 
 6. **Accountability:**
    - All members of the Hostel Council are answerable and accountable in the Hostel GBM and can be impeached as per the procedure decided by the Warden.
 
 ### Who is GSHA?
- The General Secretary of Hostel Affairs (GSHA) is the head of the Institute Hostel Council (IHC) at IIT Bombay. The GSHA is responsible for overseeing all hostel-related matters within the institute, including the allocation of rooms, the maintenance of hostel facilities, and the organization of hostel events. The GSHA is also a member of the Hostel Coordinating Unit (HCU) and the Students Welfare Society (SWS).
+
+The General Secretary of Hostel Affairs (GSHA) is the head of the Institute Hostel Council (IHC) at IIT Bombay. The GSHA is responsible for overseeing all hostel-related matters within the institute, including the allocation of rooms, the maintenance of hostel facilities, and the organization of hostel events. The GSHA is also a member of the Hostel Coordinating Unit (HCU) and the Students Welfare Society (SWS).
 
 ### What is the selection procedure of Hostel council?
- The selection procedure of the Hostel Council at IIT Bombay is as follows:
+
+The selection procedure of the Hostel Council at IIT Bombay is as follows:
 
 1. **General Secretary, Hostel Maintenance Councilor, Hostel Mess Councilor, Hostel Cultural Councilor, Hostel Sports Councilor, Hostel Tech Councilor, Hostel System Administrator, and Hostel Secretaries:**
+
    - These positions are elected through General Elections conducted in the hostel.
    - The electorate comprises all the hostel residents who are bona fide students of the institute.
 
 2. **Warden Nominee:**
+
    - The Warden of the hostel appoints the Warden Nominee in consultation with the new Hostel General Secretary.
 
 3. **Election Committee:**
+
    - An election committee is appointed by the Warden in consultation with the General Secretary and Warden Nominee to conduct Hostel Elections.
 
 4. **Uncontested Posts:**
+
    - In case of an uncontested post, the Warden, in consultation with the Hostel General Secretary, nominates a student to the post.
 
 5. **Exceptions and Disputes:**
+
    - In case of any exceptions to the above rules or disputes, the decision of the Warden is final and binding.
 
 6. **Accountability:**
    - All members of the Hostel Council are answerable and accountable in the Hostel GBM and can be impeached as per the procedure decided by the Warden.
 
 ### What is Abhyuday?
- I am sorry, but I do not have any information on Abhyuday from the context provided. Therefore, I cannot answer your question.
 
+I am sorry, but I do not have any information on Abhyuday from the context provided. Therefore, I cannot answer your question.
 
 ### What is Abhyuday, IITB's annual social festival?
- Abhyuday is IIT Bombay's annual social festival. It is conducted during the month of January. It aims at conducting various impactful events, exhibitions, lectures, workshops, and competitions to instill a sense of responsibility in the youth towards society and to create awareness about basic human rights.
 
+Abhyuday is IIT Bombay's annual social festival. It is conducted during the month of January. It aims at conducting various impactful events, exhibitions, lectures, workshops, and competitions to instill a sense of responsibility in the youth towards society and to create awareness about basic human rights.
 
 ### What is Saathi?
- I'm sorry, but I do not have any information on Saathi from the context provided. Therefore, I cannot answer your question.
+
+I'm sorry, but I do not have any information on Saathi from the context provided. Therefore, I cannot answer your question.
 
 ### Which project was offered by Prof. Abir De?
- I apologize, but the context provided does not contain any information about projects offered by Prof. Abir De. Therefore, I cannot answer your question.
 
+I apologize, but the context provided does not contain any information about projects offered by Prof. Abir De. Therefore, I cannot answer your question.
 
 ### Give me review of prpject Generalizable Data Subset Selection?
- Sure, here is a review of the project "Generalizable Data Subset Selection" based on the sources from IIT Bombay:
+
+Sure, here is a review of the project "Generalizable Data Subset Selection" based on the sources from IIT Bombay:
 
 **Project Title:** Generalizable Data Subset Selection
 
@@ -627,35 +643,38 @@ The project contributes to the field of machine learning by providing a generali
 
 **Additional Comments:**
 
-* The project was completed by Tushar Nandy as part of his BTP (Bachelor's Thesis Project) in the Department of Electrical Engineering at IIT Bombay.
-* The project was highly interdisciplinary, drawing on concepts from machine learning, optimization, and graph theory.
-* The project was well-received by the academic community and was published in a top-tier machine learning conference.
+- The project was completed by Tushar Nandy as part of his BTP (Bachelor's Thesis Project) in the Department of Electrical Engineering at IIT Bombay.
+- The project was highly interdisciplinary, drawing on concepts from machine learning, optimization, and graph theory.
+- The project was well-received by the academic community and was published in a top-tier machine learning conference.
 
 I hope this review is helpful. Please let me know if you have any other questions.
 
-
 ### Who is the guide of project Detection of Melodic Motifs in Hindustani Vocal Alap Recordings?
- The guide of the project "Detection of Melodic Motifs in Hindustani Vocal Alap Recordings" is Prof. Preeti Rao, according to the sources of IIT Bombay.
+
+The guide of the project "Detection of Melodic Motifs in Hindustani Vocal Alap Recordings" is Prof. Preeti Rao, according to the sources of IIT Bombay.
 
 ### What is the World university rank of Aerospace Engineering branch of IIT Bombay?
- According to the QS World University Rankings 2023 Engineering – Mechanical and Aerospace, IIT Bombay is ranked 68th globally and 2nd in India in the Aerospace Engineering branch.
 
+According to the QS World University Rankings 2023 Engineering – Mechanical and Aerospace, IIT Bombay is ranked 68th globally and 2nd in India in the Aerospace Engineering branch.
 
 ### What is the research area of Prof. Rajkumar S. Pant?
- Prof. Rajkumar S. Pant's research areas include Lighter-than-Air (LTA) Systems, Aircraft Design, Optimization, and Air Transportation.
+
+Prof. Rajkumar S. Pant's research areas include Lighter-than-Air (LTA) Systems, Aircraft Design, Optimization, and Air Transportation.
 
 ### What are some professors having research area in fields related to Aircraft designs?
- Sure, here are some professors at IIT Bombay who have research areas related to Aircraft designs:
 
-* **Prof. Rajkumar S. Pant:**
-    * Research areas: Lighter-than-Air (LTA) Systems, Aircraft Design, Optimization, Air Transportation
-    * Specific domain of work (current hiring): Optimum Design of Cargo Airships, Hybrid Unmanned Aerial Systems, LTA Systems for planetary exploration
-    * Nature of work: Design and Analysis, Computational studies using open-source codes
-    * URL: https://www.aero.iitb.ac.in/~rkpant/
+Sure, here are some professors at IIT Bombay who have research areas related to Aircraft designs:
 
-* **Prof. T. Chandra Sekar:**
-    * Research areas: Flutter prediction and Active Flutter Suppression in isolated wing and Turbomachines, Configuration design and performance prediction of next-generation propulsion systems
-    * Primary nature of work: Experimental and Analytical
-    * URL: https://www.aero.iitb.ac.in/home/people/faculty/tchandra
+- **Prof. Rajkumar S. Pant:**
+
+  - Research areas: Lighter-than-Air (LTA) Systems, Aircraft Design, Optimization, Air Transportation
+  - Specific domain of work (current hiring): Optimum Design of Cargo Airships, Hybrid Unmanned Aerial Systems, LTA Systems for planetary exploration
+  - Nature of work: Design and Analysis, Computational studies using open-source codes
+  - URL: https://www.aero.iitb.ac.in/~rkpant/
+
+- **Prof. T. Chandra Sekar:**
+  - Research areas: Flutter prediction and Active Flutter Suppression in isolated wing and Turbomachines, Configuration design and performance prediction of next-generation propulsion systems
+  - Primary nature of work: Experimental and Analytical
+  - URL: https://www.aero.iitb.ac.in/home/people/faculty/tchandra
 
 These professors are actively involved in research related to aircraft design and have a strong track record of publications and collaborations with industry partners. If you are interested in pursuing research in this area, I encourage you to reach out to them directly to learn more about their specific research projects and opportunities for collaboration.
