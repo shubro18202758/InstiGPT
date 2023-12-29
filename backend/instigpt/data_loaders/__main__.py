@@ -28,7 +28,6 @@ file_path = Prompt.ask(
 )
 document_name = Prompt.ask(
     "Enter the name of the document", default=file_path.split("/")[-1].split(".")[0]
-    #Enter extension as .csvWLD to use CSV with urls instead of .csv
 )
 
 with Progress(
@@ -49,6 +48,13 @@ with Progress(
             document_name=document_name,
             data_path=file_path,
         )
+    elif file_path.endswith("WEBLOADER.csv"):
+        num_docs_added = data_loaders.load_web_urls_in_csv_data(
+            client=client,
+            embeddings=emdbeddings,
+            document_name=document_name,
+            data_path=file_path,
+        )
     elif file_path.endswith(".csv"):
         num_docs_added = data_loaders.load_csv_data(
             client=client,
@@ -56,18 +62,10 @@ with Progress(
             document_name=document_name,
             data_path=file_path,
         )
-    elif file_path.endswith(".csvWLD"):
-        root = file_path.split("/")[-1].split(".")[0]
-        file_path = root + ".csv"
-        num_docs_added = data_loaders.load_web_urls_in_csv_data(
-            client=client,
-            embeddings=emdbeddings,
-            document_name=document_name,
-            data_path=file_path,
-        )
+
     else:
         print(":x: [bold red]Invalid file format![/bold red]")
-        print("[red]Only [bold].pdf, .json[/bold], .csv[/bold] and .csvWLD[/bold] files are supported![/red]")
+        print("[red]Only [bold].pdf, .json[/bold] and .csv[/bold] files are supported![/red]")
         exit(1)
 
 print(
