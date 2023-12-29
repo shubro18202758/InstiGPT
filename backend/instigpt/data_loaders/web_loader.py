@@ -9,6 +9,8 @@ import PyPDF2
 import shutil
 import os
 import time
+from google.api_core.exceptions import DeadlineExceeded
+from langchain_google_genai._common import GoogleGenerativeAIError
 
 from instigpt import config
 from . import pdf
@@ -81,9 +83,25 @@ def load_html_from_urls_list(
         metadatas = [{"source": document_name} for _ in range(len(html_parsed))]
         coll = client.get_or_create_collection(config.COLLECTION_NAME)
         # NOTE: The embeddings are automatically computed using the emdbedding function passed to the collection
+        embeds = []
+        for doc in html_parsed:
+            try:
+                embed = embeddings.embed_documents([doc])
+                embeds += embed
+            except DeadlineExceeded:
+                print("embedder deadline exceeded")
+                doc = " "
+                embed = embeddings.embed_documents([doc])
+                embeds += embed
+            except GoogleGenerativeAIError:
+                print("google gen ai error")
+                doc = " "
+                embed = embeddings.embed_documents([doc])
+                embeds += embed       
+            
         coll.add(
             documents=html_parsed,
-            embeddings=embeddings.embed_documents(html_parsed),  # type: ignore
+            embeddings=embeds,  # type: ignore
             metadatas=list(metadatas),
             ids=ids,
         )
