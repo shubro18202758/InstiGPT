@@ -72,6 +72,10 @@ def load_html_from_urls_list(
                 print("Too many redirects, waiting 10 seconds")
                 time.sleep(5)
         ids = [f"{document_name}-{batch_num}-{i}" for i in range(len(html_parsed))]
+            
+        if len(ids) == 0:
+            return 0
+            
         metadatas = [{"source": document_name} for _ in range(len(html_parsed))]
         coll = client.get_or_create_collection(config.COLLECTION_NAME)
         # NOTE: The embeddings are automatically computed using the emdbedding function passed to the collection

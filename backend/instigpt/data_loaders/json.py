@@ -24,6 +24,10 @@ def load_json_data(
     metadata_in_document = "metadata" in docs[0]
 
     ids = [f"{document_name}-{i}" for i in range(len(docs))]
+    
+    if len(ids) == 0:
+        return 0
+    
     if metadata_in_document:
         metadatas = []
         for doc in docs:

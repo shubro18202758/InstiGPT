@@ -33,6 +33,10 @@ def load_pdf_data(
     docs = [doc.page_content for doc in docs]
 
     ids = [f"{document_name}-{i}" for i in range(len(docs))]
+    
+    if len(ids) == 0:
+        return 0
+    
     metadatas = [{"source": document_name} for _ in range(len(docs))]
 
     coll = client.get_or_create_collection(config.COLLECTION_NAME)
