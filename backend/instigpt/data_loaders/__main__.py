@@ -57,6 +57,8 @@ with Progress(
             data_path=file_path,
         )
     elif file_path.endswith(".csvWLD"):
+        root = file_path.split("/")[-1].split(".")[0]
+        file_path = root + ".csv"
         num_docs_added = data_loaders.load_web_urls_in_csv_data(
             client=client,
             embeddings=emdbeddings,
