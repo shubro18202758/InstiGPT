@@ -1,6 +1,6 @@
 from typing import Optional
 
-from sqlmodel import SQLModel, Field, Session, select, insert
+from sqlmodel import SQLModel, Field, Session, select
 
 from . import get_engine
 
