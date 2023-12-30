@@ -7,7 +7,3 @@ To load data into the vector database, go through the following steps:
 
 > [!TIP]
 > Some sample data is present in `backend/data` directory.
-
-## TODO
-
-1. Add a website data loader
