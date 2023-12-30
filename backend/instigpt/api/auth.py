@@ -6,7 +6,11 @@ import requests
 from fastapi import APIRouter, Request, HTTPException, Depends
 from fastapi.responses import JSONResponse, Response
 
-from instigpt import config, db
+from instigpt import config
+from instigpt.db import (
+    session as db_session,
+    user as db_user,
+)
 from . import helpers
 
 router = APIRouter()
@@ -61,22 +65,22 @@ def login(code: str, response: Response):
         response.status_code = 400
         return {"error": "all field were not present in the response"}
 
-    user = db.user.get_user_by_id(profile_res["id"])
+    user = db_user.get_user_by_id(profile_res["id"])
     if user is None:
-        user = db.user.User(
+        user = db_user.User(
             id=profile_res["id"],
             username=profile_res["username"],
             name=profile_res["first_name"] + " " + profile_res["last_name"],
             email=profile_res["email"],
             roll_number=profile_res["roll_number"],
         )
-        db.user.create_user(user)
+        db_user.create_user(user)
 
-    session = db.session.Session(
+    session = db_session.Session(
         user_id=user.id,
         expires_at=datetime.datetime.now() + datetime.timedelta(days=7),
     )
-    db.session.create(session)
+    db_session.create(session)
 
     response.set_cookie(
         config.COOKIE_NAME,
@@ -93,11 +97,11 @@ def logout(req: Request, res: Response):
     if session_id is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-    db.session.delete(session_id)
+    db_session.delete(session_id)
     res.delete_cookie(config.COOKIE_NAME)
     return {"message": "logged out"}
 
 
 @router.get("/me")
-def me(user: Annotated[db.user.User, Depends(helpers.get_user)]):
+def me(user: Annotated[db_user.User, Depends(helpers.get_user)]):
     return {"user": user}

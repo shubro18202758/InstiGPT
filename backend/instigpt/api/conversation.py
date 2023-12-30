@@ -4,7 +4,11 @@ import uuid
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 
-from instigpt import llm, db
+from instigpt import llm
+from instigpt.db import (
+    conversation as db_conversation,
+    user as db_user,
+)
 
 from . import helpers
 from .input_models import ChatInput, CreateConversationInput
@@ -18,47 +22,47 @@ chain = llm.get_chain(llm=model, retriever=retriever)
 
 
 @router.get("/conversation")
-async def get_conversations(user: Annotated[db.user.User, Depends(helpers.get_user)]):
-    return db.conversation.get_conversations_of_user(user.id)
+async def get_conversations(user: Annotated[db_user.User, Depends(helpers.get_user)]):
+    return db_conversation.get_conversations_of_user(user.id)
 
 
 @router.post("/conversation")
 async def create_conversation(
     input: CreateConversationInput,
-    user: Annotated[db.user.User, Depends(helpers.get_user)],
+    user: Annotated[db_user.User, Depends(helpers.get_user)],
 ):
-    conversation = db.conversation.Conversation(
+    conversation = db_conversation.Conversation(
         title=input.title,
         owner_id=user.id,
     )
-    db.conversation.create_conversation(conversation)
+    db_conversation.create_conversation(conversation)
     return conversation
 
 
 @router.delete("/conversation/{conversation_id}")
 async def delete_conversation(
     conversation_id: str,
-    _user: Annotated[db.user.User, Depends(helpers.get_user)],
+    _user: Annotated[db_user.User, Depends(helpers.get_user)],
 ):
-    db.conversation.delete_conversation(uuid.UUID(conversation_id))
+    db_conversation.delete_conversation(uuid.UUID(conversation_id))
     return {"success": True}
 
 
 @router.get("/conversation/{conversation_id}")
 async def get_messages(
     conversation_id: str,
-    _user: Annotated[db.user.User, Depends(helpers.get_user)],
+    _user: Annotated[db_user.User, Depends(helpers.get_user)],
 ):
-    return db.conversation.get_messages_of_conversation(uuid.UUID(conversation_id))
+    return db_conversation.get_messages_of_conversation(uuid.UUID(conversation_id))
 
 
 @router.post("/conversation/{conversation_id}/chat")
 async def chat_in_conversation(
     conversation_id: str,
     input: ChatInput,
-    _user: Annotated[db.user.User, Depends(helpers.get_user)],
+    _user: Annotated[db_user.User, Depends(helpers.get_user)],
 ):
-    old_messages = db.conversation.get_messages_of_conversation(
+    old_messages = db_conversation.get_messages_of_conversation(
         uuid.UUID(conversation_id)
     )
     # TODO: Save the new question and its answer to the database

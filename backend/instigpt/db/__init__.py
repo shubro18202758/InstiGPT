@@ -4,8 +4,6 @@ import os
 from sqlmodel import create_engine, SQLModel
 from sqlalchemy import Engine
 
-from . import conversation, session, user
-
 _engine: Optional[Engine] = None
 
 
