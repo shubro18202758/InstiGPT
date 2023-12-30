@@ -1,5 +1,6 @@
 from operator import itemgetter
-from typing import TypedDict
+from typing import TypedDict, Optional
+import uuid
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
@@ -14,8 +15,18 @@ from langchain_core.vectorstores import VectorStoreRetriever
 from langchain.callbacks.tracers import ConsoleCallbackHandler
 
 from instigpt import config
+from .handlers import SaveResponseToDBCallback
 
-debug_config: RunnableConfig = {"callbacks": [ConsoleCallbackHandler()]}
+
+def get_config(conversation_id: uuid.UUID, debug: Optional[bool] = False):
+    config: RunnableConfig = {
+        "callbacks": [SaveResponseToDBCallback(conversation_id)],
+    }
+
+    if debug:
+        config["callbacks"].append(ConsoleCallbackHandler())  # type: ignore
+
+    return config
 
 
 def get_generator_model():

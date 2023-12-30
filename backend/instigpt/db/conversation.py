@@ -51,7 +51,7 @@ class Message(SQLModel, table=True):
         default_factory=datetime.now,
     )
 
-    conversation_id: int = Field(
+    conversation_id: uuid.UUID = Field(
         description="The ID of the conversation that the message belongs to",
         foreign_key="conversation.id",
     )
