@@ -13,10 +13,11 @@ chromadb = "*"
 python-dotenv = "*"
 uvicorn = "*"
 sqlmodel = "*"
-requests = "*"
 psycopg2-binary = "*"
 pypdf = "*"
 rich = "*"
+html2text = "*"
+grequests = "*"
 
 [dev-packages]
 black = "*"

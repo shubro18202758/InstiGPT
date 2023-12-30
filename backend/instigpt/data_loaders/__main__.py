@@ -1,3 +1,4 @@
+import json
 from rich import print
 from rich.progress import Progress, TextColumn, SpinnerColumn
 from rich.prompt import Prompt, Confirm
@@ -7,8 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 print(":white_check_mark: [bold]Loaded environment variables![/bold]")
 
-from instigpt import llm
-from instigpt import data_loaders
+from instigpt import data_loaders, llm
 
 emdbeddings = llm.embeddings.get_embeddings()
 with Progress(
@@ -42,19 +42,21 @@ with Progress(
             data_path=file_path,
         )
     elif file_path.endswith(".json"):
-        num_docs_added = data_loaders.load_json_data(
-            client=client,
-            embeddings=emdbeddings,
-            document_name=document_name,
-            data_path=file_path,
-        )
-    elif file_path.endswith("WEBLOADER.csv"):
-        num_docs_added = data_loaders.load_web_urls_in_csv_data(
-            client=client,
-            embeddings=emdbeddings,
-            document_name=document_name,
-            data_path=file_path,
-        )
+        with open(file_path) as f:
+            data = json.load(f)
+        if type(data[0]) == str and data[0].startswith("http"):
+            num_docs_added = data_loaders.load_urls_data(
+                client=client,
+                embeddings=emdbeddings,
+                data_path=file_path,
+            )
+        else:
+            num_docs_added = data_loaders.load_json_data(
+                client=client,
+                embeddings=emdbeddings,
+                document_name=document_name,
+                data_path=file_path,
+            )
     elif file_path.endswith(".csv"):
         num_docs_added = data_loaders.load_csv_data(
             client=client,
@@ -65,7 +67,7 @@ with Progress(
 
     else:
         print(":x: [bold red]Invalid file format![/bold red]")
-        print("[red]Only [bold].pdf, .json[/bold] and .csv[/bold] files are supported![/red]")
+        print("[red]Only [bold].pdf, .json and .csv[/bold] files are supported![/red]")
         exit(1)
 
 print(

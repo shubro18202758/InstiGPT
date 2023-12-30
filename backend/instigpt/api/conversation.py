@@ -6,11 +6,11 @@ from instigpt import llm
 from . import helpers
 from .input_models import ChatInput
 
-router = APIRouter(
-    dependencies=[Depends(helpers.get_user)]  # ensure all routes require authentication
-)
+# router = APIRouter(
+#     dependencies=[Depends(helpers.get_user)]  # ensure all routes require authentication
+# )
 # To use this API without authentication for testing purposes, uncomment the line below
-# router = APIRouter()
+router = APIRouter()
 
 embeddings = llm.get_embeddings()
 model = llm.get_generator_model()
