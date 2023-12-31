@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
@@ -17,6 +17,8 @@ export const ChatInput: FC<ChatInputProps> = ({
   handleSubmit,
   isLoading,
 }) => {
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
+
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 mx-auto flex w-full max-w-3xl flex-col items-center justify-center px-3.5 py-4 sm:px-5 md:py-8 xl:max-w-4xl [&>*]:pointer-events-auto">
       <div className="w-full">
@@ -34,15 +36,23 @@ export const ChatInput: FC<ChatInputProps> = ({
               </pre>
               <textarea
                 placeholder="Ask anything"
+                value={input}
                 className={`scrollbar-custom absolute top-0 m-0 h-full w-full resize-none scroll-p-3 overflow-x-hidden overflow-y-scroll border-0 bg-transparent p-3 outline-none focus:ring-0 focus-visible:ring-0 ${
                   isLoading ? "text-gray-400" : ""
                 }`}
                 disabled={isLoading}
                 onChange={handleInputChange}
+                onKeyDown={(e) => {
+                  if (!e.shiftKey && e.key === "Enter") {
+                    e.preventDefault();
+                    submitBtnRef.current?.click();
+                  }
+                }}
               />
             </div>
 
             <button
+              ref={submitBtnRef}
               className={`mx-1 my-1 inline-flex h-[2.4rem] flex-shrink-0 cursor-pointer
               items-center justify-center self-end whitespace-nowrap rounded-lg bg-transparent
               p-1 px-[0.7rem] text-gray-400 outline-none transition-all focus:ring

@@ -26,6 +26,7 @@ export const LogoWithText: FC<LogoProps> = ({ size = 100 }) => {
         width={3.7 * size}
         height={size}
         className="mr-1"
+        priority
       />
     </a>
   );

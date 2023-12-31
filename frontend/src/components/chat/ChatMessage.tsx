@@ -1,14 +1,19 @@
-import { Message } from "ai";
 import { FC } from "react";
-import { LoadingIndicatorWithoutBackdrop } from "..";
-import { Logo } from "../Logo";
+
+import { UserIcon } from "@heroicons/react/24/outline";
+
+import { Message } from "@/lib/types";
+import { Logo, LoadingIndicatorWithoutBackdrop } from "..";
 
 interface ChatMessageProps {
   message: Message;
-  loading: boolean;
+  loading?: boolean;
 }
 
-export const ChatMessage: FC<ChatMessageProps> = ({ message, loading }) => {
+export const ChatMessage: FC<ChatMessageProps> = ({
+  message,
+  loading = false,
+}) => {
   return (
     <div
       className={`group relative -mb-8 flex items-start justify-start gap-4 pb-8 leading-relaxed
@@ -23,7 +28,9 @@ export const ChatMessage: FC<ChatMessageProps> = ({ message, loading }) => {
             <Logo />
           </span>
         ) : (
-          <span className="font-semibold text-foreground">AB</span>
+          <span className="text-foreground">
+            <UserIcon className="h-8 w-8" />
+          </span>
         )}
       </div>
       <div className="relative min-h-[calc(2rem+theme(spacing[3.5])*2)] min-w-[60px] break-words rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-800/40 px-5 py-3.5 text-gray-300 prose-pre:my-2">

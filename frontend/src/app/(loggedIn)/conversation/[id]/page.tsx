@@ -13,7 +13,7 @@ export default function Conversation() {
       <Head>
         <title>Conversation {conversationId} | InstiGPT</title>
       </Head>
-      <ChatWindow />
+      <ChatWindow conversationId={conversationId as string} />
     </>
   );
 }

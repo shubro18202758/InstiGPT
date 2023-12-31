@@ -8,9 +8,17 @@ import {
   useQuery,
 } from "react-query";
 
-import type { User, Conversation } from "./types";
+import type { User, Conversation, Message } from "./types";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 type ApiProviderProps = {
   children: React.ReactNode;
@@ -50,9 +58,6 @@ export const useMeQuery = (onSuccess?: (data: MeQueryResponse) => void) =>
       }).then((res) => res.json()),
     {
       onSuccess,
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
     },
   );
 
@@ -61,17 +66,10 @@ interface ConversationsQueryResponse {
   detail?: string;
 }
 export const useConversationsQuery = () =>
-  useQuery<ConversationsQueryResponse>(
-    "all-conversations",
-    () =>
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation`, {
-        credentials: "include",
-      }).then((res) => res.json()),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-    },
+  useQuery<ConversationsQueryResponse>("all-conversations", () =>
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation`, {
+      credentials: "include",
+    }).then((res) => res.json()),
   );
 
 interface NewConversationMutationResponse {
@@ -142,7 +140,7 @@ export const useEditConversationMutation = () =>
     Error,
     EditConversationVariables
   >(
-    ({ id, newTitle }: EditConversationVariables) =>
+    ({ id, newTitle }) =>
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/${id}`, {
         method: "PATCH",
         body: JSON.stringify({ title: newTitle }),
@@ -173,4 +171,42 @@ export const useEditConversationMutation = () =>
         }
       },
     },
+  );
+
+export interface ConversationMessagesQueryResponse {
+  messages?: Message[];
+  detail?: string;
+}
+export const useConversationMessagesQuery = (
+  id?: string,
+  onSuccess?: () => void,
+) =>
+  useQuery<ConversationMessagesQueryResponse, Error>(
+    ["messages", id],
+    () =>
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/${id}`, {
+        credentials: "include",
+      }).then((res) => res.json()),
+    { enabled: id !== undefined, onSuccess },
+  );
+
+interface ChatCompletionVariables {
+  id: string;
+  question: string;
+}
+interface ChatCompletionReponse {
+  new_messages?: Message[];
+  detail?: string;
+}
+export const useChatCompletionsMutation = () =>
+  useMutation<ChatCompletionReponse, Error, ChatCompletionVariables>(
+    ({ id, question }) =>
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation/${id}/chat`, {
+        method: "POST",
+        body: JSON.stringify({ question }),
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+      }).then((res) => res.json()),
   );

@@ -84,15 +84,15 @@ async def chat_in_conversation(
     old_messages = db_conversation.get_messages_of_conversation(conv_id)
 
     # Store the new question in the database
-    message = db_conversation.Message(
+    question_message = db_conversation.Message(
         role=db_conversation.MessageRole.USER,
         conversation_id=conv_id,
         content=input.question,
     )
-    db_conversation.create_message(message)
+    db_conversation.create_message(question_message)
 
     # Generate the response
-    output = chain.stream(
+    output = chain.invoke(
         {
             "question": input.question + " according to sources of IIT Bombay",
             "chat_history": "\n\n".join(
@@ -100,8 +100,15 @@ async def chat_in_conversation(
             )
             or "None",
         },
-        # NOTE: This config registers a callback handler that saves the response to the database
-        config=llm.generator.get_config(conv_id),
+        # Uncomment this to use the debug config
+        # config=llm.generator.debug_config,
     )
+    # Store the response in the database
+    response_message = db_conversation.Message(
+        role=db_conversation.MessageRole.ASSISTANT,
+        conversation_id=conv_id,
+        content=output,
+    )
+    db_conversation.create_message(response_message)
 
-    return StreamingResponse(output, media_type="text/plain")
+    return {"new_messages": [question_message, response_message]}
