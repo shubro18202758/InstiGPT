@@ -36,6 +36,9 @@ def load_html_data(
         docs = text_splitter.split_text(md_text)
         metadatas = [{"source": res.url} for _ in range(len(docs))]
         ids = [f"{res.url}-{i}" for i in range(len(docs))]
+        
+        if len(ids) == 0: 
+            return 0
 
         coll.add(
             documents=docs,
