@@ -17,7 +17,12 @@ def load_pdf_data(
 
     returns: int: number of chunks stored in the database
     """
-    loader = PyPDFLoader(data_path)
+    
+    try:
+        loader = PyPDFLoader(data_path)
+    except ValueError:
+        return 0
+    
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=2000,
         chunk_overlap=1000,
