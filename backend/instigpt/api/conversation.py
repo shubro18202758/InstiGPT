@@ -23,7 +23,7 @@ chain = llm.get_chain(llm=model, retriever=retriever)
 
 @router.get("/conversation")
 async def get_conversations(user: Annotated[db_user.User, Depends(helpers.get_user)]):
-    return db_conversation.get_conversations_of_user(user.id)
+    return {"conversations": db_conversation.get_conversations_of_user(user.id)}
 
 
 @router.post("/conversation")
@@ -36,7 +36,7 @@ async def create_conversation(
         owner_id=user.id,
     )
     db_conversation.create_conversation(conversation)
-    return conversation
+    return {"conversation": conversation}
 
 
 @router.delete("/conversation/{conversation_id}")
@@ -48,12 +48,28 @@ async def delete_conversation(
     return {"success": True}
 
 
+@router.patch("/conversation/{conversation_id}")
+async def updaet_conversation(
+    conversation_id: str,
+    input: CreateConversationInput,
+    _user: Annotated[db_user.User, Depends(helpers.get_user)],
+):
+    updated_conversation = db_conversation.update_conversation(
+        uuid.UUID(conversation_id), input.title
+    )
+    return {"conversation": updated_conversation}
+
+
 @router.get("/conversation/{conversation_id}")
 async def get_messages(
     conversation_id: str,
     _user: Annotated[db_user.User, Depends(helpers.get_user)],
 ):
-    return db_conversation.get_messages_of_conversation(uuid.UUID(conversation_id))
+    return {
+        "messages": db_conversation.get_messages_of_conversation(
+            uuid.UUID(conversation_id)
+        )
+    }
 
 
 @router.post("/conversation/{conversation_id}/chat")

@@ -84,6 +84,20 @@ def create_conversation(conversation: Conversation):
         session.commit()
 
 
+def update_conversation(conversation_id: uuid.UUID, new_title: str):
+    with Session(get_engine(), expire_on_commit=False) as session:
+        statement = select(Conversation).where(Conversation.id == conversation_id)
+        conversation = session.exec(statement).first()
+        if conversation is None:
+            return
+
+        conversation.title = new_title
+        session.add(conversation)
+        session.commit()
+
+        return conversation
+
+
 def delete_conversation(conversation_id: uuid.UUID):
     with Session(get_engine()) as session:
         statement = select(Conversation).where(Conversation.id == conversation_id)
@@ -91,10 +105,10 @@ def delete_conversation(conversation_id: uuid.UUID):
         if conversation is None:
             return
 
-        statement = select(Message).where(Message.conversaton_id == conversation_id)
+        statement = select(Message).where(Message.conversation_id == conversation_id)
         messages = session.exec(statement).all()
 
-        session.delete(messages)
+        [session.delete(message) for message in messages]
         session.delete(conversation)
         session.commit()
 
