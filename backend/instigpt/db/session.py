@@ -35,7 +35,7 @@ def create(session: Session):
         sql_session.commit()
 
 
-def delete(id: str):
+def delete(id: uuid.UUID):
     with SqlSession(get_engine()) as sql_session:
         statement = select(Session).where(Session.id == id)
         session = sql_session.exec(statement).first()

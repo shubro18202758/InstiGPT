@@ -1,9 +1,10 @@
 import os
 import datetime
 from typing import Annotated
+import uuid
 
 import requests
-from fastapi import APIRouter, Request, HTTPException, Depends
+from fastapi import APIRouter, Cookie, Request, HTTPException, Depends
 from fastapi.responses import JSONResponse, Response
 
 from instigpt import config
@@ -92,14 +93,16 @@ def login(code: str, response: Response):
 
 
 @router.get("/logout")
-def logout(req: Request, res: Response):
-    session_id = req.cookies[config.COOKIE_NAME]
+def logout(
+    res: Response,
+    session_id: Annotated[str | None, Cookie(alias=config.COOKIE_NAME)] = None,
+):
     if session_id is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-    db_session.delete(session_id)
+    db_session.delete(uuid.UUID(session_id))
     res.delete_cookie(config.COOKIE_NAME)
-    return {"message": "logged out"}
+    return {"success": True}
 
 
 @router.get("/me")

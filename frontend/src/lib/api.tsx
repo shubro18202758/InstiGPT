@@ -45,6 +45,23 @@ export const useLoginMutation = () =>
     },
   );
 
+interface LogoutMutationResponse {
+  success?: boolean;
+  detail?: string;
+}
+export const useLogoutMutation = () =>
+  useMutation<LogoutMutationResponse, Error>(
+    () =>
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
+        credentials: "include",
+      }).then((res) => res.json()),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("me");
+      },
+    },
+  );
+
 interface MeQueryResponse {
   user?: User;
   detail?: string;

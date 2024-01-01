@@ -1,6 +1,7 @@
 import { FC, useMemo } from "react";
+import { useRouter } from "next/navigation";
 
-import { useConversationsQuery, useMeQuery } from "@/lib";
+import { useConversationsQuery, useLogoutMutation, useMeQuery } from "@/lib";
 import { Conversation } from "@/lib/types";
 
 import { LogoWithText } from "../Logo";
@@ -37,9 +38,16 @@ const titles: { [key: string]: string } = {
 } as const;
 
 export const NavbarContent: FC = () => {
+  const router = useRouter();
   // NOTE: We don't need to handle the loading and error states here as they are
   // already handled by the layout
   const { data: meData } = useMeQuery();
+  const {
+    mutate: logout,
+    isLoading: logoutIsLoading,
+    isError: logoutIsError,
+    error: logoutError,
+  } = useLogoutMutation();
 
   const { data, isLoading, isError, error } = useConversationsQuery();
   const groupedConversations = useMemo(
@@ -82,7 +90,11 @@ export const NavbarContent: FC = () => {
           className="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-400 hover:bg-gray-700"
           onClick={(e) => {
             e.preventDefault();
-            // TODO: Logout here
+            logout(undefined, {
+              onSuccess: () => {
+                router.replace("/login");
+              },
+            });
           }}
         >
           Sign Out
