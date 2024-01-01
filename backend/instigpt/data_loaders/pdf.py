@@ -17,7 +17,12 @@ def load_pdf_data(
 
     returns: int: number of chunks stored in the database
     """
-    loader = PyPDFLoader(data_path)
+    
+    try:
+        loader = PyPDFLoader(data_path)
+    except ValueError:
+        return 0
+    
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=2000,
         chunk_overlap=1000,
@@ -34,6 +39,9 @@ def load_pdf_data(
 
     ids = [f"{document_name}-{i}" for i in range(len(docs))]
     metadatas = [{"source": document_name} for _ in range(len(docs))]
+
+    if len(ids) == 0: 
+        return 0
 
     coll = client.get_or_create_collection(config.COLLECTION_NAME)
     coll.add(

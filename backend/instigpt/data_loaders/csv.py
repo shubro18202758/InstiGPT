@@ -21,6 +21,9 @@ def load_csv_data(
     docs = [doc.page_content for doc in docs if doc.page_content != ""]
     metadatas = [{"source": document_name} for _ in range(len(docs))]
     ids = [f"{document_name}-{i}" for i in range(len(docs))]
+    
+    if len(ids) == 0: 
+        return 0
 
     coll = client.get_or_create_collection(config.COLLECTION_NAME)
     coll.add(

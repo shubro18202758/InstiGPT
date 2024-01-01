@@ -31,11 +31,17 @@ def load_html_data(
     for res in grequests.map(reqs, size=20):
         if res is None:
             continue
-
-        md_text = html2text(res.text)
-        docs = text_splitter.split_text(md_text)
-        metadatas = [{"source": res.url} for _ in range(len(docs))]
-        ids = [f"{res.url}-{i}" for i in range(len(docs))]
+        
+        try:
+            md_text = html2text(res.text)
+            docs = text_splitter.split_text(md_text)
+            metadatas = [{"source": res.url} for _ in range(len(docs))]
+            ids = [f"{res.url}-{i}" for i in range(len(docs))]
+        except AssertionError:
+            continue
+        
+        if len(ids) == 0: 
+            continue
 
         coll.add(
             documents=docs,
