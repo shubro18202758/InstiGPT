@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
 import {
@@ -42,7 +43,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
           editConversation.data?.detail
         }
       />
-      <a
+      <Link
         onMouseLeave={() => setConfirmDelete(false)}
         href={`/conversation/${conversation.id}`}
         className={`group flex h-10 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-300 hover:bg-gray-700 ${
@@ -119,7 +120,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
             </button>
           </>
         )}
-      </a>
+      </Link>
     </>
   );
 };
