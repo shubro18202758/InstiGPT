@@ -51,22 +51,6 @@ export const ChatMessage: FC<ChatMessageProps> = ({
         <div className="flex justify-end">
           {loading && <LoadingIndicatorWithoutBackdrop loading />}
         </div>
-
-        {message.role === "assistant" && (
-          <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm">
-            <div className="text-gray-400">Sources:</div>
-            {["source 1", "source 2"].map((source, i) => (
-              <a
-                key={i}
-                className="flex items-center gap-2 whitespace-nowrap rounded-lg border bg-white px-2 py-1.5 leading-none hover:border-gray-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
-                href="#"
-                target="_blank"
-              >
-                <div>{source}</div>
-              </a>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
