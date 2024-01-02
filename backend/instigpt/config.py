@@ -10,3 +10,5 @@ GENERATOR_MODEL = "gemini-pro"
 GENERATOR_TEMPERATURE = 0
 
 COOKIE_NAME = "session_id"
+
+FRONTEND_ORIGINS = ["http://localhost:3000", "http://localhost:8080"]
