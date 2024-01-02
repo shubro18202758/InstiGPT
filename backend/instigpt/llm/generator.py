@@ -67,6 +67,19 @@ class ChainInput(TypedDict):
     question: str
     chat_history: str
 
+###
+#editing itemgetter to retrieve documents using additional string without affecting input question
+def append_to_question(getter, additional_text):
+    # Define a new function that will concatenate additional_text to the retrieved question
+    def concatenated_getter(data):
+        question_value = getter(data)
+        return question_value + " " + additional_text  # Adjust the concatenation format as needed
+    return concatenated_getter
+
+
+get_question = itemgetter("question")
+modified_getter = append_to_question(get_question, "according to the sources of IIT Bombay.")
+###
 
 def get_chain(
     llm: BaseChatModel, retriever: VectorStoreRetriever
@@ -76,7 +89,7 @@ def get_chain(
         {
             "question": RunnablePassthrough(),
             "chat_history": RunnablePassthrough(),
-            "context": itemgetter("question") | retriever,
+            "context": modified_getter | retriever,
         }
         | PROMPT
         | llm
