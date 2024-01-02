@@ -1,7 +1,9 @@
+from operator import itemgetter
 from typing import TypedDict
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate, PromptTemplate
+from langchain.schema import format_document
 from langchain_core.runnables import (
     RunnablePassthrough,
     RunnableSerializable,
@@ -24,6 +26,8 @@ def get_generator_model():
         temperature=config.GENERATOR_TEMPERATURE,
     )  # type: ignore
 
+
+DOCUMENT_COMBINE_PROMPT = PromptTemplate.from_template(template="{page_content}")
 
 CONDENSE_QUESTION_PROMPT = PromptTemplate.from_template(
     """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
@@ -82,7 +86,12 @@ class ChainOutput(TypedDict):
     sources: list[str]
 
 
-def get_sources(docs: list[Document]) -> list[str]:
+def _combine_documents(docs: list[Document]):
+    doc_strings = [format_document(doc, DOCUMENT_COMBINE_PROMPT) for doc in docs]
+    return {"content": "\n\n".join(doc_strings), "sources": _get_sources(docs)}
+
+
+def _get_sources(docs: list[Document]) -> list[str]:
     return [doc.metadata["source"] for doc in docs if "source" in doc.metadata]
 
 
@@ -104,12 +113,21 @@ def get_chain(
 
     documents_retriever = {
         "question": RunnablePassthrough(),
-        "context": RunnablePassthrough() | retriever,
+        "context": RunnablePassthrough() | retriever | _combine_documents,
     }
 
     final_answer = {
-        "answer": ANSWER_PROMPT | llm | StrOutputParser(),
-        "sources": lambda x: get_sources(x["context"]),
+        # NOTE: We combine the documents here and not in the
+        # `documents_retriever` as we need the actual documents for the
+        # `sources` field
+        "answer": {
+            "question": itemgetter("question"),
+            "context": lambda x: x["context"]["content"],
+        }
+        | ANSWER_PROMPT
+        | llm
+        | StrOutputParser(),
+        "sources": lambda x: x["context"]["sources"],
     }
 
     chain: RunnableSerializable[ChainInput, ChainOutput] = (
