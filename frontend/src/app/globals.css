@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* Use when giving both light and dark mode options */
+/* :root {
   --foreground: 0, 0, 0;
   --background: 214, 219, 220;
 }
@@ -12,6 +13,11 @@
     --foreground: 203, 247, 237;
     --background: 22, 25, 37;
   }
+} */
+
+:root {
+  --foreground: 203, 247, 237;
+  --background: 22, 25, 37;
 }
 
 body {
@@ -21,6 +27,6 @@ body {
 
 @layer utilities {
 	.scrollbar-custom {
-		@apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-black/10 scrollbar-thumb-rounded-full scrollbar-w-1 hover:scrollbar-thumb-black/20 dark:scrollbar-thumb-white/10 dark:hover:scrollbar-thumb-white/20;
+		@apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-rounded-full scrollbar-w-1 scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20;
 	}
 }
