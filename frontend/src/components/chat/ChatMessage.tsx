@@ -40,7 +40,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           {message.role === "assistant" ? (
             <Markdown
               remarkPlugins={[remarkGfm]}
-              className="prose text-gray-400"
+              className="prose prose-invert"
             >
               {message.content.trim()}
             </Markdown>
@@ -49,7 +49,11 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           )}
         </div>
         <div className="flex justify-end">
-          {loading && <LoadingIndicatorWithoutBackdrop loading />}
+          {loading && (
+            <div className="flex items-center justify-center gap-4">
+              Generating response... <LoadingIndicatorWithoutBackdrop loading />
+            </div>
+          )}
         </div>
       </div>
     </div>
