@@ -19,19 +19,9 @@ interface ChatWindowProps {
 export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const [question, setQuestion] = useState("");
-  const {
-    data: messages,
-    isLoading: messagesIsLoading,
-    isError: messagesIsError,
-    error: messagesError,
-  } = useConversationMessagesQuery(conversationId, scrollToBottom);
-  const {
-    mutate,
-    variables,
-    isLoading: completionIsLoading,
-    isError: completionsIsError,
-    error: completionsError,
-  } = useChatCompletionsMutation();
+
+  const messages = useConversationMessagesQuery(conversationId, scrollToBottom);
+  const completion = useChatCompletionsMutation();
 
   function scrollToBottom() {
     setTimeout(() => {
@@ -46,33 +36,31 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
 
   return (
     <>
-      <LoadingIndicator loading={messagesIsLoading} />
-      {messagesIsError && (
-        <ErrorDialog msg={(messagesError as Error).message} />
-      )}
-      {completionsIsError && (
-        <ErrorDialog msg={(completionsError as Error).message} />
-      )}
-      {messages?.detail && (
-        <ErrorDialog msg={JSON.stringify(messages.detail)} />
-      )}
+      <LoadingIndicator loading={messages.isLoading} />
+      <ErrorDialog
+        msg={
+          messages.error?.message ??
+          completion.error?.message ??
+          messages.data?.detail
+        }
+      />
       <div className="relative max-h-screen">
-        {messages && messages.messages && (
+        {messages.data && messages.data.messages && (
           <div
             ref={messagesContainerRef}
             className="scrollbar-custom mr-1 h-full overflow-y-auto"
           >
             <div className="mx-auto flex h-full max-w-4xl flex-col gap-6 px-5 pt-6 sm:gap-8 xl:max-w-5xl">
-              {messages.messages.map((message) => (
+              {messages.data.messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
-              {completionIsLoading && variables && (
+              {completion.isLoading && completion.variables && (
                 <>
                   <ChatMessage
                     message={{
                       id: "None",
-                      content: variables.question,
-                      conversation_id: variables.id,
+                      content: completion.variables.question,
+                      conversation_id: completion.variables.id,
                       created_at: new Date().toISOString(),
                       role: "user",
                     }}
@@ -81,7 +69,7 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
                     message={{
                       id: "None",
                       content: "",
-                      conversation_id: variables.id,
+                      conversation_id: completion.variables.id,
                       created_at: new Date().toISOString(),
                       role: "assistant",
                     }}
@@ -100,7 +88,7 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
             e.preventDefault();
             scrollToBottom();
             const questionVal = question;
-            mutate(
+            completion.mutate(
               { id: conversationId, question: questionVal },
               {
                 onSuccess: (data) => {
@@ -126,7 +114,7 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
               },
             );
           }}
-          isLoading={completionIsLoading}
+          isLoading={completion.isLoading}
         />
       </div>
     </>

@@ -67,7 +67,7 @@ interface MeQueryResponse {
   detail?: string;
 }
 export const useMeQuery = (onSuccess?: (data: MeQueryResponse) => void) =>
-  useQuery<MeQueryResponse>(
+  useQuery<MeQueryResponse, Error>(
     "me",
     () =>
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, {
@@ -83,7 +83,7 @@ interface ConversationsQueryResponse {
   detail?: string;
 }
 export const useConversationsQuery = () =>
-  useQuery<ConversationsQueryResponse>("all-conversations", () =>
+  useQuery<ConversationsQueryResponse, Error>("all-conversations", () =>
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/conversation`, {
       credentials: "include",
     }).then((res) => res.json()),

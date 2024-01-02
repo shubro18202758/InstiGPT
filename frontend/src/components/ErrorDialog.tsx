@@ -11,6 +11,8 @@ export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
 
+  if (!title && !msg) return null;
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog

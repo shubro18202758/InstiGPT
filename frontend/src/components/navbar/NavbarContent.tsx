@@ -42,24 +42,24 @@ export const NavbarContent: FC = () => {
   // NOTE: We don't need to handle the loading and error states here as they are
   // already handled by the layout
   const { data: meData } = useMeQuery();
-  const {
-    mutate: logout,
-    isLoading: logoutIsLoading,
-    isError: logoutIsError,
-    error: logoutError,
-  } = useLogoutMutation();
+  const logout = useLogoutMutation();
 
-  const { data, isLoading, isError, error } = useConversationsQuery();
+  const conversations = useConversationsQuery();
   const groupedConversations = useMemo(
-    () => groupConversations(data?.conversations || []),
-    [data],
+    () => groupConversations(conversations.data?.conversations || []),
+    [conversations.data],
   );
 
   return (
     <>
-      <LoadingIndicator loading={isLoading} />
-      {isError && <ErrorDialog msg={(error as Error).message} />}
-      {meData?.detail && <ErrorDialog msg={JSON.stringify(meData.detail)} />}
+      <LoadingIndicator loading={conversations.isLoading || logout.isLoading} />
+      <ErrorDialog
+        msg={
+          conversations.error?.message ??
+          logout.error?.message ??
+          meData?.detail
+        }
+      />
       <div className="sticky top-0 flex flex-none items-center justify-between px-3 py-3.5 max-sm:pt-0">
         <LogoWithText size={100} />
       </div>
@@ -90,7 +90,7 @@ export const NavbarContent: FC = () => {
           className="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-400 hover:bg-gray-700"
           onClick={(e) => {
             e.preventDefault();
-            logout(undefined, {
+            logout.mutate(undefined, {
               onSuccess: () => {
                 router.replace("/login");
               },

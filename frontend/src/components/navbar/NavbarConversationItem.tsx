@@ -26,33 +26,22 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
   const [confirmDelete, setConfirmDelete] = useState(false);
   const { id: conversationId } = useParams();
 
-  const {
-    mutate: deleteMutate,
-    data: deleteData,
-    isLoading: deleteIsLoading,
-    isError: deleteIsError,
-    error: deleteError,
-  } = useDeleteConversationMutation();
-
-  const {
-    mutate: editMutate,
-    data: editData,
-    isLoading: editIsLoading,
-    isError: editIsError,
-    error: editError,
-  } = useEditConversationMutation();
+  const deleteConversation = useDeleteConversationMutation();
+  const editConversation = useEditConversationMutation();
 
   return (
     <>
-      <LoadingIndicator loading={deleteIsLoading || editIsLoading} />
-      {deleteIsError && <ErrorDialog msg={(deleteError as Error).message} />}
-      {editIsError && <ErrorDialog msg={(editError as Error).message} />}
-      {deleteData?.detail && (
-        <ErrorDialog msg={JSON.stringify(deleteData.detail)} />
-      )}
-      {editData?.detail && (
-        <ErrorDialog msg={JSON.stringify(editData.detail)} />
-      )}
+      <LoadingIndicator
+        loading={deleteConversation.isLoading || editConversation.isLoading}
+      />
+      <ErrorDialog
+        msg={
+          deleteConversation.error?.message ??
+          editConversation.error?.message ??
+          deleteConversation.data?.detail ??
+          editConversation.data?.detail
+        }
+      />
       <a
         onMouseLeave={() => setConfirmDelete(false)}
         href={`/conversation/${conversation.id}`}
@@ -73,7 +62,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
               title="Confirm delete action"
               onClick={(e) => {
                 e.preventDefault();
-                deleteMutate(conversation.id, {
+                deleteConversation.mutate(conversation.id, {
                   onSuccess: () => {
                     setConfirmDelete(false);
                     if (conversation.id === conversationId) {
@@ -111,7 +100,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                   conversation.title,
                 );
                 if (!newTitle) return;
-                editMutate({ id: conversation.id, newTitle });
+                editConversation.mutate({ id: conversation.id, newTitle });
               }}
             >
               <PencilIcon className="text-xs text-gray-400 hover:text-gray-300" />

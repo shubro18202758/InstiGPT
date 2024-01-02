@@ -29,7 +29,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           </span>
         ) : (
           <span className="text-foreground">
-            <UserIcon className="h-8 w-8" />
+            <UserIcon className="m-2 h-full w-full" />
           </span>
         )}
       </div>
