@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -16,19 +16,6 @@ export const ChatMessage: FC<ChatMessageProps> = ({
   message,
   loading = false,
 }) => {
-  const sources = useMemo(() => {
-    if (!message.sources) return [];
-
-    return message.sources.split(",").map((source) => {
-      try {
-        const url = new URL(source);
-        return { name: url.hostname, link: source };
-      } catch {
-        return { name: source, link: null };
-      }
-    });
-  }, [message.sources]);
-
   return (
     <div
       className={`group relative -mb-8 flex items-start justify-start gap-4 pb-8 leading-relaxed
@@ -53,7 +40,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           {message.role === "assistant" ? (
             <Markdown
               remarkPlugins={[remarkGfm]}
-              className="prose prose-invert"
+              className="prose text-gray-400"
             >
               {message.content.trim()}
             </Markdown>
@@ -62,24 +49,20 @@ export const ChatMessage: FC<ChatMessageProps> = ({
           )}
         </div>
         <div className="flex justify-end">
-          {loading && (
-            <div className="flex items-center justify-center gap-4">
-              Generating response... <LoadingIndicatorWithoutBackdrop loading />
-            </div>
-          )}
+          {loading && <LoadingIndicatorWithoutBackdrop loading />}
         </div>
 
-        {message.role === "assistant" && sources.length > 0 && (
+        {message.role === "assistant" && (
           <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm">
             <div className="text-gray-400">Sources:</div>
-            {sources.map(({ name, link }, i) => (
+            {["source 1", "source 2"].map((source, i) => (
               <a
                 key={i}
-                className="flex max-w-[150px] items-center gap-2 whitespace-nowrap rounded-lg border border-gray-800 bg-gray-900 px-2 py-1.5 leading-none hover:border-gray-700"
-                href={link || "#"}
+                className="flex items-center gap-2 whitespace-nowrap rounded-lg border bg-white px-2 py-1.5 leading-none hover:border-gray-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
+                href="#"
                 target="_blank"
               >
-                <span className="truncate">{name}</span>
+                <div>{source}</div>
               </a>
             ))}
           </div>

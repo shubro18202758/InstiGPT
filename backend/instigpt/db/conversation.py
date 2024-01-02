@@ -1,4 +1,4 @@
-from typing import Sequence, List, Optional
+from typing import Sequence, List
 import enum
 from datetime import datetime
 import uuid
@@ -45,10 +45,6 @@ class Message(SQLModel, table=True):
     role: MessageRole = Field(
         sa_type=Enum(MessageRole),
         description="The role of the user that sent the message",
-    )
-    sources: Optional[str] = Field(
-        default=None,
-        description="The sources used to generate the answer (comma separated)",
     )
     created_at: datetime = Field(
         description="The time when the message was created",
