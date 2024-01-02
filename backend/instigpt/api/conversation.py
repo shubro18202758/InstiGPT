@@ -107,7 +107,8 @@ async def chat_in_conversation(
     response_message = db_conversation.Message(
         role=db_conversation.MessageRole.ASSISTANT,
         conversation_id=conv_id,
-        content=output,
+        content=output["answer"],
+        sources=",".join(set(output["sources"])),
     )
     db_conversation.create_message(response_message)
 

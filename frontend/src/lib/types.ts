@@ -17,6 +17,7 @@ export type Message = {
   id: string;
   role: string;
   content: string;
+  sources?: string;
   conversation_id: string;
   created_at: string;
 };
