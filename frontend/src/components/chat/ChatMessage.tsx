@@ -1,5 +1,7 @@
 import { FC } from "react";
 
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { UserIcon } from "@heroicons/react/24/outline";
 
 import { Message } from "@/lib/types";
@@ -28,14 +30,23 @@ export const ChatMessage: FC<ChatMessageProps> = ({
             <Logo />
           </span>
         ) : (
-          <span className="text-foreground">
+          <span className="flex items-center justify-center text-foreground">
             <UserIcon className="m-2 h-full w-full" />
           </span>
         )}
       </div>
       <div className="relative min-h-[calc(2rem+theme(spacing[3.5])*2)] min-w-[60px] break-words rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-800/40 px-5 py-3.5 text-gray-300 prose-pre:my-2">
-        <div className="max-w-full whitespace-break-spaces break-words rounded-2xl px-5 py-3.5 text-gray-500 dark:text-gray-400">
-          {message.content.trim()}
+        <div className="max-w-full break-words rounded-2xl px-5 py-3.5 text-gray-400">
+          {message.role === "assistant" ? (
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              className="prose text-gray-400"
+            >
+              {message.content.trim()}
+            </Markdown>
+          ) : (
+            <div>{message.content.trim()}</div>
+          )}
         </div>
         <div className="flex justify-end">
           {loading && <LoadingIndicatorWithoutBackdrop loading />}
