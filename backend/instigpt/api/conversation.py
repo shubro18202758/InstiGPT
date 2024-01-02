@@ -94,7 +94,7 @@ async def chat_in_conversation(
     # Generate the response
     output = chain.invoke(
         {
-            "question": input.question,
+            "question": input.question + " according to sources of IIT Bombay",
             "chat_history": "\n\n".join(
                 [f"{msg.role}: {msg.content}" for msg in old_messages]
             )
