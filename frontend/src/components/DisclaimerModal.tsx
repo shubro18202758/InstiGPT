@@ -1,25 +1,22 @@
 import { FC, Fragment, useRef, useState } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 
-interface ErrorDialogProps {
-  title?: string;
-  msg?: string;
+interface DisclaimerModalProps {
+  setShown: () => void;
 }
 
-export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
+export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
   const [open, setOpen] = useState(true);
-  const cancelButtonRef = useRef(null);
-
-  if (!title && !msg) return null;
+  const okayButtonRef = useRef(null);
 
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
-        initialFocus={cancelButtonRef}
+        initialFocus={okayButtonRef}
         onClose={() => setOpen(false)}
       >
         <Transition.Child
@@ -48,9 +45,9 @@ export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-background/75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-background px-4 pb-4 pt-5 text-foreground sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10">
-                      <ExclamationTriangleIcon
-                        className="h-6 w-6 text-red-600"
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-yellow-300 sm:mx-0 sm:h-10 sm:w-10">
+                      <ShieldCheckIcon
+                        className="h-6 w-6 text-yellow-600"
                         aria-hidden="true"
                       />
                     </div>
@@ -59,10 +56,24 @@ export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
                         as="h3"
                         className="text-base font-semibold leading-6"
                       >
-                        {title || "An error occurred"}
+                        Disclaimer
                       </Dialog.Title>
                       <div className="mt-2">
-                        <p className="text-sm text-gray-400">{msg}</p>
+                        <p className="text-sm text-gray-400">
+                          This chat bot is intended to provide general
+                          information about our insitute only. It is not a
+                          substitute for professional advice or guidance. The
+                          chat bot may sometimes give inaccurate, incomplete, or
+                          outdated results, depending on the input and the
+                          availability of data sources. The chat bot does not
+                          guarantee the accuracy, reliability, or suitability of
+                          any information or content it provides. The user is
+                          solely responsible for verifying the information and
+                          content before relying on or using it. The chat bot is
+                          not liable for any damages or losses arising from the
+                          use of or inability to use the chat bot or its
+                          information or content.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -71,8 +82,11 @@ export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-accent hover:bg-background-alt sm:mt-0 sm:w-auto"
-                    onClick={() => setOpen(false)}
-                    ref={cancelButtonRef}
+                    onClick={() => {
+                      setOpen(false);
+                      setShown();
+                    }}
+                    ref={okayButtonRef}
                   >
                     Okay
                   </button>
