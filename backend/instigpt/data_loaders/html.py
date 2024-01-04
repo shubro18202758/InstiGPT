@@ -1,15 +1,23 @@
 from typing import Union
 
 import grequests
-from html2text import html2text
-
 from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
-from langchain.text_splitter import MarkdownTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from bs4 import BeautifulSoup
+import re
 
 from instigpt import config
 
-
+def has_unrecognized_characters(text):
+    count = sum(
+        (not c.isascii() or not c.isprintable()) and c != '\n' for c in text
+    )
+    if (count/len(text))*100 > 10:
+        return True
+    else:
+        return False
+ 
 def load_html_data(
     client: ClientAPI,
     embeddings: Embeddings,
@@ -23,7 +31,12 @@ def load_html_data(
     if type(data_path) == str:
         data_path = [data_path]
 
-    text_splitter = MarkdownTextSplitter()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=2000,
+        chunk_overlap=1000,
+        length_function=len,
+        is_separator_regex=True,
+    )
     coll = client.get_or_create_collection(config.COLLECTION_NAME)
     num_docs_added = 0
 
@@ -33,8 +46,18 @@ def load_html_data(
             continue
         
         try:
-            md_text = html2text(res.text)
-            docs = text_splitter.split_text(md_text)
+            html = res.text
+            soup = BeautifulSoup(html, 'lxml')
+            if soup.body is None:
+                continue
+            body = soup.body.get_text()
+            text = re.sub(r'\n+', '\n', body)
+            texts = text.split("\n \n")
+            documents = [text for text in texts if len(text) >= 1000] 
+            docs = []
+            for doc in documents:
+                docs += text_splitter.split_text(doc)
+            docs = [doc for doc in docs if not has_unrecognized_characters(doc)]
             metadatas = [{"source": res.url} for _ in range(len(docs))]
             ids = [f"{res.url}-{i}" for i in range(len(docs))]
         except AssertionError:
