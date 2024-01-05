@@ -13,7 +13,7 @@ def has_unrecognized_characters(text):
     count = sum(
         (not c.isascii() or not c.isprintable()) and c != '\n' for c in text
     )
-    if (count/len(text))*100 > 10:
+    if (count/len(text))*100 > 0.1:
         return True
     else:
         return False
@@ -52,8 +52,8 @@ def load_html_data(
                 continue
             body = soup.body.get_text()
             text = re.sub(r'\n+', '\n', body)
-            texts = text.split("\n \n")
-            documents = [text for text in texts if len(text) >= 1000] 
+            texts = text.split("\n")
+            documents = [text for text in texts if len(text) >= 1300] 
             docs = []
             for doc in documents:
                 docs += text_splitter.split_text(doc)
