@@ -1,23 +1,23 @@
 from typing import Union
+import re
 
 import grequests
 from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from bs4 import BeautifulSoup
-import re
 
 from instigpt import config
 
+
 def has_unrecognized_characters(text):
-    count = sum(
-        (not c.isascii() or not c.isprintable()) and c != '\n' for c in text
-    )
-    if (count/len(text))*100 > 0.1:
+    count = sum((not c.isascii() or not c.isprintable()) and c != "\n" for c in text)
+    if (count / len(text)) * 100 > 0.1:
         return True
     else:
         return False
- 
+
+
 def load_html_data(
     client: ClientAPI,
     embeddings: Embeddings,
@@ -44,16 +44,16 @@ def load_html_data(
     for res in grequests.map(reqs, size=20):
         if res is None:
             continue
-        
+
         try:
             html = res.text
-            soup = BeautifulSoup(html, 'lxml')
+            soup = BeautifulSoup(html, "lxml")
             if soup.body is None:
                 continue
             body = soup.body.get_text()
-            text = re.sub(r'\n+', '\n', body)
+            text = re.sub(r"\n+", "\n", body)
             texts = text.split("\n")
-            documents = [text for text in texts if len(text) >= 1300] 
+            documents = [text for text in texts if len(text) >= 1300]
             docs = []
             for doc in documents:
                 docs += text_splitter.split_text(doc)
@@ -62,8 +62,8 @@ def load_html_data(
             ids = [f"{res.url}-{i}" for i in range(len(docs))]
         except AssertionError:
             continue
-        
-        if len(ids) == 0: 
+
+        if len(ids) == 0:
             continue
 
         coll.add(
