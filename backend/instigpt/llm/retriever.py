@@ -25,4 +25,4 @@ def get_retriever(embeddings: Embeddings):
         embedding_function=embeddings,
     )
 
-    return db.as_retriever(search_kwargs={"k": 10})
+    return db.as_retriever(search_kwargs={"k": 5})
