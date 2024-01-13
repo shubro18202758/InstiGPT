@@ -10,6 +10,13 @@ from bs4 import BeautifulSoup, PageElement
 
 from instigpt import config
 
+def has_unrecognized_characters(text):
+    count = sum((not c.isascii() or not c.isprintable()) and c != "\n" for c in text)
+    if (count / len(text)) * 100 > 0.1:
+        return True
+    else:
+        return False
+
 
 def get_content(node: PageElement) -> str:
     name = node.name
@@ -62,14 +69,22 @@ def load_html_data(
     for res in grequests.map(reqs, size=20):
         if res is None:
             continue
-
-        html = res.text
-        soup = BeautifulSoup(html, "lxml")
-        content = "\n".join([get_content(child) for child in soup.body.children])  # type: ignore
-        content = re.sub(r"\s{2,}", "\n", content)
-        docs = text_splitter.split_text(content)
-        metadatas = [{"source": res.url} for _ in range(len(docs))]
-        ids = [f"{res.url}-{i}" for i in range(len(docs))]
+        try:
+            html = res.text
+            soup = BeautifulSoup(html, "lxml")
+            if soup.body is None:
+                continue
+            content = "\n".join([get_content(child) for child in soup.body.children])  # type: ignore
+            content = re.sub(r"\s{2,}", "\n", content)
+            docs = text_splitter.split_text(content)
+            docs = [doc for doc in docs if not has_unrecognized_characters(doc)]
+            metadatas = [{"source": res.url} for _ in range(len(docs))]
+            ids = [f"{res.url}-{i}" for i in range(len(docs))]
+        except AssertionError:
+            continue
+            
+        if len(ids) == 0:
+            continue
 
         coll.add(
             documents=docs,

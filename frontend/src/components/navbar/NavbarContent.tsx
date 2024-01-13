@@ -15,20 +15,24 @@ const dateRanges = [
   new Date().setMonth(new Date().getMonth() - 1),
 ];
 const groupConversations = (conversations: Conversation[]) => ({
-  today: conversations.filter(
-    ({ created_at }) => new Date(created_at).getTime() > dateRanges[0],
-  ),
-  week: conversations.filter(({ created_at }) => {
-    const date = new Date(created_at).getTime();
-    return date > dateRanges[1] && date < dateRanges[0];
-  }),
-  month: conversations.filter(({ created_at }) => {
-    const date = new Date(created_at).getTime();
-    return date > dateRanges[2] && date < dateRanges[1];
-  }),
-  older: conversations.filter(
-    ({ created_at }) => new Date(created_at).getTime() < dateRanges[2],
-  ),
+  today: conversations
+    .filter(({ created_at }) => new Date(created_at).getTime() > dateRanges[0])
+    .reverse(),
+  week: conversations
+    .filter(({ created_at }) => {
+      const date = new Date(created_at).getTime();
+      return date > dateRanges[1] && date < dateRanges[0];
+    })
+    .reverse(),
+  month: conversations
+    .filter(({ created_at }) => {
+      const date = new Date(created_at).getTime();
+      return date > dateRanges[2] && date < dateRanges[1];
+    })
+    .reverse(),
+  older: conversations
+    .filter(({ created_at }) => new Date(created_at).getTime() < dateRanges[2])
+    .reverse(),
 });
 const titles: { [key: string]: string } = {
   today: "Today",

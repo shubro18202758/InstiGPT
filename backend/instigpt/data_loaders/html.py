@@ -32,7 +32,7 @@ def load_html_data(
         data_path = [data_path]
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=2000,
+        chunk_size=10000,
         chunk_overlap=1000,
         length_function=len,
         is_separator_regex=True,
