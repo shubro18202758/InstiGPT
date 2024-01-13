@@ -116,7 +116,7 @@ export const useNewConversationMutation = () =>
                 return { conversations: [data.conversation!] };
               }
               return {
-                conversations: [data.conversation!, ...prevData.conversations],
+                conversations: [...prevData.conversations, data.conversation!],
               };
             },
           );
