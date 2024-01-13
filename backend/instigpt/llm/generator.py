@@ -12,6 +12,8 @@ from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain.callbacks.tracers import ConsoleCallbackHandler
+from langchain.globals import set_llm_cache
+from langchain.cache import InMemoryCache
 
 from instigpt import config
 
@@ -74,23 +76,31 @@ class ChainInput(TypedDict):
     question: str
     chat_history: str
 
+
 ###
-#editing itemgetter to retrieve documents using additional string without affecting input question
+# editing itemgetter to retrieve documents using additional string without affecting input question
 def append_to_question(getter, additional_text):
     # Define a new function that will concatenate additional_text to the retrieved question
     def concatenated_getter(data):
         question_value = getter(data)
-        return question_value + " " + additional_text  # Adjust the concatenation format as needed
+        return (
+            question_value + " " + additional_text
+        )  # Adjust the concatenation format as needed
+
     return concatenated_getter
 
 
 get_question = itemgetter("question")
-modified_getter = append_to_question(get_question, "according to the sources of IIT Bombay.")
+modified_getter = append_to_question(
+    get_question, "according to the sources of IIT Bombay."
+)
 ###
+
 
 def get_chain(
     llm: BaseChatModel, retriever: VectorStoreRetriever
 ) -> RunnableSerializable[ChainInput, str]:
+    set_llm_cache(InMemoryCache())
     # https://python.langchain.com/docs/expression_language/cookbook/retrieval
     chain: RunnableSerializable[ChainInput, str] = (
         {
