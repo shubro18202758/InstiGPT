@@ -58,6 +58,7 @@ def load_html_data(
             for doc in documents:
                 docs += text_splitter.split_text(doc)
             docs = [doc for doc in docs if not has_unrecognized_characters(doc)]
+            docs = [text for text in docs if len(text) >= 350]
             metadatas = [{"source": res.url} for _ in range(len(docs))]
             ids = [f"{res.url}-{i}" for i in range(len(docs))]
         except AssertionError:
