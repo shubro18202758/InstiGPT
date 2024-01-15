@@ -3,7 +3,7 @@
 EMBEDDING_MODEL = "models/embedding-001"
 
 # Retriever
-COLLECTION_NAME = "prototype-gemini"
+COLLECTION_NAME = "prototype-gemini-final"
 
 # Generator
 GENERATOR_MODEL = "gemini-pro"
