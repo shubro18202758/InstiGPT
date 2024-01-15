@@ -25,7 +25,7 @@ Also make sure you set the required environment variables in the `.env` file nam
 
 To generate embeddings, run `pipenv run python load_data_in_db.py` in scripts folder. Do the commented changes accordingly to use resobin data or ugrulebook data in `load_data_in_db.py` and `config.py`.
 
-> NOTE: You may choose to recreate all the embeddings from scratch or reuse the ones provided [here](https://drive.google.com/drive/folders/1vFAeUbUiJcg4Q_3eNbPgA1SHu7_zWG6t?usp=sharing). To reuse the ones provided in the link, first download that folder to a folder named `embeddings` and then run `docker exec -it chromadb rm -rf /chroma/chroma; docker cp ./embeddings chromadb:/chroma/chroma`
+> NOTE: You may choose to recreate all the embeddings from scratch or reuse the ones provided [here](https://drive.google.com/drive/folders/1skG8XsdSPF_W5sfNOyujH408tXCaH5Rb?usp=sharing). To reuse the ones provided in the link, first download that folder to a folder named `embeddings` and then run `docker exec -it chromadb rm -rf /chroma/chroma; docker cp ./embeddings chromadb:/chroma/chroma`
 
 ### Relational DB
 
