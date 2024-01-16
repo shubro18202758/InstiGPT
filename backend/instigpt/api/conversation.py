@@ -18,7 +18,12 @@ router = APIRouter()
 embeddings = llm.get_embeddings()
 model = llm.get_generator_model()
 retriever = llm.get_retriever(embeddings=embeddings)
-chain = llm.get_chain(llm=model, retriever=retriever)
+search_results_retriever = llm.get_search_results_retiever()
+chain = llm.get_chain(
+    llm=model,
+    retriever=retriever,
+    search_results_retiever=search_results_retriever,
+)
 
 
 @router.get("/conversation")
@@ -96,7 +101,10 @@ async def chat_in_conversation(
         {
             "question": input.question,
             "chat_history": "\n\n".join(
-                [f"{msg.role}: {msg.content}" for msg in old_messages]
+                [
+                    f"{msg.role.value.upper()}: {msg.content}"
+                    for msg in old_messages[:-1]
+                ]
             )
             or "None",
         },

@@ -18,6 +18,7 @@ pypdf = "*"
 rich = "*"
 html2text = "*"
 grequests = "*"
+google-api-python-client = "*"
 
 [dev-packages]
 black = "*"

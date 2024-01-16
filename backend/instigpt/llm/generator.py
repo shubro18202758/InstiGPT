@@ -1,6 +1,5 @@
 from operator import itemgetter
 from typing import TypedDict
-import dotenv
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
@@ -13,6 +12,7 @@ from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain.callbacks.tracers import ConsoleCallbackHandler
+from langchain.tools import Tool
 from langchain.globals import set_llm_cache
 from langchain.cache import InMemoryCache
 from langchain.tools import Tool
@@ -32,7 +32,7 @@ def get_generator_model():
 
 # TODO: Redesign the prompt template
 PROMPT = ChatPromptTemplate.from_template(
-"""Hello there, Your name is InstiGPT! Your mission is to excel as a conversational chatbot, specializing in IIT Bombay-related inquiries while embracing small talk. Your database is a treasure trove of factual information about IIT Bombay, empowering you to retrieve and present precise details aligned with the provided context. Ensure your responses are informative, concise, and warmly welcoming.
+    """Hello there, Your name is InstiGPT! Your mission is to excel as a conversational chatbot, specializing in IIT Bombay-related inquiries while embracing small talk. Your database is a treasure trove of factual information about IIT Bombay, empowering you to retrieve and present precise details aligned with the provided context. Ensure your responses are informative, concise, and warmly welcoming.
 
 Engaging in Small Talk:
 a. Initiate conversations with friendly greetings like 'Hello', 'Hi there', or 'Good [morning/afternoon/evening]!' to foster a welcoming atmosphere.
@@ -61,11 +61,9 @@ a. Respond warmly and encourage further discussion, even to open-ended or seemin
 b. Use these cues as opportunities to initiate or continue conversations by asking follow-up questions or expressing interest in the user's experiences.
 c. Introduce related topics or inquire further to sustain the interaction and foster a conversational atmosphere.
 
-
 Remember, prioritize accuracy, empathy, and engaging conversation. Continuously learn and adapt from interactions to refine your conversational prowess. Utilize context intelligently to deliver accurate and valuable insights to users seeking knowledge about IIT Bombay.
-
 ----------------
-CONTEXT: {google_search}\n {context}
+CONTEXT: {context} \n {search_results}
 ----------------
 CHAT HISTORY: {chat_history}
 ----------------
@@ -97,24 +95,27 @@ get_question = itemgetter("question")
 modified_getter = append_to_question(
     get_question, "according to the sources of IIT Bombay."
 )
-modified_getter_for_gsearch = append_to_question(
-    get_question, "related to IIT Bombay."
-)
+modified_getter_for_gsearch = append_to_question(get_question, "related to IIT Bombay.")
 ###
 
 search = GoogleSearchAPIWrapper()
+
+
 def top5_results(query):
     return search.results(query, 5)
+
 
 tool = Tool(
     name="Google Search",
     description="Search Google related to IIT  Bombay",
-    func=top5_results
+    func=top5_results,
 )
 
 
 def get_chain(
-    llm: BaseChatModel, retriever: VectorStoreRetriever
+    llm: BaseChatModel,
+    retriever: VectorStoreRetriever,
+    search_results_retiever: Tool,
 ) -> RunnableSerializable[ChainInput, str]:
     set_llm_cache(InMemoryCache())
     # https://python.langchain.com/docs/expression_language/cookbook/retrieval
@@ -123,7 +124,7 @@ def get_chain(
             "question": RunnablePassthrough(),
             "chat_history": RunnablePassthrough(),
             "context": modified_getter | retriever,
-            "google_search": modified_getter_for_gsearch | tool
+            "search_results": modified_getter_for_gsearch | search_results_retiever,
         }
         | PROMPT
         | llm
