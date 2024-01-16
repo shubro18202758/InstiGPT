@@ -9,7 +9,8 @@ interface DisclaimerModalProps {
 
 export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
   const [open, setOpen] = useState(true);
-  const okayButtonRef = useRef(null);
+  const okayButtonRef = useRef<HTMLButtonElement>(null);
+  const contentDivRef = useRef<HTMLDivElement>(null);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -51,15 +52,19 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                         aria-hidden="true"
                       />
                     </div>
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div
+                      ref={contentDivRef}
+                      className="scrollbar-custom mt-3 max-h-80 overflow-y-scroll text-center sm:ml-4 sm:mt-0 sm:text-left"
+                    >
                       <Dialog.Title
                         as="h3"
-                        className="text-base font-semibold leading-6"
+                        className="text-xl font-semibold leading-6"
                       >
                         Disclaimer
                       </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-400">
+                      <div className="prose prose-invert mt-2">
+                        <h3>Overview</h3>
+                        <p className="text-gray-400">
                           This chat bot is intended to provide general
                           information about our insitute only. It is not a
                           substitute for professional advice or guidance. The
@@ -69,11 +74,31 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                           guarantee the accuracy, reliability, or suitability of
                           any information or content it provides. The user is
                           solely responsible for verifying the information and
-                          content before relying on or using it. The chat bot is
-                          not liable for any damages or losses arising from the
-                          use of or inability to use the chat bot or its
-                          information or content.
+                          content before relying on or using it.
                         </p>
+                        <h3>Currently the following datasets are added:</h3>
+                        <hr />
+                        <ul>
+                          <li>Apping Guide</li>
+                          <li>Non-Core Apping Guide</li>
+                          <li>Bluebook</li>
+                          <li>Course Info Booklet 2020-21</li>
+                          <li>ITC Report</li>
+                          <li>MInDS Minor</li>
+                          <li>SAC Constitution (March 2018)</li>
+                          <li>UG Rulebook</li>
+                          <li>ResoBin</li>
+                          <li>Department Websites</li>
+                          <li>DAMP Websites</li>
+                        </ul>
+                        <h3>Some points to note:</h3>
+                        <hr />
+                        <ul>
+                          <li>
+                            Try to keep a conversation limited to a topic and
+                            make a new conversation for every new topic.
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -81,11 +106,20 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                 <div className="bg-background-alt px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-accent hover:bg-background-alt sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-accent hover:bg-background-alt disabled:text-gray-500 disabled:ring-0 sm:mt-0 sm:w-auto"
                     onClick={() => {
                       setOpen(false);
                       setShown();
                     }}
+                    disabled={
+                      contentDivRef.current === null ||
+                      !(
+                        Math.round(
+                          contentDivRef.current.scrollHeight -
+                            contentDivRef.current.scrollTop,
+                        ) === contentDivRef.current.clientHeight
+                      )
+                    }
                     ref={okayButtonRef}
                   >
                     Okay
