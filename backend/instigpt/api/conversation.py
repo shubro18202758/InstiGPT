@@ -103,13 +103,13 @@ async def chat_in_conversation(
             "chat_history": "\n\n".join(
                 [
                     f"{msg.role.value.upper()}: {msg.content}"
-                    for msg in old_messages[:-1]
+                    for msg in (old_messages[:-10] if len(old_messages) > 10 else old_messages)
                 ]
             )
             or "None",
         },
         # Uncomment this to use the debug config
-        # config=llm.generator.debug_config,
+        config=llm.generator.debug_config,
     )
     # Store the response in the database
     response_message = db_conversation.Message(
