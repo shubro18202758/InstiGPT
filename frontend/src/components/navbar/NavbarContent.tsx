@@ -104,12 +104,18 @@ export const NavbarContent: FC = () => {
           Sign Out
         </a>
         <a
-          href="#"
-          target="_blank"
+          href="https://forms.gle/aDX5cKy9Q2p9H8kX6"
           rel="noreferrer"
           className="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-400 hover:bg-gray-700"
         >
           Feedback
+        </a>
+        <a
+          href="https://forms.gle/KLPURQYe3GeiifrV8"
+          rel="noreferrer"
+          className="flex h-9 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-400 hover:bg-gray-700"
+        >
+          Request Data Addition
         </a>
       </div>
     </>
