@@ -18,11 +18,11 @@ router = APIRouter()
 embeddings = llm.get_embeddings()
 model = llm.get_generator_model()
 retriever = llm.get_retriever(embeddings=embeddings)
-search_results_retriever = llm.get_search_results_retiever()
+search_results_retriever = llm.get_search_results_retriever()
 chain = llm.get_chain(
     llm=model,
     retriever=retriever,
-    search_results_retiever=search_results_retriever,
+    search_results_retriever=search_results_retriever,
 )
 
 

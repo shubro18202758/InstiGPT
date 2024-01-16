@@ -1,4 +1,3 @@
-import json
 from typing import Union
 import re
 
@@ -9,6 +8,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from bs4 import BeautifulSoup, PageElement
 
 from instigpt import config
+
 
 def has_unrecognized_characters(text):
     count = sum((not c.isascii() or not c.isprintable()) and c != "\n" for c in text)
@@ -82,7 +82,7 @@ def load_html_data(
             ids = [f"{res.url}-{i}" for i in range(len(docs))]
         except AssertionError:
             continue
-            
+
         if len(ids) == 0:
             continue
 

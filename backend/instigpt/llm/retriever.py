@@ -30,7 +30,7 @@ def get_retriever(embeddings: Embeddings):
     return db.as_retriever(search_kwargs={"k": 5})
 
 
-def get_search_results_retiever() -> Tool:
+def get_search_results_retriever() -> Tool:
     search = GoogleSearchAPIWrapper()  # type: ignore
 
     tool = Tool(

@@ -1,22 +1,13 @@
-from operator import itemgetter
 from typing import TypedDict
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import ChatPromptTemplate
-from langchain_core.runnables import (
-    RunnablePassthrough,
-    RunnableSerializable,
-    RunnableConfig,
-)
+from langchain.prompts import PromptTemplate, ChatPromptTemplate
+from langchain_core.runnables import Runnable, RunnableConfig, chain
 from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain.callbacks.tracers import ConsoleCallbackHandler
 from langchain.tools import Tool
-from langchain.globals import set_llm_cache
-from langchain.cache import InMemoryCache
-from langchain.tools import Tool
-from langchain_community.utilities import GoogleSearchAPIWrapper
 
 from instigpt import config
 
@@ -30,8 +21,18 @@ def get_generator_model():
     )  # type: ignore
 
 
+CONDENSE_QUESTION_PROMPT = PromptTemplate.from_template(
+    """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
+If the follow up question is already a standalone question, simply copy it.
+
+Chat History:
+{chat_history}
+Follow Up Input: {question}
+Standalone question:"""
+)
+
 # TODO: Redesign the prompt template
-PROMPT = ChatPromptTemplate.from_template(
+ANSWER_PROMPT = ChatPromptTemplate.from_template(
     """Hello there, Your name is InstiGPT! Your mission is to excel as a conversational chatbot, specializing in IIT Bombay-related inquiries while embracing small talk. Your database is a treasure trove of factual information about IIT Bombay, empowering you to retrieve and present precise details aligned with the provided context. Ensure your responses are informative, concise, and warmly welcoming.
 
 Engaging in Small Talk:
@@ -78,56 +79,39 @@ class ChainInput(TypedDict):
     chat_history: str
 
 
-###
-# editing itemgetter to retrieve documents using additional string without affecting input question
-def append_to_question(getter, additional_text):
-    # Define a new function that will concatenate additional_text to the retrieved question
-    def concatenated_getter(data):
-        question_value = getter(data)
-        return (
-            question_value + " " + additional_text
-        )  # Adjust the concatenation format as needed
-
-    return concatenated_getter
-
-
-get_question = itemgetter("question")
-modified_getter = append_to_question(
-    get_question, "according to the sources of IIT Bombay."
-)
-modified_getter_for_gsearch = append_to_question(get_question, "related to IIT Bombay.")
-###
-
-search = GoogleSearchAPIWrapper()
-
-
-def top5_results(query):
-    return search.results(query, 5)
-
-
-tool = Tool(
-    name="Google Search",
-    description="Search Google related to IIT  Bombay",
-    func=top5_results,
-)
-
-
 def get_chain(
     llm: BaseChatModel,
     retriever: VectorStoreRetriever,
-    search_results_retiever: Tool,
-) -> RunnableSerializable[ChainInput, str]:
-    set_llm_cache(InMemoryCache())
+    search_results_retriever: Tool,
+) -> Runnable[ChainInput, str]:
     # https://python.langchain.com/docs/expression_language/cookbook/retrieval
-    chain: RunnableSerializable[ChainInput, str] = (
-        {
-            "question": RunnablePassthrough(),
-            "chat_history": RunnablePassthrough(),
-            "context": modified_getter | retriever,
-            "search_results": modified_getter_for_gsearch | search_results_retiever,
-        }
-        | PROMPT
-        | llm
-        | StrOutputParser()
-    )
-    return chain
+
+    question_condenser = CONDENSE_QUESTION_PROMPT | llm | StrOutputParser()
+    final_answer = ANSWER_PROMPT | llm | StrOutputParser()
+
+    @chain
+    def my_chain(inp: ChainInput) -> str:
+        if inp["chat_history"] == "None":
+            condensed_question = inp["question"]
+        else:
+            condensed_question = question_condenser.invoke(
+                {"question": inp["question"], "chat_history": inp["chat_history"]}
+            )
+
+        # TOOD: Use GPTCache here!
+
+        context = retriever.invoke(condensed_question)
+        search_results = search_results_retriever.invoke(
+            f"{condensed_question} related to IIT Bombay"
+        )
+
+        return final_answer.invoke(
+            {
+                "question": inp["question"],
+                "context": context,
+                "search_results": search_results,
+                "chat_history": inp["chat_history"],
+            }
+        )
+
+    return my_chain
