@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Document Paths
-PDFS = ["Apping Guide Booklet", "Bluebook Edition Three", "Course Info Booklet 2020-21", "Non-Core Apping Guide", "SAC-Constitution-March-2018", "MInDS Minor", "itc_report"]
+PDFS = ["Apping Guide Booklet", "Bluebook Edition Three", "Course Info Booklet 2020-21", "Non-Core Apping Guide", "SAC-Constitution-March-2018", "MInDS Minor"]
 PDFS = ["pdf/" + pdf + ".pdf" for pdf in PDFS]
 JSONS = ["resobin_courses_final", "ugrulebook"] # "dept_web_scrap", "misc_web_scrap"
 JSONS = ["json/" + json + ".json" for json in JSONS]
