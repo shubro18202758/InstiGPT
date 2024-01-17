@@ -64,7 +64,7 @@ c. Introduce related topics or inquire further to sustain the interaction and fo
 
 Remember, prioritize accuracy, empathy, and engaging conversation. Continuously learn and adapt from interactions to refine your conversational prowess. Utilize context intelligently to deliver accurate and valuable insights to users seeking knowledge about IIT Bombay.
 ----------------
-CONTEXT: {context} \n {search_results}
+CONTEXT: {search_results} \n {context}
 ----------------
 CHAT HISTORY: {chat_history}
 ----------------

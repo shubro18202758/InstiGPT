@@ -71,6 +71,7 @@ export const ChatInput: FC<ChatInputProps> = ({
       </div>
       <div className="mt-2 flex justify-between self-stretch px-1 text-xs text-gray-400/90 max-md:mb-2 max-sm:gap-2">
         <p>Generated content may be inaccurate or false.</p>
+        <p>Made with ❤️ AI Community IIT Bombay</p>
       </div>
     </div>
   );
