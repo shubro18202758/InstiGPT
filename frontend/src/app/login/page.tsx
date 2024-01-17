@@ -2,9 +2,8 @@
 
 import { useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import Image from "next/image";
 
-import { ErrorDialog, LoadingIndicator } from "@/components";
+import { ErrorDialog, LoadingIndicator, LogoWithText } from "@/components";
 import { useLoginMutation, useMeQuery } from "@/lib";
 
 export default function Login() {
@@ -39,12 +38,7 @@ export default function Login() {
         <div className="rounded-xl bg-background-alt p-10 text-center">
           {isLoginError && <ErrorDialog msg={(loginError as Error).message} />}
           {data?.detail && <ErrorDialog msg={data.detail} />}
-          <Image
-            src="/logo-with-text.svg"
-            alt="logo"
-            width={3.7 * 100}
-            height={100}
-          />
+          <LogoWithText size={100} />
           <button className="mt-10 rounded-lg bg-primary-gradient p-3 md:p-5 md:text-xl lg:text-3xl">
             <a href={process.env.NEXT_PUBLIC_SSO_URL}>SSO Login</a>
           </button>

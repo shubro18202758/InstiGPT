@@ -111,15 +111,15 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                       setOpen(false);
                       setShown();
                     }}
-                    disabled={
-                      contentDivRef.current === null ||
-                      !(
-                        Math.round(
-                          contentDivRef.current.scrollHeight -
-                            contentDivRef.current.scrollTop,
-                        ) === contentDivRef.current.clientHeight
-                      )
-                    }
+                    // disabled={
+                    //   contentDivRef.current === null ||
+                    //   !(
+                    //     Math.round(
+                    //       contentDivRef.current.scrollHeight -
+                    //         contentDivRef.current.scrollTop,
+                    //     ) === contentDivRef.current.clientHeight
+                    //   )
+                    // }
                     ref={okayButtonRef}
                   >
                     Okay
