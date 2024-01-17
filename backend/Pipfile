@@ -5,8 +5,6 @@ name = "pypi"
 
 [packages]
 langchain = "*"
-sentence-transformers = "*"
-transformers = "*"
 langchain-google-genai = "*"
 fastapi = {extras = ["all"], version = "*"}
 chromadb = "*"
@@ -16,9 +14,10 @@ sqlmodel = "*"
 psycopg2-binary = "*"
 pypdf = "*"
 rich = "*"
-html2text = "*"
 grequests = "*"
 google-api-python-client = "*"
+beautifulsoup4 = "*"
+lxml = "*"
 
 [dev-packages]
 black = "*"
