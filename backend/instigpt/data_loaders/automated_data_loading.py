@@ -1,5 +1,7 @@
 from langchain_core.embeddings import Embeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain.docstore.document import Document
+from langchain.document_loaders import PyPDFLoader
 import os
 import json
 import chromadb
@@ -11,6 +13,7 @@ from .csv import load_csv_data
 from .json import load_json_data
 from .pdf import load_pdf_data
 from .urls import load_urls_data
+from instigpt import config
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,7 +21,7 @@ load_dotenv()
 # Document Paths
 PDFS = ["Apping Guide Booklet", "Bluebook Edition Three", "Course Info Booklet 2020-21", "Non-Core Apping Guide", "SAC-Constitution-March-2018", "MInDS Minor", "itc_report"]
 PDFS = ["pdf/" + pdf + ".pdf" for pdf in PDFS]
-JSONS = ["resobin_courses_natural_lang", "ugrulebook"] # "dept_web_scrap", "misc_web_scrap"
+JSONS = ["resobin_courses_final", "ugrulebook", "grades"] # "dept_web_scrap", "misc_web_scrap"
 JSONS = ["json/" + json + ".json" for json in JSONS]
 URLS_DEPT = ["aero", "bio", "che", "chem", "civil", "earth", "eco", "elec", "env", "hss", "maths", "mech"]
 URLS_DEPT = ["urls/dept/" + url + ".json" for url in URLS_DEPT]
@@ -29,6 +32,9 @@ URLS_MISC = ["urls/" + url + ".json" for url in URLS_MISC]
 URLS = URLS_DEPT + URLS_DAMP + URLS_MISC
 CSVS = ["elec_damp_intern", "elec_damp_minor", "elec_damp_minor", "mech_damp_courses", "mech_damp_events"]
 CSVS = ["csv/" + csv + ".csv" for csv in CSVS]
+root_pdf = "data/pdf/new/"
+NEW_PDFS = os.listdir(root_pdf)
+NEW_PDFS = ["pdf/new/" + pdf for pdf in NEW_PDFS]
 
 root = "data/urls/misc/"
 LATEST_URLS = os.listdir(root)
@@ -105,6 +111,7 @@ def load_list_of_paths(doc_list: list):
 client.reset()
 
 load_list_of_paths(PDFS)
+load_list_of_paths(NEW_PDFS)
 load_list_of_paths(JSONS)
 load_list_of_paths(CSVS)
 
@@ -128,6 +135,35 @@ load_list_of_paths(CSVS)
 # print(len(fin_urls))
 # with open("data/dept_urls.json", 'w') as json_file:
 #     json.dump(fin_urls, json_file)
+##############
+
+##############
+file_path = "data/itc_iitb.txt"
+with open(file_path, 'r') as f:
+    doc = f.read()
+doc = " ".join(doc.split("\n"))
+doc_loaded = Document(page_content = doc, metadata = {"source": "ITC_IITB"})
+coll = client.get_or_create_collection(config.COLLECTION_NAME)
+coll.add(documents=doc_loaded.page_content,
+         metadatas=doc_loaded.metadata, 
+         ids = ["ITC_IITB-1"],
+         embeddings=emdbeddings.embed_documents(doc_loaded.page_content))
+
+file_path = "data/Hostel.pdf"
+loader = PyPDFLoader(file_path)
+docs = loader.load()
+i = 0
+for doc in docs:
+    if len(doc.page_content) <= 1:
+        continue
+    i+=1
+    doc = " ".join(doc.page_content.split("\n"))
+    print(len(doc))
+    doc_loaded = Document(page_content = doc, metadata = {"source": "HOSTEL"})
+    coll.add(documents=doc_loaded.page_content,
+            metadatas=doc_loaded.metadata, 
+            ids = [f"HOSTEL-{i}"],
+            embeddings=emdbeddings.embed_documents(doc_loaded.page_content))
 ##############
 
 # load_list_of_paths(["json/dept_web_scrap.json", "json/misc_web_scrap"])
