@@ -1,11 +1,12 @@
-from typing import Union
+from typing import Union, Optional
 import re
+import concurrent.futures as cf
+import requests
 
-import grequests
 from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from bs4 import BeautifulSoup, PageElement
+from bs4 import BeautifulSoup
 
 from instigpt import config
 
@@ -18,7 +19,7 @@ def has_unrecognized_characters(text):
         return False
 
 
-def get_content(node: PageElement) -> str:
+def get_content(node) -> str:
     name = node.name
     if name is None:
         if str(node) == "\n":
@@ -43,6 +44,29 @@ def get_content(node: PageElement) -> str:
     return content
 
 
+def extract_clean_html_data(res: Optional[requests.Response]) -> Optional[str]:
+    if res is None:
+        return None
+
+    html = res.text
+    soup = BeautifulSoup(html, "lxml")
+    if soup.body is None:
+        return None
+    content = "\n".join([get_content(child) for child in soup.body.children])  # type: ignore
+    content = re.sub(r"\s{2,}", "\n", content)
+    return content
+
+
+def get_responses(links: list[str]) -> list[requests.Response]:
+    responses = []
+    session = requests.Session()
+    with cf.ThreadPoolExecutor() as executor:
+        responses = list(
+            executor.map(lambda link: session.get(link, verify=False), links)
+        )
+    return responses
+
+
 def load_html_data(
     client: ClientAPI,
     embeddings: Embeddings,
@@ -65,8 +89,7 @@ def load_html_data(
     coll = client.get_or_create_collection(config.COLLECTION_NAME)
     num_docs_added = 0
 
-    reqs = [grequests.get(link) for link in data_path]
-    for res in grequests.map(reqs, size=20):
+    for res in get_responses(data_path):  # type: ignore
         if res is None:
             continue
         try:

@@ -1,14 +1,11 @@
-from langchain_core.embeddings import Embeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.docstore.document import Document
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 import os
 import json
 import chromadb
 from chromadb.config import Settings
 from chromadb.api import ClientAPI
-from langchain.vectorstores.chroma import Chroma
-from .html import load_html_data
 from .csv import load_csv_data
 from .json import load_json_data
 from .pdf import load_pdf_data
@@ -16,21 +13,49 @@ from .urls import load_urls_data
 from instigpt import config
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # Document Paths
-PDFS = ["Apping Guide Booklet", "Bluebook Edition Three", "Course Info Booklet 2020-21", "Non-Core Apping Guide", "SAC-Constitution-March-2018", "MInDS Minor"]
+PDFS = [
+    "Apping Guide Booklet",
+    "Bluebook Edition Three",
+    "Course Info Booklet 2020-21",
+    "Non-Core Apping Guide",
+    "SAC-Constitution-March-2018",
+    "MInDS Minor",
+    "itc_report",
+]
 PDFS = ["pdf/" + pdf + ".pdf" for pdf in PDFS]
-JSONS = ["resobin_courses_final", "ugrulebook"] # "dept_web_scrap", "misc_web_scrap"
+JSONS = ["resobin_courses_final", "ugrulebook"]  # "dept_web_scrap", "misc_web_scrap"
 JSONS = ["json/" + json + ".json" for json in JSONS]
-URLS_DEPT = ["aero", "bio", "che", "chem", "civil", "earth", "eco", "elec", "env", "hss", "maths", "mech"]
+URLS_DEPT = [
+    "aero",
+    "bio",
+    "che",
+    "chem",
+    "civil",
+    "earth",
+    "eco",
+    "elec",
+    "env",
+    "hss",
+    "maths",
+    "mech",
+]
 URLS_DEPT = ["urls/dept/" + url + ".json" for url in URLS_DEPT]
 URLS_DAMP = ["aero", "civil", "cse", "elec", "ese", "mems"]
 URLS_DAMP = ["urls/damp/" + url + ".json" for url in URLS_DAMP]
 URLS_MISC = ["smp", "dept_urls"]
 URLS_MISC = ["urls/" + url + ".json" for url in URLS_MISC]
 URLS = URLS_DEPT + URLS_DAMP + URLS_MISC
-CSVS = ["elec_damp_intern", "elec_damp_minor", "elec_damp_minor", "mech_damp_courses", "mech_damp_events"]
+CSVS = [
+    "elec_damp_intern",
+    "elec_damp_minor",
+    "elec_damp_minor",
+    "mech_damp_courses",
+    "mech_damp_events",
+]
 CSVS = ["csv/" + csv + ".csv" for csv in CSVS]
 root_pdf = "data/pdf/new/"
 NEW_PDFS = os.listdir(root_pdf)
@@ -57,7 +82,8 @@ EMBEDDING_MODEL = "models/embedding-001"
 GENERATOR_MODEL = "gemini-pro"
 GENERATOR_TEMPERATURE = 0
 
-emdbeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL)
+emdbeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL)  # type: ignore
+
 
 def get_db_client() -> ClientAPI:
     return chromadb.HttpClient(
@@ -65,14 +91,17 @@ def get_db_client() -> ClientAPI:
         port=os.environ["VECTOR_DB_PORT"],
         settings=Settings(allow_reset=True),
     )
-    
+
+
 client = get_db_client()
+
 
 def load_list_of_paths(doc_list: list):
     total_docs = 0
     for data_path in doc_list:
         data_path = ROOT_PATH + data_path
-        document_name= data_path.split("/")[-1].split(".")[0]
+        document_name = data_path.split("/")[-1].split(".")[0]
+        num_docs_added = 0
         if data_path.endswith(".pdf"):
             num_docs_added = load_pdf_data(
                 client=client,
@@ -104,10 +133,10 @@ def load_list_of_paths(doc_list: list):
                 data_path=data_path,
             )
         print(f"Number of documents added for {document_name}: {num_docs_added}\n")
-        total_docs+=num_docs_added
+        total_docs += num_docs_added
     print(f"Total Documents added: {total_docs}\n")
-    
-    
+
+
 client.reset()
 
 load_list_of_paths(PDFS)
@@ -139,15 +168,17 @@ load_list_of_paths(CSVS)
 
 ##############
 file_path = "data/itc_iitb.txt"
-with open(file_path, 'r') as f:
+with open(file_path, "r") as f:
     doc = f.read()
 doc = " ".join(doc.split("\n"))
-doc_loaded = Document(page_content = doc, metadata = {"source": "ITC_IITB"})
+doc_loaded = Document(page_content=doc, metadata={"source": "ITC_IITB"})
 coll = client.get_or_create_collection(config.COLLECTION_NAME)
-coll.add(documents=doc_loaded.page_content,
-         metadatas=doc_loaded.metadata, 
-         ids = ["ITC_IITB-1"],
-         embeddings=emdbeddings.embed_documents(doc_loaded.page_content))
+coll.add(
+    documents=doc_loaded.page_content,
+    metadatas=doc_loaded.metadata,
+    ids=["ITC_IITB-1"],
+    embeddings=emdbeddings.embed_documents(doc_loaded.page_content),  # type: ignore
+)
 
 file_path = "data/Hostel.pdf"
 loader = PyPDFLoader(file_path)
@@ -156,16 +187,18 @@ i = 0
 for doc in docs:
     if len(doc.page_content) <= 1:
         continue
-    i+=1
+    i += 1
     doc = " ".join(doc.page_content.split("\n"))
     print(len(doc))
-    doc_loaded = Document(page_content = doc, metadata = {"source": "HOSTEL"})
-    coll.add(documents=doc_loaded.page_content,
-            metadatas=doc_loaded.metadata, 
-            ids = [f"HOSTEL-{i}"],
-            embeddings=emdbeddings.embed_documents(doc_loaded.page_content))
+    doc_loaded = Document(page_content=doc, metadata={"source": "HOSTEL"})
+    coll.add(
+        documents=doc_loaded.page_content,
+        metadatas=doc_loaded.metadata,
+        ids=[f"HOSTEL-{i}"],
+        embeddings=emdbeddings.embed_documents(doc_loaded.page_content),  # type: ignore
+    )
 ##############
 
 # load_list_of_paths(["json/dept_web_scrap.json", "json/misc_web_scrap"])
- 
+
 print(client.list_collections())

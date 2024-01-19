@@ -9,7 +9,7 @@ from langchain_core.vectorstores import VectorStoreRetriever
 from langchain.callbacks.tracers import ConsoleCallbackHandler
 from langchain.tools import Tool
 
-from instigpt import config
+from instigpt import config, data_loaders
 
 debug_config: RunnableConfig = {"callbacks": [ConsoleCallbackHandler()]}
 
@@ -31,7 +31,6 @@ Follow Up Input: {question}
 Standalone question:"""
 )
 
-# TODO: Redesign the prompt template
 ANSWER_PROMPT = ChatPromptTemplate.from_template(
     """Hello there, Your name is InstiGPT! Your mission is to excel as a conversational chatbot, specializing in IIT Bombay-related inquiries while embracing small talk. Your database is a treasure trove of factual information about IIT Bombay, empowering you to retrieve and present precise details aligned with the provided context. Ensure your responses are informative, concise, and warmly welcoming.
 
@@ -104,12 +103,20 @@ def get_chain(
         search_results = search_results_retriever.invoke(
             f"{condensed_question} related to IIT Bombay"
         )
+        extracted_search_results = [
+            data_loaders.clean_html.extract_clean_html_data(res)
+            for res in data_loaders.clean_html.get_responses(
+                [res["link"] for res in search_results]
+            )
+        ]
 
         return final_answer.invoke(
             {
                 "question": inp["question"],
                 "context": context,
-                "search_results": search_results,
+                "search_results": [
+                    res[:3000] for res in extracted_search_results if res is not None
+                ],
                 "chat_history": inp["chat_history"],
             }
         )

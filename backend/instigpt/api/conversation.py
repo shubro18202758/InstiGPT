@@ -103,7 +103,9 @@ async def chat_in_conversation(
             "chat_history": "\n\n".join(
                 [
                     f"{msg.role.value.upper()}: {msg.content}"
-                    for msg in (old_messages[:-10] if len(old_messages) > 10 else old_messages)
+                    for msg in (
+                        old_messages[:-10] if len(old_messages) > 10 else old_messages
+                    )
                 ]
             )
             or "None",
