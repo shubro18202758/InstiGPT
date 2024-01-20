@@ -8,6 +8,7 @@ interface LogoProps {
 export const Logo: FC<LogoProps> = ({ size = 100 }) => {
   return (
     <Image
+      unoptimized
       src="/logo.png"
       alt="logo"
       width={size}
