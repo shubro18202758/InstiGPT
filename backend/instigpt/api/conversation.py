@@ -88,14 +88,6 @@ async def chat_in_conversation(
     # Get the old messages
     old_messages = db_conversation.get_messages_of_conversation(conv_id)
 
-    # Store the new question in the database
-    question_message = db_conversation.Message(
-        role=db_conversation.MessageRole.USER,
-        conversation_id=conv_id,
-        content=input.question,
-    )
-    db_conversation.create_message(question_message)
-
     # Generate the response
     output = chain.invoke(
         {
@@ -111,8 +103,17 @@ async def chat_in_conversation(
             or "None",
         },
         # Uncomment this to use the debug config
-        config=llm.generator.debug_config,
+        # config=llm.generator.debug_config,
     )
+
+    # Store the new question in the database
+    question_message = db_conversation.Message(
+        role=db_conversation.MessageRole.USER,
+        conversation_id=conv_id,
+        content=input.question,
+    )
+    db_conversation.create_message(question_message)
+
     # Store the response in the database
     response_message = db_conversation.Message(
         role=db_conversation.MessageRole.ASSISTANT,
