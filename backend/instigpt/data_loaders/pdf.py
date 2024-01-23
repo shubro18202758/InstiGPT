@@ -1,9 +1,22 @@
+from typing import Optional
+
 from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
 from instigpt import config
+
+
+def extract_pdf_content(link: str) -> Optional[str]:
+    try:
+        loader = PyPDFLoader("/tmp/live_extract.pdf")
+        loader.web_path = link
+    except:
+        return None
+
+    docs = loader.load()
+    return "\n".join([doc.page_content for doc in docs])
 
 
 def load_pdf_data(

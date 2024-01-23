@@ -103,12 +103,27 @@ def get_chain(
         search_results = search_results_retriever.invoke(
             f"{condensed_question} related to IIT Bombay"
         )
-        extracted_search_results = [
-            data_loaders.clean_html.extract_clean_html_data(res)
-            for res in data_loaders.clean_html.get_responses(
-                [res["link"] for res in search_results]
-            )
-        ]
+
+        # Fetching search results sometimes results in:
+        # [{'Result': 'No good Google Search Result was found'}]
+        try:
+            search_result_links = [res["link"] for res in search_results]
+            html_links = [
+                link for link in search_result_links if not link.endswith(".pdf")
+            ]
+            pdf_links = [
+                res["link"] for res in search_results if res["link"].endswith(".pdf")
+            ]
+
+            extracted_search_results = [
+                data_loaders.clean_html.extract_clean_html_data(res)
+                for res in data_loaders.clean_html.get_responses(html_links)
+            ]
+            extracted_search_results += [
+                data_loaders.pdf.extract_pdf_content(link) for link in pdf_links
+            ]
+        except:
+            extracted_search_results = []
 
         return final_answer.invoke(
             {
