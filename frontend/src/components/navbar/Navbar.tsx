@@ -11,7 +11,7 @@ export const Navbar: FC = () => {
     <>
       {/* Desktop Navbar */}
       <nav className="grid max-h-screen grid-cols-1 grid-rows-[auto,auto,1fr,auto] max-md:hidden">
-        <NavbarContent />
+        <NavbarContent closeNavbar={() => setOpen(false)} />
       </nav>
 
       {/* Mobile Navbar closed */}
@@ -24,9 +24,7 @@ export const Navbar: FC = () => {
         >
           <Bars3Icon />
         </button>
-        <span className="truncate px-4 text-lg font-semibold">
-          Conversation Title
-        </span>
+        <span className="truncate px-4 text-lg font-semibold">InstiGPT</span>
       </nav>
 
       {/* Mobile Navbar open */}
@@ -47,7 +45,7 @@ export const Navbar: FC = () => {
             <XMarkIcon />
           </button>
         </div>
-        <NavbarContent />
+        <NavbarContent closeNavbar={() => setOpen(false)} />
       </nav>
     </>
   );

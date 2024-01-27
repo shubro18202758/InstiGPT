@@ -18,10 +18,12 @@ import { ErrorDialog, LoadingIndicator } from "..";
 
 interface NavbarConversationItemProps {
   conversation: Conversation;
+  closeNavbar: () => void;
 }
 
 export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
   conversation,
+  closeNavbar,
 }) => {
   const router = useRouter();
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -49,6 +51,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
         className={`group flex h-10 flex-none items-center gap-1.5 rounded-lg pl-2.5 pr-2 text-gray-300 hover:bg-gray-700 ${
           conversation.id === (conversationId as string) ? "bg-primary/50" : ""
         }`}
+        onClick={() => closeNavbar()}
       >
         <div className="flex-1 truncate">
           {confirmDelete && <span className="font-semibold"> Delete </span>}
@@ -63,6 +66,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
               title="Confirm delete action"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 deleteConversation.mutate(conversation.id, {
                   onSuccess: () => {
                     setConfirmDelete(false);
@@ -81,6 +85,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
               title="Cancel delete action"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 setConfirmDelete(false);
               }}
             >
@@ -95,6 +100,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
               title="Edit conversation title"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
 
                 const newTitle = prompt(
                   "Edit this conversation title:",
@@ -113,6 +119,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
               title="Delete conversation"
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 setConfirmDelete(true);
               }}
             >

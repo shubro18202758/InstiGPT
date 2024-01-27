@@ -41,7 +41,11 @@ const titles: { [key: string]: string } = {
   older: "Older",
 } as const;
 
-export const NavbarContent: FC = () => {
+interface NavbarContentProps {
+  closeNavbar: () => void;
+}
+
+export const NavbarContent: FC<NavbarContentProps> = ({ closeNavbar }) => {
   const router = useRouter();
   // NOTE: We don't need to handle the loading and error states here as they are
   // already handled by the layout
@@ -67,7 +71,7 @@ export const NavbarContent: FC = () => {
       <div className="sticky top-0 flex flex-none items-center justify-between px-3 py-3.5 max-sm:pt-0">
         <LogoWithText size={75} />
       </div>
-      <NewChatButton />
+      <NewChatButton close={closeNavbar} />
       <div className="scrollbar-custom flex flex-col gap-1 overflow-y-auto rounded-r-xl bg-background-alt px-3 pb-3 pt-2">
         {Object.entries(groupedConversations)
           .filter(([_, convs]) => convs.length > 0)
@@ -80,6 +84,7 @@ export const NavbarContent: FC = () => {
                 <NavbarConversationItem
                   key={conversation.id}
                   conversation={conversation}
+                  closeNavbar={closeNavbar}
                 />
               ))}
             </div>
@@ -97,6 +102,7 @@ export const NavbarContent: FC = () => {
             logout.mutate(undefined, {
               onSuccess: () => {
                 router.replace("/login");
+                closeNavbar();
               },
             });
           }}
