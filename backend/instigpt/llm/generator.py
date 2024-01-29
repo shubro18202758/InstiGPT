@@ -1,4 +1,5 @@
 from typing import TypedDict
+import re
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate, ChatPromptTemplate
@@ -90,11 +91,15 @@ def get_chain(
 
     @chain
     def my_chain(inp: ChainInput) -> str:
+        question = inp["question"].lower()
+        search_regex = r"\bpor\b|\bpors\b|\bp.o.r\b|\bp.o.r.s\b|\bp.o.rs\b|\bp.o.r\b|\bp.or\b|\bpo.r\b|\bp.ors\b|\bpo.rs\b"
+        replacement_text = "Positions of Responsibilities"
+        question = re.sub(search_regex, replacement_text, question)
         if inp["chat_history"] == "None":
-            condensed_question = inp["question"]
+            condensed_question = question
         else:
             condensed_question = question_condenser.invoke(
-                {"question": inp["question"], "chat_history": inp["chat_history"]}
+                {"question": question, "chat_history": inp["chat_history"]}
             )
 
         # TOOD: Use GPTCache here!
@@ -127,7 +132,7 @@ def get_chain(
 
         return final_answer.invoke(
             {
-                "question": inp["question"],
+                "question": question,
                 "context": context,
                 "search_results": [
                     res[:3000] for res in extracted_search_results if res is not None
