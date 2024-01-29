@@ -8,7 +8,11 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import { useNewConversationMutation } from "@/lib";
 import { ErrorDialog, LoadingIndicator } from "..";
 
-export const NewChatButton: FC = () => {
+interface NewChatButtonProps {
+  close: () => void;
+}
+
+export const NewChatButton: FC<NewChatButtonProps> = ({ close }) => {
   const router = useRouter();
   const { mutate, data, isLoading, error } = useNewConversationMutation();
 
@@ -27,6 +31,7 @@ export const NewChatButton: FC = () => {
               onSuccess: (data) => {
                 if (data?.conversation === undefined) return;
 
+                close();
                 router.push(`/conversation/${data?.conversation.id}`);
               },
             });
