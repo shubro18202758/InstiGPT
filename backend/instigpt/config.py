@@ -1,6 +1,6 @@
 # Embedder
-# EMBEDDING_MODEL = "jinaai/jina-embeddings-v2-base-en"
-EMBEDDING_MODEL = "models/embedding-001"
+EMBEDDING_MODEL = "jinaai/jina-embeddings-v2-base-en"
+# EMBEDDING_MODEL = "models/embedding-001"
 
 # Retriever
 COLLECTION_NAME = "prototype-gemini-final"
