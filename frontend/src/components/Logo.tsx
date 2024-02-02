@@ -9,7 +9,7 @@ export const Logo: FC<LogoProps> = ({ size = 100 }) => {
   return (
     <Image
       unoptimized
-      src="/logo.png"
+      src="/instigpt/logo.png"
       alt="logo"
       width={size}
       height={1.2 * size}
