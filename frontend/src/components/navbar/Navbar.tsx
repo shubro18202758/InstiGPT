@@ -22,7 +22,7 @@ export const Navbar: FC = () => {
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >
-          <Bars3Icon />
+          <Bars3Icon className="h-full w-full" />
         </button>
         <span className="truncate px-4 text-lg font-semibold">InstiGPT</span>
       </nav>
@@ -42,7 +42,7 @@ export const Navbar: FC = () => {
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
-            <XMarkIcon />
+            <XMarkIcon className="h-full w-full" />
           </button>
         </div>
         <NavbarContent closeNavbar={() => setOpen(false)} />
