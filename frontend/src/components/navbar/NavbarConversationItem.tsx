@@ -77,7 +77,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                 });
               }}
             >
-              <CheckIcon className="text-gray-400 hover:text-gray-300" />
+              <CheckIcon className="h-full w-full text-gray-400 hover:text-gray-300" />
             </button>
             <button
               type="button"
@@ -89,7 +89,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                 setConfirmDelete(false);
               }}
             >
-              <XMarkIcon className="text-gray-400 hover:text-gray-300" />
+              <XMarkIcon className="h-full w-full text-gray-400 hover:text-gray-300" />
             </button>
           </>
         ) : (
@@ -110,7 +110,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                 editConversation.mutate({ id: conversation.id, newTitle });
               }}
             >
-              <PencilIcon className="text-xs text-gray-400 hover:text-gray-300" />
+              <PencilIcon className="h-full w-full text-gray-400 hover:text-gray-300" />
             </button>
 
             <button
@@ -123,7 +123,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                 setConfirmDelete(true);
               }}
             >
-              <TrashIcon className="text-xs text-gray-400  hover:text-gray-300" />
+              <TrashIcon className="h-full w-full text-gray-400  hover:text-gray-300" />
             </button>
           </>
         )}
