@@ -1,8 +1,12 @@
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.docstore.document import Document
+from langchain_core.embeddings import Embeddings
 from langchain_community.document_loaders import PyPDFLoader
+from langchain.embeddings import HuggingFaceEmbeddings
+from transformers import AutoModel
 import os
 import json
+from langchain_community.embeddings import VoyageEmbeddings
 import chromadb
 from chromadb.config import Settings
 from chromadb.api import ClientAPI
@@ -25,9 +29,10 @@ PDFS = [
     "SAC-Constitution-March-2018",
     "MInDS Minor",
     "itc_report",
+    "ugrulebook"
 ]
 PDFS = ["pdf/" + pdf + ".pdf" for pdf in PDFS]
-JSONS = ["resobin_courses_final", "ugrulebook"]  # "dept_web_scrap", "misc_web_scrap"
+JSONS = ["resobin_courses_final", "itc"]  # "dept_web_scrap", "misc_web_scrap", "resobin_courses_final", 
 JSONS = ["json/" + json + ".json" for json in JSONS]
 URLS_DEPT = [
     "aero",
@@ -82,7 +87,24 @@ EMBEDDING_MODEL = "models/embedding-001"
 GENERATOR_MODEL = "gemini-pro"
 GENERATOR_TEMPERATURE = 0
 
-emdbeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL)  # type: ignore
+# emdbeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL)  # type: ignore
+
+# def get_embeddings() -> Embeddings:
+#     # embeddings = HuggingFaceEmbeddings(model_name=config.EMBEDDING_MODEL)
+#     # embeddings = GoogleGenerativeAIEmbeddings(model=config.EMBEDDING_MODEL)  # type: ignore
+#     embeddings = VoyageEmbeddings(voyage_api_key="pa-d0rh4n-08o1-yY5HkGrz8co84wUhZoidq92Ppr00lpw", model="voyage-02")
+#     return embeddings
+
+# emdbeddings = get_embeddings()
+
+
+emdbeddings = AutoModel.from_pretrained('jinaai/jina-embeddings-v2-base-en', trust_remote_code=True) 
+model_name = "jinaai/jina-embeddings-v2-base-en"
+model_kwargs = {'device': 'cpu'}
+emdbeddings = HuggingFaceEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+)
 
 
 def get_db_client() -> ClientAPI:
@@ -137,68 +159,11 @@ def load_list_of_paths(doc_list: list):
     print(f"Total Documents added: {total_docs}\n")
 
 
-client.reset()
+# client.reset()
 
-load_list_of_paths(PDFS)
-load_list_of_paths(NEW_PDFS)
-load_list_of_paths(JSONS)
-load_list_of_paths(CSVS)
-
-######### DON'T LOAD PDFS FOR THESE #########
-# load_list_of_paths(URLS_DAMP)
-# load_list_of_paths(URLS_MISC)
-# load_list_of_paths(LATEST_URLS)
-
-# print(ITC_URLS)
-
-# load_list_of_paths(ITC_URLS)   #LOAD PDFS ALSO
-
-##############
-# fin_urls = []
-# for i in range(len(URLS_DEPT)):
-#     with open("data/" + URLS_DEPT[i]) as f:
-#         links = json.load(f)
-#     fac = [link for link in links if "faculty" in link.lower() or "research" in link.lower()]
-#     fin_urls += fac
-#     print(len(fac), "\n")
-# print(len(fin_urls))
-# with open("data/dept_urls.json", 'w') as json_file:
-#     json.dump(fin_urls, json_file)
-##############
-
-##############
-file_path = "data/itc_iitb.txt"
-with open(file_path, "r") as f:
-    doc = f.read()
-doc = " ".join(doc.split("\n"))
-doc_loaded = Document(page_content=doc, metadata={"source": "ITC_IITB"})
-coll = client.get_or_create_collection(config.COLLECTION_NAME)
-coll.add(
-    documents=doc_loaded.page_content,
-    metadatas=doc_loaded.metadata,
-    ids=["ITC_IITB-1"],
-    embeddings=emdbeddings.embed_documents(doc_loaded.page_content),  # type: ignore
-)
-
-file_path = "data/Hostel.pdf"
-loader = PyPDFLoader(file_path)
-docs = loader.load()
-i = 0
-for doc in docs:
-    if len(doc.page_content) <= 1:
-        continue
-    i += 1
-    doc = " ".join(doc.page_content.split("\n"))
-    print(len(doc))
-    doc_loaded = Document(page_content=doc, metadata={"source": "HOSTEL"})
-    coll.add(
-        documents=doc_loaded.page_content,
-        metadatas=doc_loaded.metadata,
-        ids=[f"HOSTEL-{i}"],
-        embeddings=emdbeddings.embed_documents(doc_loaded.page_content),  # type: ignore
-    )
-##############
-
-# load_list_of_paths(["json/dept_web_scrap.json", "json/misc_web_scrap"])
+# load_list_of_paths(PDFS)
+# load_list_of_paths(NEW_PDFS)
+# load_list_of_paths(JSONS)
+# load_list_of_paths(CSVS)
 
 print(client.list_collections())
