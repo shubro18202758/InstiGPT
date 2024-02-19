@@ -2,6 +2,8 @@ from typing import Union, Optional
 import re
 import concurrent.futures as cf
 import requests
+import urllib3
+from urllib3.exceptions import InsecureRequestWarning
 
 from chromadb.api import ClientAPI
 from langchain_core.embeddings import Embeddings
@@ -9,6 +11,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from bs4 import BeautifulSoup
 
 from instigpt import config
+
+# Suppress the warnings from urllib3 regarding SSL verification
+urllib3.disable_warnings(category=InsecureRequestWarning)
 
 
 def has_unrecognized_characters(text):
