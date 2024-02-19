@@ -89,22 +89,22 @@ GENERATOR_TEMPERATURE = 0
 
 # emdbeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL)  # type: ignore
 
-# def get_embeddings() -> Embeddings:
-#     # embeddings = HuggingFaceEmbeddings(model_name=config.EMBEDDING_MODEL)
-#     # embeddings = GoogleGenerativeAIEmbeddings(model=config.EMBEDDING_MODEL)  # type: ignore
-#     embeddings = VoyageEmbeddings(voyage_api_key="pa-d0rh4n-08o1-yY5HkGrz8co84wUhZoidq92Ppr00lpw", model="voyage-02")
-#     return embeddings
+def get_embeddings() -> Embeddings:
+    # embeddings = HuggingFaceEmbeddings(model_name=config.EMBEDDING_MODEL)
+    # embeddings = GoogleGenerativeAIEmbeddings(model=config.EMBEDDING_MODEL)  # type: ignore
+    embeddings = VoyageEmbeddings(voyage_api_key="pa-rkmFdeflRlZT3dastzQP5E8J_ee7A82rKwLtyG7I8v8", model="voyage-large-2")
+    return embeddings
 
-# emdbeddings = get_embeddings()
+emdbeddings = get_embeddings()
 
 
-emdbeddings = AutoModel.from_pretrained('jinaai/jina-embeddings-v2-base-en', trust_remote_code=True) 
-model_name = "jinaai/jina-embeddings-v2-base-en"
-model_kwargs = {'device': 'cpu'}
-emdbeddings = HuggingFaceEmbeddings(
-    model_name=model_name,
-    model_kwargs=model_kwargs,
-)
+# emdbeddings = AutoModel.from_pretrained('jinaai/jina-embeddings-v2-base-en', trust_remote_code=True) 
+# model_name = "jinaai/jina-embeddings-v2-base-en"
+# model_kwargs = {'device': 'cpu'}
+# emdbeddings = HuggingFaceEmbeddings(
+#     model_name=model_name,
+#     model_kwargs=model_kwargs,
+# )
 
 
 def get_db_client() -> ClientAPI:
@@ -159,11 +159,11 @@ def load_list_of_paths(doc_list: list):
     print(f"Total Documents added: {total_docs}\n")
 
 
-# client.reset()
+client.reset()
 
-# load_list_of_paths(PDFS)
-# load_list_of_paths(NEW_PDFS)
-# load_list_of_paths(JSONS)
-# load_list_of_paths(CSVS)
+load_list_of_paths(PDFS)
+load_list_of_paths(NEW_PDFS)
+load_list_of_paths(JSONS)
+load_list_of_paths(CSVS)
 
 print(client.list_collections())
