@@ -106,7 +106,7 @@ def get_chain(
 
         context = retriever.invoke(condensed_question)
         search_results = search_results_retriever.invoke(
-            f"{condensed_question} related to IIT Bombay"
+            f"{condensed_question} in IIT Bombay"
         )
 
         # Fetching search results sometimes results in:
