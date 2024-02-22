@@ -66,7 +66,7 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                         <h3>Overview</h3>
                         <p className="text-gray-400">
                           This chat bot is intended to provide general
-                          information about our insitute only. It is not a
+                          information about our institute only. It is not a
                           substitute for professional advice or guidance. The
                           chat bot may sometimes give inaccurate, incomplete, or
                           outdated results, depending on the input and the

@@ -1,4 +1,5 @@
 import os
+from typing import Generator
 
 import chromadb
 from chromadb.config import Settings
@@ -30,13 +31,21 @@ def get_retriever(embeddings: Embeddings):
     return db.as_retriever(search_kwargs={"k": 5})
 
 
-def get_search_results_retriever() -> Tool:
-    search = GoogleSearchAPIWrapper()  # type: ignore
+def get_search_results_retriever() -> Generator[Tool, None, None]:
+    api_keys = os.environ["GOOGLE_API_KEYS"].split(",")
+    wrappers = [GoogleSearchAPIWrapper(google_api_key=key) for key in api_keys]  # type: ignore
+    tools = [
+        Tool(
+            name="Google Search",
+            description="Search Google for recent results.",
+            func=lambda x: wrapper.results(x, 5),
+        )
+        for wrapper in wrappers
+    ]
 
-    tool = Tool(
-        name="Google Search",
-        description="Search Google for recent results.",
-        func=lambda x: search.results(x, 5),
-    )
+    i = 0
+    while True:
+        yield tools[i]
 
-    return tool
+        i += 1
+        i %= len(api_keys)

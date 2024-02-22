@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, Generator
 import re
 
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -82,7 +82,7 @@ class ChainInput(TypedDict):
 def get_chain(
     llm: BaseChatModel,
     retriever: VectorStoreRetriever,
-    search_results_retriever: Tool,
+    search_results_retriever: Generator[Tool, None, None],
 ) -> Runnable[ChainInput, str]:
     # https://python.langchain.com/docs/expression_language/cookbook/retrieval
 
@@ -105,7 +105,7 @@ def get_chain(
         # TOOD: Use GPTCache here!
 
         context = retriever.invoke(condensed_question)
-        search_results = search_results_retriever.invoke(
+        search_results = next(search_results_retriever).invoke(
             f"{condensed_question} in IIT Bombay"
         )
 
