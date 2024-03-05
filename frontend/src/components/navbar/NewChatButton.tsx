@@ -9,7 +9,7 @@ import { useNewConversationMutation } from "@/lib";
 import { ErrorDialog, LoadingIndicator } from "..";
 
 interface NewChatButtonProps {
-  close: () => void;
+  close?: () => void;
 }
 
 export const NewChatButton: FC<NewChatButtonProps> = ({ close }) => {
@@ -21,7 +21,7 @@ export const NewChatButton: FC<NewChatButtonProps> = ({ close }) => {
       <LoadingIndicator loading={isLoading} />
       <ErrorDialog msg={error?.message ?? data?.detail} />
       <button
-        className="m-2 flex items-center justify-center rounded-lg border bg-primary-gradient px-2 py-1 font-bold uppercase text-foreground shadow-sm hover:shadow-none"
+        className="m-2 flex w-full max-w-full items-center justify-center rounded-lg border bg-primary-gradient px-2 py-1 font-bold uppercase text-foreground shadow-sm hover:shadow-none"
         onClick={(e) => {
           e.preventDefault();
           // TODO: Show a modal to create a new chat instead
@@ -31,7 +31,7 @@ export const NewChatButton: FC<NewChatButtonProps> = ({ close }) => {
               onSuccess: (data) => {
                 if (data?.conversation === undefined) return;
 
-                close();
+                close?.();
                 router.push(`/conversation/${data?.conversation.id}`);
               },
             });

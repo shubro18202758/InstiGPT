@@ -38,7 +38,7 @@ export default function Login() {
         <div className="rounded-xl bg-background-alt p-10 text-center">
           {isLoginError && <ErrorDialog msg={(loginError as Error).message} />}
           {data?.detail && <ErrorDialog msg={data.detail} />}
-          <LogoWithText size={100} />
+          <LogoWithText className="h-24" />
           <button className="mt-10 rounded-lg bg-primary-gradient p-3 md:p-5 md:text-xl lg:text-3xl">
             <a href={process.env.NEXT_PUBLIC_SSO_URL}>SSO Login</a>
           </button>

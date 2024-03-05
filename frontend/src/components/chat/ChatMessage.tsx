@@ -27,7 +27,7 @@ export const ChatMessage: FC<ChatMessageProps> = ({
       <div className="mt-5 grid aspect-square w-8 flex-none place-items-center rounded-full bg-primary shadow-lg md:w-14">
         {message.role === "assistant" ? (
           <span className="m-2">
-            <Logo />
+            <Logo className="h-full" />
           </span>
         ) : (
           <span className="flex items-center justify-center text-foreground">

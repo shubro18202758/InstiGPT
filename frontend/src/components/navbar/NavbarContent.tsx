@@ -68,10 +68,12 @@ export const NavbarContent: FC<NavbarContentProps> = ({ closeNavbar }) => {
           meData?.detail
         }
       />
-      <div className="sticky top-0 flex flex-none items-center justify-between px-3 py-3.5 max-sm:pt-0">
-        <LogoWithText size={75} />
+      <div className="sticky top-0 flex flex-none items-center justify-center px-3 py-3.5 max-sm:pt-0">
+        <LogoWithText className="h-16" />
       </div>
-      <NewChatButton close={closeNavbar} />
+      <div className="pr-2">
+        <NewChatButton close={closeNavbar} />
+      </div>
       <div className="scrollbar-custom flex flex-col gap-1 overflow-y-auto rounded-r-xl bg-background-alt px-3 pb-3 pt-2">
         {Object.entries(groupedConversations)
           .filter(([_, convs]) => convs.length > 0)
