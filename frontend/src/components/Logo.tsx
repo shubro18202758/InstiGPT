@@ -14,6 +14,7 @@ export const Logo: FC<LogoProps> = ({ size = 100 }) => {
       width={size}
       height={1.2 * size}
       className="mr-1"
+      priority
     />
   );
 };
