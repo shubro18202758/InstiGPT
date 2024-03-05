@@ -18,7 +18,7 @@ router = APIRouter()
 
 
 @router.get("/login")
-def login(code: str, response: Response):
+async def login(code: str, response: Response):
     if code == "":
         return JSONResponse({"message": "code is empty"}, status_code=400)
 
@@ -93,7 +93,7 @@ def login(code: str, response: Response):
 
 
 @router.get("/logout")
-def logout(
+async def logout(
     res: Response,
     session_id: Annotated[str | None, Cookie(alias=config.COOKIE_NAME)] = None,
 ):
@@ -106,5 +106,5 @@ def logout(
 
 
 @router.get("/me")
-def me(user: Annotated[db_user.User, Depends(helpers.get_user)]):
+async def me(user: Annotated[db_user.User, Depends(helpers.get_user)]):
     return {"user": user}
