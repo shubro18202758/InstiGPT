@@ -14,7 +14,8 @@ import {
   useDeleteConversationMutation,
   useEditConversationMutation,
 } from "@/lib";
-import { ErrorDialog, LoadingIndicator } from "..";
+import { ErrorDialog, LoadingIndicator } from "@/components";
+import { EnterTitleModal } from "./EnterTitleModal";
 
 interface NavbarConversationItemProps {
   conversation: Conversation;
@@ -27,6 +28,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
 }) => {
   const router = useRouter();
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { id: conversationId } = useParams();
 
   const deleteConversation = useDeleteConversationMutation();
@@ -94,6 +96,19 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
           </>
         ) : (
           <>
+            <EnterTitleModal
+              isOpen={isModalOpen}
+              closeModal={() => setIsModalOpen(false)}
+              isLoading={editConversation.isLoading}
+              title="Edit Conversation"
+              description={`You are editing the conversation with the title: ${conversation.title}`}
+              onSubmit={(newTitle) => {
+                if (newTitle !== null && newTitle !== "") {
+                  editConversation.mutate({ id: conversation.id, newTitle });
+                }
+                setIsModalOpen(false);
+              }}
+            />
             <button
               type="button"
               className="flex h-5 w-5 items-center justify-center rounded md:hidden md:group-hover:flex"
@@ -102,12 +117,7 @@ export const NavbarConversationItem: FC<NavbarConversationItemProps> = ({
                 e.preventDefault();
                 e.stopPropagation();
 
-                const newTitle = prompt(
-                  "Edit this conversation title:",
-                  conversation.title,
-                );
-                if (!newTitle) return;
-                editConversation.mutate({ id: conversation.id, newTitle });
+                setIsModalOpen(true);
               }}
             >
               <PencilIcon className="h-full w-full text-gray-400 hover:text-gray-300" />

@@ -31,7 +31,7 @@ export const Navbar: FC = () => {
       <nav
         className={`${
           open ? "block" : "hidden"
-        } fixed inset-0 z-30 grid max-h-screen
+        } fixed inset-0 z-10 grid max-h-screen
 		grid-cols-1 grid-rows-[auto,auto,auto,1fr,auto]
 		bg-background-alt`}
       >
