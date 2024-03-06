@@ -1,4 +1,5 @@
 import os
+from functools import partial
 from typing import Generator
 
 import chromadb
@@ -38,7 +39,7 @@ def get_search_results_retriever() -> Generator[Tool, None, None]:
         Tool(
             name="Google Search",
             description="Search Google for recent results.",
-            func=lambda x: wrapper.results(x, 5),
+            func=partial(wrapper.results, num_results=5),
         )
         for wrapper in wrappers
     ]
