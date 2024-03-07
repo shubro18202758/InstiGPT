@@ -36,6 +36,7 @@ FROM base AS runtime
 ENV VIRTUAL_ENV=/app/.venv
 COPY --from=deps $VIRTUAL_ENV $VIRTUAL_ENV
 ENV PATH="/app/.venv/bin:$PATH"
+ENV PYTHON_ENV=production
 
 # Create and switch to a new user
 RUN useradd -m appuser

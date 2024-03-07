@@ -1,3 +1,4 @@
 data
 scripts
 .env.example
+.env.development

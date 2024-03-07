@@ -1,6 +1,8 @@
+import os
 from dotenv import load_dotenv
 
-load_dotenv()
+env = "development" if os.environ.get("PYTHON_ENV") is None else "production"
+load_dotenv(f".env.{env}")
 
 import uvicorn
 
@@ -14,6 +16,7 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=5000,
-        log_level="warning",
+        log_level="warning" if env == "production" else "info",
+        reload=False if env == "production" else True,
         workers=8,
     )
