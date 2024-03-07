@@ -63,7 +63,7 @@ export const ChatInput: FC<ChatInputProps> = ({
               {isLoading ? (
                 <LoadingIndicatorWithoutBackdrop loading />
               ) : (
-                <PaperAirplaneIcon className="h-full w-full" />
+                <PaperAirplaneIcon className="h-full w-auto" />
               )}
             </button>
           </div>
