@@ -7,7 +7,7 @@ interface LogoProps {
   className?: string;
 }
 
-export const Logo: FC<LogoProps> = ({ className = "h-16" }) => {
+export const Logo: FC<LogoProps> = ({ className = "h-16 w-auto" }) => {
   return (
     <Image
       unoptimized
@@ -15,7 +15,7 @@ export const Logo: FC<LogoProps> = ({ className = "h-16" }) => {
       alt="logo"
       width={0}
       height={0}
-      className={`mr-1 w-auto ${className}`}
+      className={`mr-1 ${className}`}
       priority
     />
   );
@@ -24,7 +24,7 @@ export const Logo: FC<LogoProps> = ({ className = "h-16" }) => {
 export const LogoWithText: FC<LogoProps> = ({ className }) => {
   return (
     <Link className="flex items-center rounded-xl text-left" href="/">
-      <Logo className={className} />
+      <Logo className={`${className} w-auto`} />
       <div className="ml-2 flex-1">
         <p className="text-3xl font-bold">InstiGPT</p>
         <p className="text-sm">Insti&apos;s ChatGPT</p>
