@@ -7,8 +7,10 @@ import {
   queryClient,
   useChatCompletionsMutation,
   useConversationMessagesQuery,
+  useEditConversationMutation,
 } from "@/lib";
-import { ErrorDialog, LoadingIndicator } from "..";
+import { ErrorDialog, LoadingIndicator } from "@/components";
+
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 
@@ -21,6 +23,7 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
   const [question, setQuestion] = useState("");
 
   const messages = useConversationMessagesQuery(conversationId, scrollToBottom);
+  const editConversation = useEditConversationMutation();
   const completion = useChatCompletionsMutation();
 
   function scrollToBottom() {
@@ -36,12 +39,17 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
 
   return (
     <>
-      <LoadingIndicator loading={messages.isLoading} />
+      <LoadingIndicator
+        loading={messages.isLoading || editConversation.isLoading}
+      />
       <ErrorDialog
         msg={
           messages.error?.message ??
           completion.error?.message ??
-          messages.data?.detail
+          editConversation.error?.message ??
+          messages.data?.detail ??
+          completion.data?.detail ??
+          editConversation.data?.detail
         }
       />
       <div className="relative max-h-screen">
@@ -87,9 +95,15 @@ export const ChatWindow: FC<ChatWindowProps> = ({ conversationId }) => {
           handleSubmit={(e) => {
             e.preventDefault();
             scrollToBottom();
-            const questionVal = question;
+
+            if (messages.data?.messages?.length === 0)
+              editConversation.mutate({
+                id: conversationId,
+                newTitle: question,
+              });
+
             completion.mutate(
-              { id: conversationId, question: questionVal },
+              { id: conversationId, question: question },
               {
                 onSuccess: (data) => {
                   if (data.new_messages) {
