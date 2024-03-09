@@ -14,6 +14,12 @@ export const ErrorDialog: FC<ErrorDialogProps> = ({ title, msg }) => {
 
   if (!title && !msg) return null;
 
+  // Check if there was a server error which was not handled by the server
+  if (msg && msg.includes("<html>")) {
+    title = "An unknown error occurred!";
+    msg = "Please try again later.";
+  }
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
