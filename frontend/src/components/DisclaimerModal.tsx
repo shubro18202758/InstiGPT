@@ -87,7 +87,6 @@ export const DisclaimerModal: FC<DisclaimerModalProps> = ({ setShown }) => {
                           <li>MInDS Minor</li>
                           <li>SAC Constitution (March 2018)</li>
                           <li>UG Rulebook</li>
-                          <li>ResoBin</li>
                           <li>Department Websites</li>
                           <li>DAMP Websites</li>
                         </ul>
