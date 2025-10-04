@@ -3,7 +3,7 @@
 The answer to all of insti's questions.
 
 ## NOTION PAGE FOR HELLOFOSS CONTRIBUTORS
-[CLICK HERE](https://magical-ornament-602.notion.site/27c83e2bca3f80df826edae7da9e0de7?v=27c83e2bca3f803f9796000c2f66f220&source=copy_link)
+[CLICK HERE](https://magical-ornament-602.notion.site/27c83e2bca3f80df826edae7da9e0de7?v=27c83e2bca3f803f9796000c2f66f220&source=copy_link) - WE ARE STILL UPDATING!
 
 ## Developing
 
