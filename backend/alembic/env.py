@@ -38,9 +38,7 @@ target_metadata = SQLModel.metadata
 def _get_database_url() -> str:
     url = os.getenv("DATABASE_URL", config.get_main_option("sqlalchemy.url"))
     if not url or url == "driver://user:pass@localhost/dbname":
-        raise RuntimeError(
-            "DATABASE_URL must be set to run migrations."
-        )
+        raise RuntimeError("DATABASE_URL must be set to run migrations.")
     return url
 
 
@@ -85,9 +83,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
