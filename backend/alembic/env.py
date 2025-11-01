@@ -16,7 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import SQLModel metadata by importing the modules that define the models.
-from instigpt.db import conversation, session as session_model, user  # noqa: F401
+from instigpt.db import conversation, session, user  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

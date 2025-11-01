@@ -11,21 +11,27 @@ This project uses [Alembic](https://alembic.sqlalchemy.org/) for database migrat
 To update your database to the latest schema:
 
 ```bash
-# Set your database URL
-$env:DATABASE_URL = 'postgresql://user:password@localhost/instigpt'
+# Set your database URL (bash/zsh)
+export DATABASE_URL='postgresql://user:password@localhost/instigpt'
 
 # Apply all pending migrations
-python -m poetry run alembic upgrade head
+poetry run alembic upgrade head
+```
+
+**Note for PowerShell users:**
+```powershell
+$env:DATABASE_URL = 'postgresql://user:password@localhost/instigpt'
+poetry run alembic upgrade head
 ```
 
 ### Checking Migration Status
 
 ```bash
 # View migration history
-python -m poetry run alembic history --verbose
+poetry run alembic history --verbose
 
 # Check current database version
-python -m poetry run alembic current
+poetry run alembic current
 ```
 
 ## Creating New Migrations
@@ -37,14 +43,14 @@ When you modify SQLModel classes (add/remove columns, tables, etc.):
 ```bash
 # 1. Make your changes to models in instigpt/db/
 # 2. Generate migration automatically
-python -m poetry run alembic revision --autogenerate -m "Add user profile picture column"
+poetry run alembic revision --autogenerate -m "Add user profile picture column"
 
 # 3. Review the generated file in alembic/versions/
 # 4. Test the migration
-python -m poetry run alembic upgrade head
+poetry run alembic upgrade head
 
 # 5. Test rollback
-python -m poetry run alembic downgrade -1
+poetry run alembic downgrade -1
 ```
 
 ### Manual Migrations
@@ -52,7 +58,7 @@ python -m poetry run alembic downgrade -1
 For complex changes or data migrations:
 
 ```bash
-python -m poetry run alembic revision -m "Migrate user data format"
+poetry run alembic revision -m "Migrate user data format"
 ```
 
 Then edit the generated file with custom `upgrade()` and `downgrade()` logic.
@@ -68,7 +74,7 @@ Then edit the generated file with custom `upgrade()` and `downgrade()` logic.
 
 2. **Apply migrations**
    ```bash
-   python -m poetry run alembic upgrade head
+   poetry run alembic upgrade head
    ```
 
 3. **Make schema changes**
@@ -76,7 +82,7 @@ Then edit the generated file with custom `upgrade()` and `downgrade()` logic.
 
 4. **Generate migration**
    ```bash
-   python -m poetry run alembic revision --autogenerate -m "Description of change"
+   poetry run alembic revision --autogenerate -m "Description of change"
    ```
 
 5. **Review and test**
@@ -102,14 +108,14 @@ Then edit the generated file with custom `upgrade()` and `downgrade()` logic.
 2. **Apply migrations**
    ```bash
    $env:DATABASE_URL = 'postgresql://prod_user:pass@prod_host/instigpt'
-   python -m poetry run alembic upgrade head
+   poetry run alembic upgrade head
    ```
 
 3. **Verify application starts**
 
 4. **Rollback if needed**
    ```bash
-   python -m poetry run alembic downgrade -1
+   poetry run alembic downgrade -1
    ```
 
 ## Common Commands
@@ -223,3 +229,4 @@ Configure via `DATABASE_URL` environment variable.
 - [Alembic Documentation](https://alembic.sqlalchemy.org/)
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
 - [SQLModel Documentation](https://sqlmodel.tiangolo.com/)
+
